@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CLINIK - Consultorio de Kinesiología</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              malbec: '#6b1d2f',
+              petroleo: '#1d4e5f',
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body class="bg-slate-50 text-slate-800">
+    <div id="root">
+      <!-- Pantalla principal / Portal Clinik -->
+      <div class="min-h-screen flex flex-col items-center justify-center p-6">
+        <div class="bg-white shadow-xl rounded-2xl p-8 max-w-md w-full border-t-4 border-[#6b1d2f] text-center">
+          <div class="w-16 h-16 bg-[#1d4e5f] text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-md">
+            C
+          </div>
+          <h1 class="text-2xl font-bold text-[#6b1d2f] mb-2">CLINIK</h1>
+          <p class="text-sm text-slate-600 mb-6">Sistema de Gestión de Kinesiología y Turnos</p>
+          <div class="bg-slate-100 p-4 rounded-xl text-left mb-6 text-xs text-slate-700 space-y-2">
+            <p><strong>Estado:</strong> Desplegado en Vercel</p>
+            <p><strong>Módulos:</strong> Portal de Pacientes y Agenda Activos</p>
+          </div>
+          <button onclick="alert('¡CLINIK está operativo y listo para operar!')" class="w-full bg-[#6b1d2f] hover:bg-[#521523] text-white font-semibold py-3 rounded-xl transition duration-200 shadow-md">
+            Ingresar al Sistema
+          </button>
+        </div>
+        <p class="text-xs text-slate-400 mt-6">Desarrollado para la gestión profesional de kinesiología</p>
+      </div>
+    </div>
+  </body>
+</html>
