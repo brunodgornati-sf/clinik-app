@@ -21,23 +21,65 @@
   </head>
   <body class="bg-slate-50 text-slate-800">
     <div id="root">
-      <!-- Pantalla principal / Portal Clinik -->
-      <div class="min-h-screen flex flex-col items-center justify-center p-6">
-        <div class="bg-white shadow-xl rounded-2xl p-8 max-w-md w-full border-t-4 border-[#6b1d2f] text-center">
-          <div class="w-16 h-16 bg-[#1d4e5f] text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-md">
-            C
+      <!-- Contenedor principal de la App CLINIK -->
+      <div class="min-h-screen flex flex-col">
+        <!-- Barra superior -->
+        <header class="bg-[#1d4e5f] text-white shadow-md py-4 px-6 flex justify-between items-center">
+          <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-[#6b1d2f] text-white rounded-lg flex items-center justify-center font-bold text-xl shadow">
+              C
+            </div>
+            <div>
+              <h1 class="font-bold text-lg leading-tight">CLINIK</h1>
+              <p class="text-xs text-slate-200">Consultorio de Kinesiología</p>
+            </div>
           </div>
-          <h1 class="text-2xl font-bold text-[#6b1d2f] mb-2">CLINIK</h1>
-          <p class="text-sm text-slate-600 mb-6">Sistema de Gestión de Kinesiología y Turnos</p>
-          <div class="bg-slate-100 p-4 rounded-xl text-left mb-6 text-xs text-slate-700 space-y-2">
-            <p><strong>Estado:</strong> Desplegado en Vercel</p>
-            <p><strong>Módulos:</strong> Portal de Pacientes y Agenda Activos</p>
+          <span class="text-xs bg-emerald-600 px-3 py-1 rounded-full font-medium shadow-sm">Sistema Activo</span>
+        </header>
+
+        <!-- Contenido central / Dashboard -->
+        <main class="flex-1 p-6 max-w-5xl mx-auto w-full">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <!-- Tarjeta 1 -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 border-l-4 border-l-[#6b1d2f]">
+              <h3 class="font-bold text-slate-700 text-sm mb-1">Pacientes Atendidos</h3>
+              <p class="text-3xl font-extrabold text-[#6b1d2f]">--</p>
+              <p class="text-xs text-slate-400 mt-2">Gestión de turnos diarios</p>
+            </div>
+            <!-- Tarjeta 2 -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 border-l-4 border-l-[#1d4e5f]">
+              <h3 class="font-bold text-slate-700 text-sm mb-1">Agenda del Día</h3>
+              <p class="text-3xl font-extrabold text-[#1d4e5f]">Activa</p>
+              <p class="text-xs text-slate-400 mt-2">Horarios y distribución</p>
+            </div>
+            <!-- Tarjeta 3 -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 border-l-4 border-emerald-600">
+              <h3 class="font-bold text-slate-700 text-sm mb-1">Conexión Supabase</h3>
+              <p class="text-3xl font-extrabold text-emerald-600">Listo</p>
+              <p class="text-xs text-slate-400 mt-2">Base de datos sincronizada</p>
+            </div>
           </div>
-          <button onclick="alert('¡CLINIK está operativo y listo para operar!')" class="w-full bg-[#6b1d2f] hover:bg-[#521523] text-white font-semibold py-3 rounded-xl transition duration-200 shadow-md">
-            Ingresar al Sistema
-          </button>
-        </div>
-        <p class="text-xs text-slate-400 mt-6">Desarrollado para la gestión profesional de kinesiología</p>
+
+          <!-- Panel de Acciones -->
+          <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+            <h2 class="text-lg font-bold text-[#1d4e5f] mb-4">Panel de Control de Kinesiología</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <button onclick="alert('Módulo de Agenda y Turnos')" class="p-4 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-xl text-left transition duration-200 shadow-sm">
+                <span class="block font-bold text-[#6b1d2f] mb-1">📅 Ver Agenda de Turnos</span>
+                <span class="text-xs text-slate-500">Administrar horarios, pacientes y profesionales.</span>
+              </button>
+              <button onclick="alert('Módulo de Fichas de Pacientes')" class="p-4 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-xl text-left transition duration-200 shadow-sm">
+                <span class="block font-bold text-[#1d4e5f] mb-1">👥 Fichas de Pacientes</span>
+                <span class="text-xs text-slate-500">Seguimiento clínico y evolución de tratamientos.</span>
+              </button>
+            </div>
+          </div>
+        </main>
+
+        <!-- Pie de página -->
+        <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-400">
+          CLINIK - Sistema de Gestión Profesional para Kinesiología
+        </footer>
       </div>
     </div>
   </body>
