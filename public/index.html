@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CLINIK - Consultorio de Kinesiología</title>
+    <title>CLINIK - Sistema de Kinesiología</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -20,67 +20,146 @@
     </script>
   </head>
   <body class="bg-slate-50 text-slate-800">
-    <div id="root">
-      <!-- Contenedor principal de la App CLINIK -->
-      <div class="min-h-screen flex flex-col">
-        <!-- Barra superior -->
-        <header class="bg-[#1d4e5f] text-white shadow-md py-4 px-6 flex justify-between items-center">
-          <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 bg-[#6b1d2f] text-white rounded-lg flex items-center justify-center font-bold text-xl shadow">
-              C
-            </div>
-            <div>
-              <h1 class="font-bold text-lg leading-tight">CLINIK</h1>
-              <p class="text-xs text-slate-200">Consultorio de Kinesiología</p>
-            </div>
+    <div id="root" class="min-h-screen flex flex-col">
+      <!-- Barra superior -->
+      <header class="bg-[#1d4e5f] text-white shadow-md py-4 px-6 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 bg-[#6b1d2f] text-white rounded-lg flex items-center justify-center font-bold text-xl shadow">
+            C
           </div>
-          <span class="text-xs bg-emerald-600 px-3 py-1 rounded-full font-medium shadow-sm">Sistema Activo</span>
-        </header>
+          <div>
+            <h1 class="font-bold text-lg leading-tight">CLINIK</h1>
+            <p class="text-xs text-slate-200">Consultorio de Kinesiología</p>
+          </div>
+        </div>
+        <div class="flex items-center space-x-2">
+          <button onclick="cambiarVista('inicio')" class="px-3 py-1.5 text-xs bg-white/10 hover:bg-white/20 rounded-lg transition">Inicio</button>
+          <button onclick="cambiarVista('agenda')" class="px-3 py-1.5 text-xs bg-white/10 hover:bg-white/20 rounded-lg transition">Agenda</button>
+          <button onclick="cambiarVista('pacientes')" class="px-3 py-1.5 text-xs bg-white/10 hover:bg-white/20 rounded-lg transition">Pacientes</button>
+        </div>
+      </header>
 
-        <!-- Contenido central / Dashboard -->
-        <main class="flex-1 p-6 max-w-5xl mx-auto w-full">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <!-- Tarjeta 1 -->
+      <!-- Contenido Principal -->
+      <main class="flex-1 p-6 max-w-5xl mx-auto w-full">
+        
+        <!-- VISTA INICIO -->
+        <div id="vista-inicio" class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 border-l-4 border-l-[#6b1d2f]">
-              <h3 class="font-bold text-slate-700 text-sm mb-1">Pacientes Atendidos</h3>
-              <p class="text-3xl font-extrabold text-[#6b1d2f]">--</p>
-              <p class="text-xs text-slate-400 mt-2">Gestión de turnos diarios</p>
+              <h3 class="font-bold text-slate-700 text-sm mb-1">Turnos para Hoy</h3>
+              <p class="text-3xl font-extrabold text-[#6b1d2f]">6</p>
+              <p class="text-xs text-slate-400 mt-2">Distribución en curso</p>
             </div>
-            <!-- Tarjeta 2 -->
             <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 border-l-4 border-l-[#1d4e5f]">
               <h3 class="font-bold text-slate-700 text-sm mb-1">Agenda del Día</h3>
               <p class="text-3xl font-extrabold text-[#1d4e5f]">Activa</p>
-              <p class="text-xs text-slate-400 mt-2">Horarios y distribución</p>
+              <p class="text-xs text-slate-400 mt-2">Sincronizada</p>
             </div>
-            <!-- Tarjeta 3 -->
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 border-l-4 border-emerald-600">
-              <h3 class="font-bold text-slate-700 text-sm mb-1">Conexión Supabase</h3>
-              <p class="text-3xl font-extrabold text-emerald-600">Listo</p>
-              <p class="text-xs text-slate-400 mt-2">Base de datos sincronizada</p>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 border-l-4 border-l-emerald-600">
+              <h3 class="font-bold text-slate-700 text-sm mb-1">Estado de Sistema</h3>
+              <p class="text-3xl font-extrabold text-emerald-600">Online</p>
+              <p class="text-xs text-slate-400 mt-2">Vercel & Estático</p>
             </div>
           </div>
 
-          <!-- Panel de Acciones -->
           <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
             <h2 class="text-lg font-bold text-[#1d4e5f] mb-4">Panel de Control de Kinesiología</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <button onclick="alert('Módulo de Agenda y Turnos')" class="p-4 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-xl text-left transition duration-200 shadow-sm">
-                <span class="block font-bold text-[#6b1d2f] mb-1">📅 Ver Agenda de Turnos</span>
+              <button onclick="cambiarVista('agenda')" class="p-4 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-xl text-left transition duration-200 shadow-sm group">
+                <span class="block font-bold text-[#6b1d2f] mb-1 group-hover:translate-x-1 transition-transform">📅 Ver Agenda de Turnos &rarr;</span>
                 <span class="text-xs text-slate-500">Administrar horarios, pacientes y profesionales.</span>
               </button>
-              <button onclick="alert('Módulo de Fichas de Pacientes')" class="p-4 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-xl text-left transition duration-200 shadow-sm">
-                <span class="block font-bold text-[#1d4e5f] mb-1">👥 Fichas de Pacientes</span>
+              <button onclick="cambiarVista('pacientes')" class="p-4 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-xl text-left transition duration-200 shadow-sm group">
+                <span class="block font-bold text-[#1d4e5f] mb-1 group-hover:translate-x-1 transition-transform">👥 Fichas de Pacientes &rarr;</span>
                 <span class="text-xs text-slate-500">Seguimiento clínico y evolución de tratamientos.</span>
               </button>
             </div>
           </div>
-        </main>
+        </div>
 
-        <!-- Pie de página -->
-        <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-400">
-          CLINIK - Sistema de Gestión Profesional para Kinesiología
-        </footer>
-      </div>
+        <!-- VISTA AGENDA -->
+        <div id="vista-agenda" class="hidden space-y-6">
+          <div class="flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
+            <div>
+              <h2 class="text-lg font-bold text-[#1d4e5f]">Agenda de Turnos</h2>
+              <p class="text-xs text-slate-500">Horarios y distribución diaria</p>
+            </div>
+            <button onclick="cambiarVista('inicio')" class="px-4 py-2 text-xs bg-slate-100 hover:bg-slate-200 rounded-xl font-medium transition">← Volver al Panel</button>
+          </div>
+          <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+            <table class="w-full text-left border-collapse text-sm">
+              <thead>
+                <tr class="bg-slate-100 text-slate-700 text-xs uppercase tracking-wider">
+                  <th class="p-4">Horario</th>
+                  <th class="p-4">Paciente</th>
+                  <th class="p-4">Tratamiento</th>
+                  <th class="p-4">Estado</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <tr class="hover:bg-slate-50">
+                  <td class="p-4 font-semibold text-[#1d4e5f]">08:00 hs</td>
+                  <td class="p-4">Carlos Gómez</td>
+                  <td class="p-4 text-slate-600">Rehabilitación de Rodilla</td>
+                  <td class="p-4"><span class="px-2.5 py-1 text-xs bg-emerald-100 text-emerald-800 rounded-full font-medium">Confirmado</span></td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="p-4 font-semibold text-[#1d4e5f]">09:00 hs</td>
+                  <td class="p-4">María Fernández</td>
+                  <td class="p-4 text-slate-600">Columna / Cervicalgia</td>
+                  <td class="p-4"><span class="px-2.5 py-1 text-xs bg-amber-100 text-amber-800 rounded-full font-medium">En Sala</span></td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="p-4 font-semibold text-[#1d4e5f]">10:00 hs</td>
+                  <td class="p-4">Juan Pérez</td>
+                  <td class="p-4 text-slate-600">Kinesiología Deportiva</td>
+                  <td class="p-4"><span class="px-2.5 py-1 text-xs bg-blue-100 text-blue-800 rounded-full font-medium">Pendiente</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- VISTA PACIENTES -->
+        <div id="vista-pacientes" class="hidden space-y-6">
+          <div class="flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
+            <div>
+              <h2 class="text-lg font-bold text-[#1d4e5f]">Listado de Pacientes</h2>
+              <p class="text-xs text-slate-500">Fichas clínicas y evolución</p>
+            </div>
+            <button onclick="cambiarVista('inicio')" class="px-4 py-2 text-xs bg-slate-100 hover:bg-slate-200 rounded-xl font-medium transition">← Volver al Panel</button>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 border-t-4 border-t-[#6b1d2f]">
+              <h3 class="font-bold text-slate-800">Carlos Gómez</h3>
+              <p class="text-xs text-slate-500 mb-3">Última sesión: Ayer</p>
+              <p class="text-xs bg-slate-50 p-3 rounded-xl border border-slate-100 text-slate-700">Evolución favorable en flexión de rodilla post-operatoria.</p>
+            </div>
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 border-t-4 border-t-[#1d4e5f]">
+              <h3 class="font-bold text-slate-800">María Fernández</h3>
+              <p class="text-xs text-slate-500 mb-3">Última sesión: Hoy</p>
+              <p class="text-xs bg-slate-50 p-3 rounded-xl border border-slate-100 text-slate-700">Tratamiento de contractura cervical con magnetoterapia.</p>
+            </div>
+          </div>
+        </div>
+
+      </main>
+
+      <!-- Pie de página -->
+      <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-400 mt-auto">
+        CLINIK - Sistema de Gestión Profesional para Kinesiología
+      </footer>
     </div>
+
+    <!-- Script de Navegación Simple -->
+    <script>
+      function cambiarVista(vista) {
+        document.getElementById('vista-inicio').classList.add('hidden');
+        document.getElementById('vista-agenda').classList.add('hidden');
+        document.getElementById('vista-pacientes').classList.add('hidden');
+        
+        document.getElementById('vista-' + vista).classList.remove('hidden');
+      }
+    </script>
   </body>
 </html>
