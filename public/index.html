@@ -47,7 +47,7 @@
   </header>
 
   <!-- CONTENIDO PRINCIPAL -->
-  <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6">
+  <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 space-y-6">
 
     <!-- ========================================== -->
     <!-- 1. PANEL DE SECRETARÍA (CONTROL TOTAL)      -->
@@ -114,12 +114,69 @@
         </div>
       </div>
 
+      <!-- MÓDULO DE CAJA DIARIA & SEMÁFORO INTELIGENTE DE COSEGUROS -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Resumen de Caja Diaria -->
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+          <h3 class="font-bold text-[#1d4e5f] text-sm border-b border-slate-100 pb-2">💵 Balance Diario de Caja</h3>
+          <div class="space-y-3 text-xs">
+            <div class="flex justify-between items-center bg-slate-50 p-3 rounded-xl">
+              <span class="font-medium text-slate-600">💵 Efectivo Recepción:</span>
+              <span class="font-extrabold text-slate-800 text-sm">$32.000</span>
+            </div>
+            <div class="flex justify-between items-center bg-slate-50 p-3 rounded-xl">
+              <span class="font-medium text-slate-600">📲 Transferencias (Alias/CVU):</span>
+              <span class="font-extrabold text-[#1d4e5f] text-sm">$48.000</span>
+            </div>
+            <div class="flex justify-between items-center bg-emerald-50 border border-emerald-200 p-3 rounded-xl">
+              <span class="font-bold text-emerald-900">Total Recaudado Hoy:</span>
+              <span class="font-black text-emerald-700 text-base">$80.000</span>
+            </div>
+          </div>
+          <p class="text-[11px] text-slate-400">Incluye Coseguros + Particulares Preferenciales PAMI</p>
+        </div>
+
+        <!-- Alertas Inteligentes del Semáforo de Coseguros -->
+        <div class="lg:col-span-2 bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+          <h3 class="font-bold text-[#6b1d2f] text-sm border-b border-slate-100 pb-2 flex items-center justify-between">
+            <span>🚦 Semáforo de Control de Coseguros y Sesiones</span>
+            <span class="text-[11px] bg-rose-100 text-[#6b1d2f] font-bold px-2 py-0.5 rounded-full">2 Alertas de Cobro</span>
+          </h3>
+
+          <!-- Notificación Alerta Roja (Sesión 8/10) -->
+          <div class="bg-rose-50 border-l-4 border-l-rose-600 p-3.5 rounded-r-xl flex items-center justify-between gap-3">
+            <div class="flex items-center space-x-3">
+              <span class="w-3 h-3 bg-rose-600 rounded-full animate-pulse"></span>
+              <div>
+                <p class="text-xs font-bold text-rose-950">Carlos Gómez (OSDE 210) - <span class="text-rose-700 font-extrabold">SESIÓN 8/10</span></p>
+                <p class="text-[11px] text-rose-800">⚠️ Requiere presentar nueva orden antes de finalizar el tratamiento de 10 sesiones.</p>
+              </div>
+            </div>
+            <button onclick="marcarCobrado(this, 'Carlos Gómez')" class="px-3 py-1.5 bg-[#6b1d2f] hover:bg-rose-900 text-white text-[11px] font-bold rounded-lg transition whitespace-nowrap">Cobrar $6.000</button>
+          </div>
+
+          <!-- Notificación Alerta Amarilla (Sesión 3/5) -->
+          <div class="bg-amber-50 border-l-4 border-l-amber-500 p-3.5 rounded-r-xl flex items-center justify-between gap-3">
+            <div class="flex items-center space-x-3">
+              <span class="w-3 h-3 bg-amber-500 rounded-full"></span>
+              <div>
+                <p class="text-xs font-bold text-amber-950">María Fernández (IAPOS) - <span class="text-amber-700 font-extrabold">SESIÓN 3/5</span></p>
+                <p class="text-[11px] text-amber-800">Coseguro pendiente de cobro en esta atención previa al box.</p>
+              </div>
+            </div>
+            <button onclick="marcarCobrado(this, 'María Fernández')" class="px-3 py-1.5 bg-amber-600 hover:bg-amber-700 text-white text-[11px] font-bold rounded-lg transition whitespace-nowrap">Cobrar $4.500</button>
+          </div>
+        </div>
+
+      </div>
+
       <!-- Agenda Cruzada General -->
       <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
         <div class="flex justify-between items-center mb-6">
           <div>
             <h2 class="text-lg font-bold text-[#1d4e5f]">Agenda Cruzada en Tiempo Real</h2>
-            <p class="text-xs text-slate-500">Vista unificada de turnos y sanitización por profesional</p>
+            <p class="text-xs text-slate-500">Vista unificada de turnos, semáforo de sesiones y cosecha de coseguros</p>
           </div>
           <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full">En Vivo</span>
         </div>
@@ -129,34 +186,63 @@
             <thead>
               <tr class="bg-slate-100 text-slate-600 text-xs uppercase tracking-wider">
                 <th class="p-3">Bloque Horario</th>
-                <th class="p-3">Especialidad</th>
-                <th class="p-3">Paciente</th>
-                <th class="p-3">Profesional Asignado</th>
-                <th class="p-3">Cupo / Estado</th>
+                <th class="p-3">Paciente / Cobertura</th>
+                <th class="p-3">Control de Sesiones</th>
+                <th class="p-3">Estado Coseguro</th>
+                <th class="p-3">Profesional</th>
+                <th class="p-3">Acción</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-slate-100">
+              
               <tr class="hover:bg-slate-50">
-                <td class="p-3 font-bold text-[#1d4e5f]">08:00 - 08:50 hs <span class="block text-[10px] text-amber-600 font-normal">+10m sanitización</span></td>
-                <td class="p-3 text-xs font-medium text-slate-700">Kinesiología Convencional</td>
-                <td class="p-3 font-medium">Carlos Gómez</td>
+                <td class="p-3 font-bold text-[#1d4e5f]">08:00 - 08:50 hs</td>
+                <td class="p-3 font-medium">Carlos Gómez <span class="block text-[11px] text-slate-400">OSDE 210</span></td>
+                <td class="p-3">
+                  <span class="px-2.5 py-1 text-xs font-bold bg-rose-100 text-rose-800 rounded-full border border-rose-300">Sesión 8 / 10 ⚠️</span>
+                </td>
+                <td class="p-3"><span id="estado-carlos" class="px-2 py-0.5 text-xs bg-amber-100 text-amber-800 font-bold rounded-full">Pendiente $6.000</span></td>
                 <td class="p-3"><span class="px-2 py-1 text-xs font-semibold bg-blue-100 text-[#1d4e5f] rounded-lg">Lic. Lucía</span></td>
-                <td class="p-3"><span class="px-2.5 py-1 text-xs font-semibold bg-emerald-100 text-emerald-800 rounded-full">Cupo 3/4 Ocupado</span></td>
+                <td class="p-3">
+                  <button onclick="cobrarFila('estado-carlos')" class="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg transition">Marcar Pago</button>
+                </td>
               </tr>
+
               <tr class="hover:bg-slate-50">
-                <td class="p-3 font-bold text-[#1d4e5f]">09:00 - 09:50 hs <span class="block text-[10px] text-amber-600 font-normal">+10m sanitización</span></td>
-                <td class="p-3 text-xs font-medium text-slate-700">Quiropraxia / RPG / ATM</td>
-                <td class="p-3 font-medium">María Fernández</td>
+                <td class="p-3 font-bold text-[#1d4e5f]">09:00 - 09:50 hs</td>
+                <td class="p-3 font-medium">María Fernández <span class="block text-[11px] text-slate-400">IAPOS</span></td>
+                <td class="p-3">
+                  <span class="px-2.5 py-1 text-xs font-bold bg-amber-100 text-amber-800 rounded-full border border-amber-300">Sesión 3 / 5 ⚠️</span>
+                </td>
+                <td class="p-3"><span id="estado-maria" class="px-2 py-0.5 text-xs bg-amber-100 text-amber-800 font-bold rounded-full">Pendiente $4.500</span></td>
                 <td class="p-3"><span class="px-2 py-1 text-xs font-semibold bg-teal-100 text-teal-800 rounded-lg">Lic. Gabriel</span></td>
-                <td class="p-3"><span class="px-2.5 py-1 text-xs font-semibold bg-rose-100 text-rose-800 rounded-full">Cupo 1/1 Completo</span></td>
+                <td class="p-3">
+                  <button onclick="cobrarFila('estado-maria')" class="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg transition">Marcar Pago</button>
+                </td>
               </tr>
+
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-[#1d4e5f]">10:00 - 10:50 hs</td>
+                <td class="p-3 font-medium">Roberto Rossi <span class="block text-[11px] text-emerald-600 font-bold">PAMI Directo (Preferencial)</span></td>
+                <td class="p-3">
+                  <span class="px-2.5 py-1 text-xs font-bold bg-slate-100 text-slate-700 rounded-full">Particular</span>
+                </td>
+                <td class="p-3"><span class="px-2 py-0.5 text-xs bg-emerald-100 text-emerald-800 font-bold rounded-full">Cobrado $12.000</span></td>
+                <td class="p-3"><span class="px-2 py-1 text-xs font-semibold bg-blue-100 text-[#1d4e5f] rounded-lg">Lic. Lucía</span></td>
+                <td class="p-3"><span class="text-xs text-slate-400">✓ Abonado</span></td>
+              </tr>
+
               <tr class="hover:bg-slate-50">
                 <td class="p-3 font-bold text-[#1d4e5f]">14:00 - 14:30 hs</td>
-                <td class="p-3 text-xs font-medium text-slate-700">Quiropraxia (30m)</td>
-                <td class="p-3 font-medium">Juan Pérez</td>
+                <td class="p-3 font-medium">Juan Pérez <span class="block text-[11px] text-slate-400">Swiss Medical</span></td>
+                <td class="p-3">
+                  <span class="px-2.5 py-1 text-xs font-bold bg-emerald-100 text-emerald-800 rounded-full">Sesión 1 / 10</span>
+                </td>
+                <td class="p-3"><span class="px-2 py-0.5 text-xs bg-emerald-100 text-emerald-800 font-bold rounded-full">Cobrado $7.000</span></td>
                 <td class="p-3"><span class="px-2 py-1 text-xs font-semibold bg-rose-100 text-[#6b1d2f] rounded-lg">Carolina y Tomás</span></td>
-                <td class="p-3"><span class="px-2.5 py-1 text-xs font-semibold bg-rose-100 text-rose-800 rounded-full">Cupo 1/1 Completo</span></td>
+                <td class="p-3"><span class="text-xs text-slate-400">✓ Abonado</span></td>
               </tr>
+
             </tbody>
           </table>
         </div>
@@ -235,7 +321,7 @@
           <div>
             <label class="block text-xs font-bold text-slate-700 mb-1">Profesional / Staff Asignado</label>
             <div id="box-profesional" class="p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-[#1d4e5f]">
-              Lic. Lucía (Mañana) o Lic. Gabriel (Quiropraxia / RPG)
+              Lic. Lucía o Lic. Gabriel (Quiropraxia / RPG / ATM)
             </div>
           </div>
 
@@ -286,6 +372,18 @@
       } else {
         boxProf.innerText = "Lic. Carolina y Lic. Tomás (Turno Tarde unificado 13:00 a 20:00 hs)";
       }
+    }
+
+    function cobrarFila(idElem) {
+      const el = document.getElementById(idElem);
+      el.className = "px-2 py-0.5 text-xs bg-emerald-100 text-emerald-800 font-bold rounded-full";
+      el.innerText = "Cobrado ✓";
+    }
+
+    function marcarCobrado(btn, paciente) {
+      btn.innerText = "✓ Registrado";
+      btn.className = "px-3 py-1.5 bg-emerald-600 text-white text-[11px] font-bold rounded-lg whitespace-nowrap";
+      alert("Coseguro de " + paciente + " registrado en la caja diaria.");
     }
 
     function ingresarProfesional(e) {
