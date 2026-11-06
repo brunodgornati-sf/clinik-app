@@ -1,352 +1,207 @@
+// CLINIK - Aplicación de Gestión Kinesiología
+// Paleta: Malbec (#6b1d2f), Azul Petróleo (#1d4e5f), Gris y Blanco
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CLINIK - Gestión Integral de Kinesiología</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            malbec: '#6b1d2f',
-            petroleo: '#1d4e5f',
-          }
-        }
-      }
-    }
-  </script>
-</head>
-<body class="bg-slate-100 text-slate-800 font-sans min-h-screen flex flex-col">
+import React, { useState } from 'react';
+import { createClient } from '@supabase/supabase-js';
 
-  <!-- NAVBAR SUPERIOR CON SELECCIÓN DE ROL -->
-  <header class="bg-[#1d4e5f] text-white shadow-md py-3 px-6 flex flex-wrap justify-between items-center gap-4">
-    <div class="flex items-center space-x-3 cursor-pointer" onclick="seleccionarRol('secretaria')">
-      <div class="w-10 h-10 bg-[#6b1d2f] text-white rounded-xl flex items-center justify-center font-bold text-xl shadow">
-        C
-      </div>
-      <div>
-        <h1 class="font-extrabold text-xl leading-none tracking-wide">CLINIK</h1>
-        <p class="text-xs text-slate-200">Kinesiología & Fisioterapia</p>
-      </div>
-    </div>
+// Conexión con Supabase
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-    <!-- Selector de Rol para la demostración -->
-    <div class="flex items-center bg-slate-900/40 p-1.5 rounded-xl border border-white/10 space-x-1">
-      <button id="btn-rol-secretaria" onclick="seleccionarRol('secretaria')" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-[#6b1d2f] text-white shadow transition">
-        Secretaría (Control Total)
-      </button>
-      <button id="btn-rol-[#1d4e5f]" onclick="seleccionarRol('profesional')" class="px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-300 hover:text-white transition">
-        Profesionales (Con Clave)
-      </button>
-      <button id="btn-rol-paciente" onclick="seleccionarRol('paciente')" class="px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-300 hover:text-white transition">
-        Portal Pacientes (Sin Clave)
-      </button>
-    </div>
-  </header>
+export default function App() {
+  const [vista, setVista] = useState('paciente'); // 'paciente' | 'secretaria'
+  const [subTab, setSubTab] = useState('agenda'); // 'agenda' | 'asistencia' | 'historias' | 'caja'
 
-  <!-- CONTENIDO PRINCIPAL -->
-  <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6">
-
-    <!-- ========================================== -->
-    <!-- 1. PANEL DE SECRETARÍA (CONTROL TOTAL)      -->
-    <!-- ========================================== -->
-    <section id="panel-secretaria" class="space-y-6">
-      <!-- Resumen diario -->
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm border-l-4 border-l-[#6b1d2f]">
-          <p class="text-xs font-bold uppercase text-slate-400 tracking-wider">Turnos del Día</p>
-          <p class="text-3xl font-black text-[#6b1d2f] mt-1">12</p>
-          <p class="text-xs text-slate-500 mt-1">6 Carolina | 6 Tomás</p>
+  return (
+    <div className="min-h-screen bg-gray-50 text-gray-800 font-sans">
+      {/* Encabezado Principal */}
+      <header className="bg-[#6b1d2f] text-white p-4 shadow-md flex justify-between items-center">
+        <div>
+          <h1 className="text-2xl font-bold tracking-wide">CLINIK</h1>
+          <p className="text-xs text-red-100">Consultorio de Kinesiología & Fisioterapia</p>
         </div>
-        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm border-l-4 border-l-[#1d4e5f]">
-          <p class="text-xs font-bold uppercase text-slate-400 tracking-wider">Coseguros Cobrados</p>
-          <p class="text-3xl font-black text-[#1d4e5f] mt-1">$48.000</p>
-          <p class="text-xs text-emerald-600 font-semibold mt-1">✓ 8 Pacientes cobrados</p>
-        </div>
-        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm border-l-4 border-l-amber-500">
-          <p class="text-xs font-bold uppercase text-slate-400 tracking-wider">Coseguros Pendientes</p>
-          <p class="text-3xl font-black text-amber-600 mt-1">$12.000</p>
-          <p class="text-xs text-amber-600 font-semibold mt-1">⚠️ 2 Pendientes en recepción</p>
-        </div>
-        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm border-l-4 border-l-emerald-600">
-          <p class="text-xs font-bold uppercase text-slate-400 tracking-wider">Estado Servidor</p>
-          <p class="text-3xl font-black text-emerald-600 mt-1">Operativo</p>
-          <p class="text-xs text-slate-500 mt-1">Vercel Production Active</p>
-        </div>
-      </div>
-
-      <!-- Alerta Coseguros -->
-      <div class="bg-amber-50 border border-amber-200 p-4 rounded-2xl flex items-center justify-between">
-        <div class="flex items-center space-x-3">
-          <span class="text-2xl">⚠️</span>
-          <div>
-            <h4 class="font-bold text-amber-900 text-sm">Alerta de Recepción: 2 Coseguros pendientes de cobro</h4>
-            <p class="text-xs text-amber-700">María Fernández (IAPOS) y Carlos Gómez (OSDE) ingresaron al box sin abonar coseguro.</p>
-          </div>
-        </div>
-        <button onclick="alert('Cobro registrado correctamente')" class="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white font-semibold text-xs rounded-xl shadow transition">Registrar Cobro</button>
-      </div>
-
-      <!-- Grilla Unificada de Asistencia (Carolina & Tomás) -->
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
-        <div class="flex justify-between items-center mb-6">
-          <div>
-            <h2 class="text-lg font-bold text-[#1d4e5f]">Grilla Unificada de Turnos y Asistencia</h2>
-            <p class="text-xs text-slate-500">Control total del cronograma general de kinesiólogos</p>
-          </div>
-          <button onclick="alert('Función para agregar nuevo turno')" class="px-4 py-2 bg-[#6b1d2f] text-white text-xs font-bold rounded-xl shadow hover:bg-rose-900 transition">+ Nuevo Turno</button>
-        </div>
-
-        <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse text-sm">
-            <thead>
-              <tr class="bg-slate-100 text-slate-600 text-xs uppercase tracking-wider">
-                <th class="p-3">Horario</th>
-                <th class="p-3">Paciente</th>
-                <th class="p-3">Obra Social</th>
-                <th class="p-3">Profesional</th>
-                <th class="p-3">Coseguro</th>
-                <th class="p-3">Estado</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-100">
-              <tr class="hover:bg-slate-50">
-                <td class="p-3 font-bold text-[#1d4e5f]">08:00 hs</td>
-                <td class="p-3 font-medium">Carlos Gómez</td>
-                <td class="p-3 text-xs text-slate-500">OSDE 210</td>
-                <td class="p-3"><span class="px-2 py-1 text-xs font-semibold bg-rose-100 text-[#6b1d2f] rounded-lg">Lic. Carolina</span></td>
-                <td class="p-3"><span class="px-2 py-0.5 text-xs bg-amber-100 text-amber-800 font-bold rounded-full">Pendiente $6.000</span></td>
-                <td class="p-3"><span class="px-2.5 py-1 text-xs font-semibold bg-emerald-100 text-emerald-800 rounded-full">En Box 1</span></td>
-              </tr>
-              <tr class="hover:bg-slate-50">
-                <td class="p-3 font-bold text-[#1d4e5f]">08:45 hs</td>
-                <td class="p-3 font-medium">María Fernández</td>
-                <td class="p-3 text-xs text-slate-500">IAPOS</td>
-                <td class="p-3"><span class="px-2 py-1 text-xs font-semibold bg-teal-100 text-[#1d4e5f] rounded-lg">Lic. Tomás</span></td>
-                <td class="p-3"><span class="px-2 py-0.5 text-xs bg-emerald-100 text-emerald-800 font-bold rounded-full">Pagado $6.000</span></td>
-                <td class="p-3"><span class="px-2.5 py-1 text-xs font-semibold bg-blue-100 text-blue-800 rounded-full">En Espera</span></td>
-              </tr>
-              <tr class="hover:bg-slate-50">
-                <td class="p-3 font-bold text-[#1d4e5f]">09:30 hs</td>
-                <td class="p-3 font-medium">Juan Pérez</td>
-                <td class="p-3 text-xs text-slate-500">Particular</td>
-                <td class="p-3"><span class="px-2 py-1 text-xs font-semibold bg-rose-100 text-[#6b1d2f] rounded-lg">Lic. Carolina</span></td>
-                <td class="p-3"><span class="px-2 py-0.5 text-xs bg-emerald-100 text-emerald-800 font-bold rounded-full">Pagado $12.000</span></td>
-                <td class="p-3"><span class="px-2.5 py-1 text-xs font-semibold bg-slate-100 text-slate-600 rounded-full">Programado</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================== -->
-    <!-- 2. PANEL DE PROFESIONALES (CON CLAVE)       -->
-    <!-- ========================================== -->
-    <section id="panel-profesional" class="hidden space-y-6">
-      
-      <!-- Bloque Login para Profesional -->
-      <div id="login-profesional" class="max-w-md mx-auto bg-white p-8 rounded-3xl border border-slate-200 shadow-md">
-        <div class="text-center mb-6">
-          <div class="w-12 h-12 bg-[#1d4e5f] text-white rounded-2xl flex items-center justify-center font-bold text-2xl mx-auto mb-2">🔒</div>
-          <h2 class="text-xl font-bold text-slate-800">Acceso a Profesionales</h2>
-          <p class="text-xs text-slate-500 mt-1">Ingresá tus credenciales para acceder al Body Map y fichas clínicas.</p>
-        </div>
-        <form onsubmit="ingresarProfesional(event)" class="space-y-4">
-          <div>
-            <label class="block text-xs font-bold text-slate-600 mb-1">Profesional</label>
-            <select id="select-profesional" class="w-full text-sm border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-[#1d4e5f] outline-none">
-              <option value="Carolina">Lic. Carolina (Kinesiología General)</option>
-              <option value="Tomás">Lic. Tomás (Kinesiología Deportiva)</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-xs font-bold text-slate-600 mb-1">Contraseña</label>
-            <input type="password" id="input-pass" placeholder="••••••••" required class="w-full text-sm border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-[#1d4e5f] outline-none" />
-          </div>
-          <button type="submit" class="w-full bg-[#1d4e5f] text-white font-bold text-sm py-3 rounded-xl shadow hover:bg-cyan-900 transition">Ingresar al Panel Clínico</button>
-        </form>
-      </div>
-
-      <!-- Contenido Profesional (después del Login) -->
-      <div id="contenido-profesional" class="hidden space-y-6">
-        <div class="flex justify-between items-center bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
-          <div>
-            <h2 id="titulo-profesional-activo" class="text-lg font-bold text-[#1d4e5f]">Ficha Clínica del Paciente</h2>
-            <p class="text-xs text-slate-500">Evaluación de tratamiento y mapeo corporal (Body Map)</p>
-          </div>
-          <button onclick="cerrarSesionProfesional()" class="px-3 py-1.5 text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 font-semibold rounded-xl">Cerrar Sesión</button>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <!-- BODY MAP DE EVALUACIÓN -->
-          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-            <h3 class="font-bold text-slate-800 mb-2 flex items-center justify-between">
-              <span>🗺️ Body Map (Selección de Zona)</span>
-              <span class="text-xs text-slate-400 font-normal">Hacé clic en el mapa</span>
-            </h3>
-            <p class="text-xs text-slate-500 mb-4">Marcar puntos sintomáticos en la silueta muscular:</p>
-
-            <!-- Silueta e Interacción Visual -->
-            <div class="relative bg-slate-50 border border-slate-200 rounded-2xl p-6 flex justify-center items-center h-80 cursor-pointer overflow-hidden group" onclick="marcarBodyMap(event)">
-              <!-- Silueta esquemática SVG -->
-              <svg class="h-full opacity-40 group-hover:opacity-60 transition" viewBox="0 0 100 200" fill="none" stroke="#1d4e5f" stroke-width="2">
-                <circle cx="50" cy="20" r="12" />
-                <path d="M50 32 L50 110 M20 50 L80 50 M20 50 L15 100 M80 50 L85 100 M50 110 L35 180 M50 110 L65 180" />
-              </svg>
-              <!-- Contenedor dinámico de puntos insertados -->
-              <div id="body-map-points"></div>
-              <p class="absolute bottom-2 text-[10px] text-slate-400">Clic para agregar punto de tratamiento</p>
-            </div>
-
-            <div class="mt-4 flex justify-between items-center text-xs">
-              <span id="puntos-contador" class="font-semibold text-slate-600">Puntos marcados: 0</span>
-              <button onclick="limpiarBodyMap()" class="text-rose-700 hover:underline">Limpiar Marcadores</button>
-            </div>
-          </div>
-
-          <!-- Evolución y Tratamiento -->
-          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between space-y-4">
-            <div>
-              <h3 class="font-bold text-slate-800 mb-3">Evolución Diaria de Fisioterapia</h3>
-              <label class="block text-xs font-bold text-slate-600 mb-1">Notas de la sesión</label>
-              <textarea rows="6" placeholder="Ej: Se realiza ultrasonido en zona lumbar, ejercicios de movilización activa y magnetoterapia por 20 min..." class="w-full border border-slate-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-[#1d4e5f] outline-none"></textarea>
-            </div>
-
-            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
-              <span class="text-xs font-bold text-slate-700 block">Técnicas aplicadas hoy:</span>
-              <div class="flex flex-wrap gap-2 text-xs">
-                <label class="flex items-center space-x-1.5 bg-white px-3 py-1 rounded-lg border border-slate-200"><input type="checkbox" checked /> <span>Magnetoterapia</span></label>
-                <label class="flex items-center space-x-1.5 bg-white px-3 py-1 rounded-lg border border-slate-200"><input type="checkbox" checked /> <span>Ultrasonido</span></label>
-                <label class="flex items-center space-x-1.5 bg-white px-3 py-1 rounded-lg border border-slate-200"><input type="checkbox" /> <span>Electroestimulación</span></label>
-                <label class="flex items-center space-x-1.5 bg-white px-3 py-1 rounded-lg border border-slate-200"><input type="checkbox" /> <span>Ejercicios guiados</span></label>
-              </div>
-            </div>
-
-            <button onclick="alert('Evolución clínica guardada correctamente')" class="w-full bg-[#6b1d2f] text-white font-bold text-sm py-3 rounded-xl shadow hover:bg-rose-900 transition">Guardar Ficha del Día</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================== -->
-    <!-- 3. PORTAL PACIENTES (SIN CONTRASEÑA)        -->
-    <!-- ========================================== -->
-    <section id="panel-paciente" class="hidden space-y-6">
-      <div class="max-w-xl mx-auto bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
-        
-        <div class="text-center border-b border-slate-100 pb-4">
-          <span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full">Acceso Directo Paciente</span>
-          <h2 class="text-2xl font-black text-[#1d4e5f] mt-2">¡Hola, Carlos! 👋</h2>
-          <p class="text-xs text-slate-500">Este es el estado de tu tratamiento en CLINIK</p>
-        </div>
-
-        <!-- Tarjeta de Turno Actual -->
-        <div class="bg-[#1d4e5f] text-white p-5 rounded-2xl shadow-sm space-y-3">
-          <div class="flex justify-between items-start">
-            <div>
-              <p class="text-xs text-slate-300">Próximo Turno Confirmado</p>
-              <h3 class="text-lg font-bold mt-0.5">Hoy - 08:00 hs</h3>
-            </div>
-            <span class="px-2.5 py-1 text-[11px] bg-white/20 font-semibold rounded-lg">Box 1</span>
-          </div>
-          <div class="border-t border-white/10 pt-3 text-xs flex justify-between text-slate-200">
-            <span>Kinesiología General</span>
-            <span>Atiende: Lic. Carolina</span>
-          </div>
-        </div>
-
-        <!-- Indicador de Coseguro -->
-        <div class="bg-amber-50 border border-amber-200 p-4 rounded-2xl flex justify-between items-center">
-          <div>
-            <p class="text-xs font-bold text-amber-900">Estado de Coseguro de la sesión</p>
-            <p class="text-xs text-amber-700">Monto pactado: $6.000 (OSDE)</p>
-          </div>
-          <span class="px-3 py-1 bg-amber-200 text-amber-900 font-extrabold text-xs rounded-xl">Pendiente en Caja</span>
-        </div>
-
-        <!-- Preguntas o Modificación -->
-        <div class="space-y-3">
-          <button onclick="alert('Solicitud enviada a la Secretaría')" class="w-full py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition">
-            📲 Solicitar Reprogramación por WhatsApp
+        <div className="flex gap-2">
+          <button
+            onClick={() => setVista('paciente')}
+            className={`px-3 py-1 rounded text-sm font-semibold transition ${
+              vista === 'paciente' ? 'bg-[#1d4e5f] text-white' : 'bg-white/10 text-white hover:bg-white/20'
+            }`}
+          >
+            Portal Paciente
+          </button>
+          <button
+            onClick={() => setVista('secretaria')}
+            className={`px-3 py-1 rounded text-sm font-semibold transition ${
+              vista === 'secretaria' ? 'bg-[#1d4e5f] text-white' : 'bg-white/10 text-white hover:bg-white/20'
+            }`}
+          >
+            Panel Secretaría (Bruno)
           </button>
         </div>
+      </header>
 
-      </div>
-    </section>
+      {/* VISTA PACIENTE */}
+      {vista === 'paciente' && (
+        <main className="max-w-xl mx-auto p-4 space-y-6">
+          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+            <h2 className="text-xl font-bold text-[#6b1d2f] mb-4">Reserva tu Turno</h2>
+            
+            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+              <div>
+                <label className="block text-sm font-medium mb-1">Especialidad</label>
+                <select className="w-full border rounded p-2 bg-gray-50">
+                  <option>Kinesiología Convencional / RPG (60 min)</option>
+                  <option>Quiropraxia (30 min)</option>
+                </select>
+              </div>
 
-  </main>
+              <div>
+                <label className="block text-sm font-medium mb-1">Turno y Kinesiólogo/a</label>
+                <select className="w-full border rounded p-2 bg-gray-50">
+                  <option>Mañana: Lucía (08:00 - 12:00 hs)</option>
+                  <option>Tarde: Carolina y Tomás (13:00 - 20:00 hs)</option>
+                  <option>Quiropraxia: Gabriel</option>
+                </select>
+              </div>
 
-  <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-400 mt-auto">
-    CLINIK - Sistema de Gestión Profesional para Kinesiología
-  </footer>
+              <div>
+                <label className="block text-sm font-medium mb-1">Nombre Completo</label>
+                <input type="text" placeholder="Ej: María González" className="w-full border rounded p-2" />
+              </div>
 
-  <!-- SCRIPT INTEGRADO DE NAVEGACIÓN Y LÓGICA -->
-  <script>
-    // Cambio de Rol en Navegación
-    function seleccionarRol(rol) {
-      document.getElementById('panel-secretaria').classList.add('hidden');
-      document.getElementById('panel-profesional').classList.add('hidden');
-      document.getElementById('panel-paciente').classList.add('hidden');
+              <div>
+                <label className="block text-sm font-medium mb-1">DNI</label>
+                <input type="text" placeholder="Número de Documento" className="w-full border rounded p-2" />
+              </div>
 
-      // Restablecer estilos de botones
-      document.getElementById('btn-rol-secretaria').className = "px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-300 hover:text-white transition";
-      document.getElementById('btn-rol-[#1d4e5f]').className = "px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-300 hover:text-white transition";
-      document.getElementById('btn-rol-paciente').className = "px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-300 hover:text-white transition";
+              <div>
+                <label className="block text-sm font-medium mb-1">Obra Social / Cobertura</label>
+                <select className="w-full border rounded p-2 bg-gray-50">
+                  <option>Particular / Obra Social</option>
+                  <option>PAMI (Arancel Particular Preferencial)</option>
+                </select>
+              </div>
 
-      if (rol === 'secretaria') {
-        document.getElementById('panel-secretaria').classList.remove('hidden');
-        document.getElementById('btn-rol-secretaria').className = "px-3 py-1.5 text-xs font-semibold rounded-lg bg-[#6b1d2f] text-white shadow transition";
-      } else if (rol === 'profesional') {
-        document.getElementById('panel-profesional').classList.remove('hidden');
-        document.getElementById('btn-rol-[#1d4e5f]').className = "px-3 py-1.5 text-xs font-semibold rounded-lg bg-[#1d4e5f] text-white shadow transition";
-      } else if (rol === 'paciente') {
-        document.getElementById('panel-paciente').classList.remove('hidden');
-        document.getElementById('btn-rol-paciente').className = "px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-700 text-white shadow transition";
-      }
-    }
+              <button className="w-full bg-[#1d4e5f] hover:bg-[#153a47] text-white py-3 rounded-lg font-bold transition">
+                Confirmar Reserva
+              </button>
+            </form>
+          </div>
+        </main>
+      )}
 
-    // Login Profesional
-    function ingresarProfesional(e) {
-      e.preventDefault();
-      const prof = document.getElementById('select-profesional').value;
-      document.getElementById('login-profesional').classList.add('hidden');
-      document.getElementById('contenido-profesional').classList.remove('hidden');
-      document.getElementById('titulo-profesional-activo').innerText = "Ficha Clínica - Atendiendo con Lic. " + prof;
-    }
+      {/* VISTA SECRETARÍA */}
+      {vista === 'secretaria' && (
+        <main className="max-w-5xl mx-auto p-4 space-y-4">
+          {/* Navegación Interna */}
+          <div className="flex border-b border-gray-200 bg-white rounded-t-lg px-4 pt-2 gap-4 text-sm font-bold">
+            <button
+              onClick={() => setSubTab('agenda')}
+              className={`pb-2 ${subTab === 'agenda' ? 'border-b-2 border-[#6b1d2f] text-[#6b1d2f]' : 'text-gray-500'}`}
+            >
+              Agenda Cruzada
+            </button>
+            <button
+              onClick={() => setSubTab('asistencia')}
+              className={`pb-2 ${subTab === 'asistencia' ? 'border-b-2 border-[#6b1d2f] text-[#6b1d2f]' : 'text-gray-500'}`}
+            >
+              Control Asistencia Staff
+            </button>
+            <button
+              onClick={() => setSubTab('historias')}
+              className={`pb-2 ${subTab === 'historias' ? 'border-b-2 border-[#6b1d2f] text-[#6b1d2f]' : 'text-gray-500'}`}
+            >
+              Historias Clínicas & EVA
+            </button>
+            <button
+              onClick={() => setSubTab('caja')}
+              className={`pb-2 ${subTab === 'caja' ? 'border-b-2 border-[#6b1d2f] text-[#6b1d2f]' : 'text-gray-500'}`}
+            >
+              Caja Diaria & Coseguros
+            </button>
+          </div>
 
-    function cerrarSesionProfesional() {
-      document.getElementById('login-profesional').classList.remove('hidden');
-      document.getElementById('contenido-profesional').classList.add('hidden');
-      document.getElementById('input-pass').value = '';
-    }
+          {/* Sub-tab: Agenda */}
+          {subTab === 'agenda' && (
+            <div className="bg-white p-4 rounded-b-lg shadow-sm space-y-4">
+              <h3 className="font-bold text-[#1d4e5f] text-lg">Turnos del Día</h3>
+              <div className="divide-y">
+                <div className="py-2 flex justify-between items-center">
+                  <div>
+                    <p className="font-bold">08:00 hs - Lucía</p>
+                    <p className="text-sm text-gray-600">Paciente: Juan Pérez (Jerárquicos)</p>
+                  </div>
+                  <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Confirmado</span>
+                </div>
+                <div className="py-2 flex justify-between items-center">
+                  <div>
+                    <p className="font-bold">14:00 hs - Carolina y Tomás</p>
+                    <p className="text-sm text-gray-600">Paciente: Ana López (PAMI Particular)</p>
+                  </div>
+                  <span className="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">Alerta Cobro Sesión 8/10</span>
+                </div>
+              </div>
+            </div>
+          )}
 
-    // Body Map Dinámico
-    let puntosContador = 0;
-    function marcarBodyMap(event) {
-      const rect = event.currentTarget.getBoundingClientRect();
-      const x = event.clientX - rect.left;
-      const y = event.clientY - rect.top;
+          {/* Sub-tab: Asistencia */}
+          {subTab === 'asistencia' && (
+            <div className="bg-white p-4 rounded-b-lg shadow-sm space-y-4">
+              <h3 className="font-bold text-[#1d4e5f] text-lg">Asistencia Individual del Staff</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {['Lucía', 'Carolina', 'Tomás', 'Gabriel'].map((prof) => (
+                  <div key={prof} className="border p-3 rounded-lg flex justify-between items-center">
+                    <div>
+                      <p className="font-bold">{prof}</p>
+                      <p className="text-xs text-gray-500">Estado hoy</p>
+                    </div>
+                    <select className="border rounded text-sm p-1">
+                      <option>Presente</option>
+                      <option>Ausente c/Aviso</option>
+                      <option>Ausente s/Aviso</option>
+                      <option>Reemplazado/a</option>
+                    </select>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
-      const punto = document.createElement('div');
-      punto.className = 'absolute w-4 h-4 bg-[#6b1d2f] rounded-full border-2 border-white shadow-md -ml-2 -mt-2 animate-pingOnce';
-      punto.style.left = x + 'px';
-      punto.style.top = y + 'px';
+          {/* Sub-tab: Historias */}
+          {subTab === 'historias' && (
+            <div className="bg-white p-4 rounded-b-lg shadow-sm space-y-4">
+              <h3 className="font-bold text-[#1d4e5f] text-lg">Historia Clínica & Mapa Corporal</h3>
+              <div className="border p-4 rounded-lg space-y-3">
+                <input type="text" placeholder="Buscar paciente por DNI o Nombre..." className="w-full border rounded p-2 text-sm" />
+                <div className="bg-gray-100 p-4 text-center rounded">
+                  <p className="text-xs text-gray-500 mb-2">[ Esquiema de Body Map Interactivo / Puntos de Dolor ]</p>
+                  <div className="flex justify-center gap-4 text-sm font-bold text-[#6b1d2f]">
+                    <span>Dolor Cervical</span> | <span>Lumbar</span> | <span>Hombro Der.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
 
-      document.getElementById('body-map-points').appendChild(punto);
-      puntosContador++;
-      document.getElementById('puntos-contador').innerText = 'Puntos marcados: ' + puntosContador;
-    }
-
-    function limpiarBodyMap() {
-      document.getElementById('body-map-points').innerHTML = '';
-      puntosContador = 0;
-      document.getElementById('puntos-contador').innerText = 'Puntos marcados: 0';
-    }
-  </script>
-</body>
-</html> 
+          {/* Sub-tab: Caja */}
+          {subTab === 'caja' && (
+            <div className="bg-white p-4 rounded-b-lg shadow-sm space-y-4">
+              <h3 className="font-bold text-[#1d4e5f] text-lg">Registro de Caja Diaria</h3>
+              <div className="grid grid-cols-2 gap-4 mb-4">
+                <div className="bg-green-50 border border-green-200 p-3 rounded-lg text-center">
+                  <p className="text-xs text-gray-600">Efectivo Hoy</p>
+                  <p className="text-xl font-bold text-green-700">$0.00</p>
+                </div>
+                <div className="bg-blue-50 border border-blue-200 p-3 rounded-lg text-center">
+                  <p className="text-xs text-gray-600">Transferencias Hoy</p>
+                  <p className="text-xl font-bold text-blue-700">$0.00</p>
+                </div>
+              </div>
+            </div>
+          )}
+        </main>
+      )}
+    </div>
+  );
+}
