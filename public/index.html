@@ -114,160 +114,37 @@
         </div>
       </div>
 
-      <!-- NUEVO: LIQUIDADOR PARA EL CÍRCULO DE KINESIÓLOGOS -->
-      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-        <div class="flex flex-wrap justify-between items-center gap-2">
-          <div>
-            <h3 class="font-bold text-[#1d4e5f] text-base flex items-center space-x-2">
-              <span>🏛️ Liquidador para el Círculo de Kinesiólogos</span>
+      <!-- LIQUIDADOR CÍRCULO & MENSAJERÍA -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        
+        <!-- Liquidador Círculo -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+          <div class="flex justify-between items-center">
+            <h3 class="font-bold text-[#1d4e5f] text-sm flex items-center space-x-2">
+              <span>🏛️ Liquidador Círculo de Kinesiólogos</span>
             </h3>
-            <p class="text-xs text-slate-500">Agrupamiento mensual por obra social, control de vencimiento (3 meses) y débitos</p>
+            <button onclick="alert('Exportando liquidación...')" class="px-3 py-1 bg-[#6b1d2f] text-white font-bold text-[11px] rounded-lg">Exportar</button>
           </div>
-          <button onclick="alert('Generando archivo de liquidación oficial para presentar en el Círculo...')" class="px-4 py-2 bg-[#6b1d2f] hover:bg-rose-900 text-white font-bold text-xs rounded-xl shadow transition">
-            Exportar Liquidación Mensual
-          </button>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-          <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
-            <span class="text-slate-400 font-bold block uppercase">Período Activo</span>
-            <span class="font-extrabold text-[#1d4e5f] text-sm mt-0.5 block">Noviembre 2026</span>
-          </div>
-          <div class="bg-amber-50 p-3.5 rounded-xl border border-amber-200">
-            <span class="text-amber-800 font-bold block uppercase">Órdenes con Vencimiento Próximo (&lt; 3 meses)</span>
-            <span class="font-extrabold text-amber-900 text-sm mt-0.5 block">⚠️ 3 órdenes por vencer</span>
-          </div>
-          <div class="bg-rose-50 p-3.5 rounded-xl border border-rose-200">
-            <span class="text-rose-800 font-bold block uppercase">Débitos / Rechazos a Refacturar</span>
-            <span class="font-extrabold text-rose-900 text-sm mt-0.5 block">❌ 1 receta observada ($8.500)</span>
+          <p class="text-xs text-slate-500">Control de órdenes a 3 meses y débitos de obras sociales.</p>
+          <div class="bg-amber-50 border border-amber-200 p-3 rounded-xl text-xs text-amber-900 font-medium">
+            ⚠️ 3 órdenes próximas a vencer (&lt; 3 meses desde 1ra atención). 1 débito por refacturar.
           </div>
         </div>
 
-        <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse text-sm">
-            <thead>
-              <tr class="bg-slate-100 text-slate-600 text-xs uppercase tracking-wider">
-                <th class="p-3">Obra Social</th>
-                <th class="p-3">Afiliado / Paciente</th>
-                <th class="p-3">Profesional Asignado</th>
-                <th class="p-3 text-center">Sesiones Realizadas</th>
-                <th class="p-3 text-center">Fecha 1ra Atención (Vence en 3m)</th>
-                <th class="p-3 text-center">Estado Círculo</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-100 text-xs">
-              <tr class="hover:bg-slate-50">
-                <td class="p-3 font-bold text-[#1d4e5f]">OSDE 210</td>
-                <td class="p-3 font-medium">Carlos Gómez</td>
-                <td class="p-3">Lic. Lucía</td>
-                <td class="p-3 text-center font-bold">8 / 10</td>
-                <td class="p-3 text-center font-semibold text-amber-700">10/09/2026 (Próximo a vencer)</td>
-                <td class="p-3 text-center"><span class="px-2.5 py-1 bg-amber-100 text-amber-800 font-bold rounded-full">Listo para Presentar</span></td>
-              </tr>
-              <tr class="hover:bg-slate-50">
-                <td class="p-3 font-bold text-[#1d4e5f]">IAPOS</td>
-                <td class="p-3 font-medium">María Fernández</td>
-                <td class="p-3">Lic. Gabriel</td>
-                <td class="p-3 text-center font-bold">3 / 5</td>
-                <td class="p-3 text-center font-semibold text-emerald-700">20/10/2026 (Vigente)</td>
-                <td class="p-3 text-center"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 font-bold rounded-full">En Curso</span></td>
-              </tr>
-              <tr class="hover:bg-slate-50">
-                <td class="p-3 font-bold text-[#1d4e5f]">Swiss Medical</td>
-                <td class="p-3 font-medium">Juan Pérez</td>
-                <td class="p-3">Carolina y Tomás</td>
-                <td class="p-3 text-center font-bold">10 / 10</td>
-                <td class="p-3 text-center font-semibold text-rose-700">01/08/2026 (⚠️ Vencida > 3m)</td>
-                <td class="p-3 text-center"><span class="px-2.5 py-1 bg-rose-100 text-rose-800 font-bold rounded-full">Observada / Débito</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- NUEVO: CENTRO DE MENSAJERÍA Y FIDELIZACIÓN (WHATSAPP) -->
-      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-        <h3 class="font-bold text-[#1d4e5f] text-base flex items-center space-x-2">
-          <span>📲 Centro de Fidelización y Mensajería Automática (WhatsApp)</span>
-        </h3>
-        <p class="text-xs text-slate-500">Automatizaciones de interacción con pacientes para retención y seguimiento</p>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-          
-          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between space-y-3">
-            <div>
-              <span class="font-bold text-slate-800 block text-sm">🎂 Saludo de Cumpleaños</span>
-              <p class="text-slate-500 mt-1">Envía un mensaje personalizado y un beneficio especial en el aniversario del paciente.</p>
-            </div>
-            <button onclick="alert('Mensaje de cumpleaños enviado por WhatsApp a los cumpleañeros del día.')" class="w-full py-2 bg-[#1d4e5f] hover:bg-cyan-900 text-white font-bold rounded-lg transition">
-              Enviar Saludos Hoy (2)
-            </button>
-          </div>
-
-          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between space-y-3">
-            <div>
-              <span class="font-bold text-slate-800 block text-sm">⭐ Agradecimiento Post-Sesión</span>
-              <p class="text-slate-500 mt-1">Mensaje automático al finalizar la atención agradeciendo la confianza en CLINIK.</p>
-            </div>
-            <button onclick="alert('Mensajes post-sesión programados correctamente.')" class="w-full py-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold rounded-lg transition">
-              Disparar Post-Sesión
-            </button>
-          </div>
-
-          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between space-y-3">
-            <div>
-              <span class="font-bold text-slate-800 block text-sm">🔄 Seguimiento a 7 Días</span>
-              <p class="text-slate-500 mt-1">Alerta semanal post-alta para consultar cómo evoluciona la dolencia del paciente.</p>
-            </div>
-            <button onclick="alert('Recordatorio de seguimiento a 7 días activado en agenda.')" class="w-full py-2 bg-[#6b1d2f] hover:bg-rose-900 text-white font-bold rounded-lg transition">
-              Revisar Alertas (3 Pendientes)
-            </button>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- MÓDULO DE CONTROL DE STOCK E INVENTARIO -->
-      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-        <div class="flex flex-wrap justify-between items-center gap-2">
-          <div>
-            <h3 class="font-bold text-[#1d4e5f] text-base flex items-center space-x-2">
-              <span>📦 Control de Stock e Inventario de Insumos Descartables</span>
+        <!-- Mensajería WhatsApp -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+          <div class="flex justify-between items-center">
+            <h3 class="font-bold text-[#1d4e5f] text-sm flex items-center space-x-2">
+              <span>📲 Centro de Fidelización (WhatsApp)</span>
             </h3>
-            <p class="text-xs text-slate-500">Monitoreo de insumos de boxes con alertas de reposición crítica</p>
           </div>
-          <button onclick="alert('Formulario para añadir nuevo insumo al inventario')" class="px-3.5 py-1.5 bg-[#1d4e5f] hover:bg-cyan-900 text-white font-bold text-xs rounded-xl shadow transition">
-            + Nuevo Insumo
-          </button>
+          <p class="text-xs text-slate-500">Automatización de cumpleaños, post-sesión y seguimiento a 7 días.</p>
+          <div class="flex gap-2">
+            <button onclick="alert('Saludos enviados')" class="flex-1 py-2 bg-[#1d4e5f] text-white text-xs font-bold rounded-lg">Cumpleaños (2)</button>
+            <button onclick="alert('Seguimientos activos')" class="flex-1 py-2 bg-emerald-700 text-white text-xs font-bold rounded-lg">Seguimiento (3)</button>
+          </div>
         </div>
 
-        <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse text-sm">
-            <thead>
-              <tr class="bg-slate-100 text-slate-600 text-xs uppercase tracking-wider">
-                <th class="p-3">Insumo / Descartable</th>
-                <th class="p-3">Categoría</th>
-                <th class="p-3 text-center">Stock Actual</th>
-                <th class="p-3 text-center">Mínimo Requerido</th>
-                <th class="p-3 text-center">Estado de Alerta</th>
-                <th class="p-3 text-right">Acción Rápida</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-100 text-xs">
-              <tr class="hover:bg-slate-50">
-                <td class="p-3 font-bold text-slate-800">Sábanas Descartables (Rollos)</td>
-                <td class="p-3 text-slate-500">Camillas & Boxes</td>
-                <td class="p-3 text-center font-bold text-rose-700 text-sm" id="stock-sabanas">3</td>
-                <td class="p-3 text-center font-semibold text-slate-500">10 rollos</td>
-                <td class="p-3 text-center"><span class="px-2.5 py-1 font-extrabold bg-rose-100 text-rose-800 rounded-full animate-pulse">⚠️ CRÍTICO</span></td>
-                <td class="p-3 text-right space-x-1">
-                  <button onclick="ajustarStock('stock-sabanas', 1)" class="px-2 py-1 bg-slate-200 hover:bg-slate-300 font-bold rounded-lg">+1</button>
-                  <button onclick="ajustarStock('stock-sabanas', -1)" class="px-2 py-1 bg-slate-200 hover:bg-slate-300 font-bold rounded-lg">-1</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
       </div>
 
     </section>
@@ -366,7 +243,7 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- 3. TURNERO PACIENTES (RESERVAS ONLINE)     -->
+    <!-- 3. TURNERO PACIENTES (RESERVAS & SEÑA)     -->
     <!-- ========================================== -->
     <section id="panel-paciente" class="hidden space-y-6">
       <div class="max-w-xl mx-auto bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
@@ -374,39 +251,52 @@
         <div class="text-center border-b border-slate-100 pb-4">
           <span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full">Turnero Online CLINIK</span>
           <h2 class="text-2xl font-black text-[#1d4e5f] mt-2">Reservá tu Turno</h2>
-          <p class="text-xs text-slate-500">Seleccioná tu especialidad y horario disponible</p>
+          <p class="text-xs text-slate-500">Seleccioná especialidad y aboná tu seña para confirmar</p>
         </div>
 
         <div class="space-y-4">
           <div>
             <label class="block text-xs font-bold text-slate-700 mb-1">Especialidad</label>
-            <select id="select-especialidad" class="w-full text-sm border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-[#1d4e5f] outline-none font-medium">
-              <option value="convencional">Kinesiología Convencional (60 min - 4 cupos/turno)</option>
-              <option value="rpg">RPG / ATM (60 min - 1 cupo/turno)</option>
-              <option value="quiropraxia">Quiropraxia (30 min - 1 cupo/turno)</option>
+            <select id="select-especialidad" onchange="actualizarMontoSeña()" class="w-full text-sm border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-[#1d4e5f] outline-none font-medium">
+              <option value="convencional">Kinesiología Convencional (Obra Social - 60 min)</option>
+              <option value="especializada">Quiropraxia / RPG / ATM (30/60 min)</option>
             </select>
           </div>
 
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Franja Horaria</label>
-            <select id="select-franja" onchange="actualizarOpcionesTurnero()" class="w-full text-sm border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-[#1d4e5f] outline-none font-medium">
-              <option value="manana">Mañana (08:00 a 12:00 hs)</option>
-              <option value="tarde">Tarde (13:00 a 20:00 hs)</option>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Día y Franja Horaria</label>
+            <select id="select-franja" onchange="actualizarMontoSeña()" class="w-full text-sm border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-[#1d4e5f] outline-none font-medium">
+              <option value="lucia-mañana">Lunes a Viernes 08:00 a 09:00 hs (Lic. Lucía)</option>
+              <option value="carolina-tarde">Lunes a Viernes 13:00 a 20:00 hs (Carolina y Tomás)</option>
+              <option value="gabriel-mañana">Lunes a Viernes 08:00 a 10:00 hs (Lic. Gabriel)</option>
+              <option value="gabriel-tarde">Lunes, Miércoles y Viernes 15:00 a 20:00 hs (Lic. Gabriel)</option>
             </select>
           </div>
 
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Profesional / Staff Asignado</label>
-            <div id="box-profesional" class="p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-[#1d4e5f]">
-              Lic. Lucía o Lic. Gabriel (Quiropraxia / RPG / ATM)
+          <!-- TARJETA DE PAGO DE SEÑA -->
+          <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-bold text-slate-600">Monto de Seña Requerido:</span>
+              <span id="monto-seña-display" class="text-lg font-black text-[#6b1d2f]">$3.000</span>
+            </div>
+            
+            <div class="border-t border-slate-200 pt-3 space-y-2 text-xs">
+              <p class="font-bold text-[#1d4e5f]">Datos para Transferencia Bancaria:</p>
+              <p class="text-slate-600"><strong>Alias:</strong> <span class="text-slate-900 font-mono bg-white px-2 py-0.5 rounded border border-slate-200">clinica.donadio</span></p>
+              <p class="text-slate-600"><strong>Titular:</strong> Donadio Hugo Gabriel</p>
+            </div>
+
+            <div class="border-t border-slate-200 pt-3 space-y-1">
+              <label class="block text-xs font-bold text-slate-700">Subir comprobante de transferencia</label>
+              <input type="file" id="input-comprobante" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-[#1d4e5f] file:text-white hover:file:bg-cyan-900 cursor-pointer" />
             </div>
           </div>
 
           <div class="bg-amber-50 border border-amber-200 p-3 rounded-xl text-xs text-amber-800">
-            <strong>Nota de Sanitización:</strong> Las sesiones duran 50 minutos directos de tratamiento + 10 minutos de sanitización previa del box.
+            <strong>Nota de Sanitización:</strong> Las sesiones incluyen 50 minutos de atención + 10 minutos de sanitización previa del box.
           </div>
 
-          <button onclick="alert('Turno reservado con éxito')" class="w-full bg-[#6b1d2f] text-white font-bold text-sm py-3 rounded-xl shadow hover:bg-rose-900 transition">Confirmar Reserva</button>
+          <button onclick="confirmarReservaConSeña()" class="w-full bg-[#6b1d2f] text-white font-bold text-sm py-3 rounded-xl shadow hover:bg-rose-900 transition">Confirmar Reserva y Enviar Comprobante</button>
         </div>
 
       </div>
@@ -440,22 +330,24 @@
       }
     }
 
-    function actualizarOpcionesTurnero() {
-      const franja = document.getElementById('select-franja').value;
-      const boxProf = document.getElementById('box-profesional');
+    function actualizarMontoSeña() {
+      const especialidad = document.getElementById('select-especialidad').value;
+      const display = document.getElementById('monto-seña-display');
 
-      if (franja === 'manana') {
-        boxProf.innerText = "Lic. Lucía o Lic. Gabriel (Quiropraxia / RPG / ATM)";
+      if (especialidad === 'convencional') {
+        display.innerText = "$3.000";
       } else {
-        boxProf.innerText = "Lic. Carolina y Lic. Tomás (Turno Tarde unificado 13:00 a 20:00 hs)";
+        display.innerText = "$20.000";
       }
     }
 
-    function ajustarStock(idElemento, cambio) {
-      const el = document.getElementById(idElemento);
-      let valorActual = parseInt(el.innerText);
-      valorActual = Math.max(0, valorActual + cambio);
-      el.innerText = valorActual;
+    function confirmarReservaConSeña() {
+      const archivo = document.getElementById('input-comprobante').files[0];
+      if (!archivo) {
+        alert("Por favor, subí el comprobante de transferencia para validar tu seña.");
+        return;
+      }
+      alert("¡Turno reservado y comprobante enviado con éxito a la secretaría de CLINIK!");
     }
 
     let totalPuntos = 0;
