@@ -54,7 +54,7 @@
     <!-- ========================================== -->
     <section id="panel-secretaria" class="space-y-6">
       
-      <!-- Fichaje de Asistencia del Staff (Carolina y Tomás separados) -->
+      <!-- Fichaje de Asistencia del Staff -->
       <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
         <h3 class="font-bold text-[#1d4e5f] text-sm mb-3 flex items-center justify-between">
           <span>📋 Fichaje Diario de Asistencia del Staff</span>
@@ -117,7 +117,6 @@
       <!-- MÓDULO DE CAJA DIARIA & SEMÁFORO INTELIGENTE DE COSEGUROS -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
-        <!-- Resumen de Caja Diaria -->
         <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
           <h3 class="font-bold text-[#1d4e5f] text-sm border-b border-slate-100 pb-2">💵 Balance Diario de Caja</h3>
           <div class="space-y-3 text-xs">
@@ -134,29 +133,25 @@
               <span class="font-black text-emerald-700 text-base">$80.000</span>
             </div>
           </div>
-          <p class="text-[11px] text-slate-400">Incluye Coseguros + Particulares Preferenciales PAMI</p>
         </div>
 
-        <!-- Alertas Inteligentes del Semáforo de Coseguros -->
         <div class="lg:col-span-2 bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
           <h3 class="font-bold text-[#6b1d2f] text-sm border-b border-slate-100 pb-2 flex items-center justify-between">
             <span>🚦 Semáforo de Control de Coseguros y Sesiones</span>
             <span class="text-[11px] bg-rose-100 text-[#6b1d2f] font-bold px-2 py-0.5 rounded-full">2 Alertas de Cobro</span>
           </h3>
 
-          <!-- Notificación Alerta Roja (Sesión 8/10) -->
           <div class="bg-rose-50 border-l-4 border-l-rose-600 p-3.5 rounded-r-xl flex items-center justify-between gap-3">
             <div class="flex items-center space-x-3">
               <span class="w-3 h-3 bg-rose-600 rounded-full animate-pulse"></span>
               <div>
                 <p class="text-xs font-bold text-rose-950">Carlos Gómez (OSDE 210) - <span class="text-rose-700 font-extrabold">SESIÓN 8/10</span></p>
-                <p class="text-[11px] text-rose-800">⚠️ Requiere presentar nueva orden antes de finalizar el tratamiento de 10 sesiones.</p>
+                <p class="text-[11px] text-rose-800">⚠️ Requiere presentar nueva orden antes de finalizar el tratamiento.</p>
               </div>
             </div>
             <button onclick="marcarCobrado(this, 'Carlos Gómez')" class="px-3 py-1.5 bg-[#6b1d2f] hover:bg-rose-900 text-white text-[11px] font-bold rounded-lg transition whitespace-nowrap">Cobrar $6.000</button>
           </div>
 
-          <!-- Notificación Alerta Amarilla (Sesión 3/5) -->
           <div class="bg-amber-50 border-l-4 border-l-amber-500 p-3.5 rounded-r-xl flex items-center justify-between gap-3">
             <div class="flex items-center space-x-3">
               <span class="w-3 h-3 bg-amber-500 rounded-full"></span>
@@ -194,55 +189,14 @@
               </tr>
             </thead>
             <tbody class="divide-y divide-slate-100">
-              
               <tr class="hover:bg-slate-50">
                 <td class="p-3 font-bold text-[#1d4e5f]">08:00 - 08:50 hs</td>
                 <td class="p-3 font-medium">Carlos Gómez <span class="block text-[11px] text-slate-400">OSDE 210</span></td>
-                <td class="p-3">
-                  <span class="px-2.5 py-1 text-xs font-bold bg-rose-100 text-rose-800 rounded-full border border-rose-300">Sesión 8 / 10 ⚠️</span>
-                </td>
+                <td class="p-3"><span class="px-2.5 py-1 text-xs font-bold bg-rose-100 text-rose-800 rounded-full border border-rose-300">Sesión 8 / 10 ⚠️</span></td>
                 <td class="p-3"><span id="estado-carlos" class="px-2 py-0.5 text-xs bg-amber-100 text-amber-800 font-bold rounded-full">Pendiente $6.000</span></td>
                 <td class="p-3"><span class="px-2 py-1 text-xs font-semibold bg-blue-100 text-[#1d4e5f] rounded-lg">Lic. Lucía</span></td>
-                <td class="p-3">
-                  <button onclick="cobrarFila('estado-carlos')" class="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg transition">Marcar Pago</button>
-                </td>
+                <td class="p-3"><button onclick="cobrarFila('estado-carlos')" class="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg transition">Marcar Pago</button></td>
               </tr>
-
-              <tr class="hover:bg-slate-50">
-                <td class="p-3 font-bold text-[#1d4e5f]">09:00 - 09:50 hs</td>
-                <td class="p-3 font-medium">María Fernández <span class="block text-[11px] text-slate-400">IAPOS</span></td>
-                <td class="p-3">
-                  <span class="px-2.5 py-1 text-xs font-bold bg-amber-100 text-amber-800 rounded-full border border-amber-300">Sesión 3 / 5 ⚠️</span>
-                </td>
-                <td class="p-3"><span id="estado-maria" class="px-2 py-0.5 text-xs bg-amber-100 text-amber-800 font-bold rounded-full">Pendiente $4.500</span></td>
-                <td class="p-3"><span class="px-2 py-1 text-xs font-semibold bg-teal-100 text-teal-800 rounded-lg">Lic. Gabriel</span></td>
-                <td class="p-3">
-                  <button onclick="cobrarFila('estado-maria')" class="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg transition">Marcar Pago</button>
-                </td>
-              </tr>
-
-              <tr class="hover:bg-slate-50">
-                <td class="p-3 font-bold text-[#1d4e5f]">10:00 - 10:50 hs</td>
-                <td class="p-3 font-medium">Roberto Rossi <span class="block text-[11px] text-emerald-600 font-bold">PAMI Directo (Preferencial)</span></td>
-                <td class="p-3">
-                  <span class="px-2.5 py-1 text-xs font-bold bg-slate-100 text-slate-700 rounded-full">Particular</span>
-                </td>
-                <td class="p-3"><span class="px-2 py-0.5 text-xs bg-emerald-100 text-emerald-800 font-bold rounded-full">Cobrado $12.000</span></td>
-                <td class="p-3"><span class="px-2 py-1 text-xs font-semibold bg-blue-100 text-[#1d4e5f] rounded-lg">Lic. Lucía</span></td>
-                <td class="p-3"><span class="text-xs text-slate-400">✓ Abonado</span></td>
-              </tr>
-
-              <tr class="hover:bg-slate-50">
-                <td class="p-3 font-bold text-[#1d4e5f]">14:00 - 14:30 hs</td>
-                <td class="p-3 font-medium">Juan Pérez <span class="block text-[11px] text-slate-400">Swiss Medical</span></td>
-                <td class="p-3">
-                  <span class="px-2.5 py-1 text-xs font-bold bg-emerald-100 text-emerald-800 rounded-full">Sesión 1 / 10</span>
-                </td>
-                <td class="p-3"><span class="px-2 py-0.5 text-xs bg-emerald-100 text-emerald-800 font-bold rounded-full">Cobrado $7.000</span></td>
-                <td class="p-3"><span class="px-2 py-1 text-xs font-semibold bg-rose-100 text-[#6b1d2f] rounded-lg">Carolina y Tomás</span></td>
-                <td class="p-3"><span class="text-xs text-slate-400">✓ Abonado</span></td>
-              </tr>
-
             </tbody>
           </table>
         </div>
@@ -250,14 +204,16 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- 2. PANEL DE PROFESIONALES (CON CLAVE)       -->
+    <!-- 2. PANEL DE PROFESIONALES (CON CLAVE & BODY MAP) -->
     <!-- ========================================== -->
     <section id="panel-profesional" class="hidden space-y-6">
+      
+      <!-- Login Profesional -->
       <div id="login-profesional" class="max-w-md mx-auto bg-white p-8 rounded-3xl border border-slate-200 shadow-md">
         <div class="text-center mb-6">
           <div class="w-12 h-12 bg-[#1d4e5f] text-white rounded-2xl flex items-center justify-center font-bold text-2xl mx-auto mb-2">🔒</div>
           <h2 class="text-xl font-bold text-slate-800">Acceso a Profesionales</h2>
-          <p class="text-xs text-slate-500 mt-1">Seleccioná tu perfil para ingresar al área clínica.</p>
+          <p class="text-xs text-slate-500 mt-1">Ingresá para acceder al Body Map y Escala EVA.</p>
         </div>
         <form onsubmit="ingresarProfesional(event)" class="space-y-4">
           <div>
@@ -273,18 +229,76 @@
             <label class="block text-xs font-bold text-slate-600 mb-1">Contraseña</label>
             <input type="password" id="input-pass" placeholder="••••••••" required class="w-full text-sm border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-[#1d4e5f] outline-none" />
           </div>
-          <button type="submit" class="w-full bg-[#1d4e5f] text-white font-bold text-sm py-3 rounded-xl shadow hover:bg-cyan-900 transition">Ingresar al Panel Clínico</button>
+          <button type="submit" class="w-full bg-[#1d4e5f] text-white font-bold text-sm py-3 rounded-xl shadow hover:bg-cyan-900 transition">Ingresar al Área Clínica</button>
         </form>
       </div>
 
+      <!-- Contenido Profesional con Body Map e Historia Clínica -->
       <div id="contenido-profesional" class="hidden space-y-6">
+        
         <div class="flex justify-between items-center bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
           <div>
-            <h2 id="titulo-profesional-activo" class="text-lg font-bold text-[#1d4e5f]">Ficha Clínica</h2>
-            <p class="text-xs text-slate-500">Evaluación de tratamiento y mapeo corporal</p>
+            <h2 id="titulo-profesional-activo" class="text-lg font-bold text-[#1d4e5f]">Ficha Clínica Digital (HCD)</h2>
+            <p class="text-xs text-slate-500">Mapeo corporal interactivo y registro de dolor EVA</p>
           </div>
           <button onclick="cerrarSesionProfesional()" class="px-3 py-1.5 text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 font-semibold rounded-xl">Cerrar Sesión</button>
         </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          
+          <!-- MAPA CORPORAL INTERACTIVO (BODY MAP) -->
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+            <div class="flex justify-between items-center">
+              <h3 class="font-bold text-slate-800 text-sm flex items-center space-x-2">
+                <span>🗺️ Body Map (Mapeo de Dolor)</span>
+              </h3>
+              <button onclick="limpiarBodyMap()" class="text-xs text-rose-700 hover:underline font-semibold">Limpiar Puntos</button>
+            </div>
+            <p class="text-xs text-slate-500">Hacé clic sobre la silueta anatómica para marcar los puntos exactos de dolor o lesión del paciente:</p>
+
+            <!-- Contenedor del Body Map -->
+            <div id="body-map-area" onclick="marcarBodyMap(event)" class="relative bg-slate-50 border-2 border-dashed border-slate-300 rounded-2xl h-80 flex flex-col items-center justify-center cursor-crosshair overflow-hidden group select-none">
+              <!-- Silueta esquemática SVG de referencia -->
+              <svg class="h-64 opacity-30 group-hover:opacity-50 transition pointer-events-none" viewBox="0 0 100 200" fill="none" stroke="#1d4e5f" stroke-width="2.5">
+                <circle cx="50" cy="22" r="14" />
+                <path d="M50 36 L50 110 M25 55 L75 55 M25 55 L20 115 M75 55 L80 115 M50 110 L35 185 M50 110 L65 185" />
+              </svg>
+              <div id="puntos-container"></div>
+              <span class="absolute bottom-3 text-[11px] bg-white/80 px-3 py-1 rounded-full border border-slate-200 text-slate-500 font-medium">
+                Puntos marcados: <span id="contador-puntos" class="font-bold text-[#6b1d2f]">0</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- ESCALA EVA & NOTAS DE EVOLUCIÓN -->
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between space-y-5">
+            
+            <div class="space-y-4">
+              <h3 class="font-bold text-slate-800 text-sm">📈 Escala Visual Analógica (EVA - Dolor)</h3>
+              
+              <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                <div class="flex justify-between items-center text-xs font-bold">
+                  <span class="text-emerald-700">0 - Sin Dolor</span>
+                  <span id="eva-valor-label" class="text-base text-[#6b1d2f] font-black">5 / 10 (Moderado)</span>
+                  <span class="text-rose-700">10 - Dolor Extremo</span>
+                </div>
+                <input type="range" id="rango-eva" min="0" max="10" value="5" oninput="actualizarEva(this.value)" class="w-full accent-[#6b1d2f] cursor-pointer" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Notas de Evolución de Fisioterapia</label>
+                <textarea rows="4" placeholder="Ej: Se aplica ultrasonido y movilización pasiva. El paciente refiere leve mejoría..." class="w-full border border-slate-300 rounded-xl p-3 text-xs focus:ring-2 focus:ring-[#1d4e5f] outline-none"></textarea>
+              </div>
+            </div>
+
+            <button onclick="alert('Ficha clínica, Body Map y Escala EVA guardados exitosamente.')" class="w-full bg-[#6b1d2f] text-white font-bold text-xs py-3 rounded-xl shadow hover:bg-rose-900 transition">
+              Guardar Ficha del Día
+            </button>
+
+          </div>
+
+        </div>
+
       </div>
     </section>
 
@@ -384,6 +398,38 @@
       btn.innerText = "✓ Registrado";
       btn.className = "px-3 py-1.5 bg-emerald-600 text-white text-[11px] font-bold rounded-lg whitespace-nowrap";
       alert("Coseguro de " + paciente + " registrado en la caja diaria.");
+    }
+
+    // Lógica del Body Map Interactivo
+    let totalPuntos = 0;
+    function marcarBodyMap(event) {
+      const area = event.currentTarget;
+      const rect = area.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+
+      const punto = document.createElement('div');
+      punto.className = 'absolute w-4 h-4 bg-[#6b1d2f] rounded-full border-2 border-white shadow-lg -ml-2 -mt-2 pointer-events-none animate-bounce';
+      punto.style.left = x + 'px';
+      punto.style.top = y + 'px';
+
+      document.getElementById('puntos-container').appendChild(punto);
+      totalPuntos++;
+      document.getElementById('contador-puntos').innerText = totalPuntos;
+    }
+
+    function limpiarBodyMap() {
+      document.getElementById('puntos-container').innerHTML = '';
+      totalPuntos = 0;
+      document.getElementById('contador-puntos').innerText = 0;
+    }
+
+    // Lógica Escala EVA
+    function actualizarEva(val) {
+      let desc = "Leve";
+      if (val >= 4 && val <= 7) desc = "Moderado";
+      if (val >= 8) desc = "Severo / Extremo";
+      document.getElementById('eva-valor-label').innerText = val + " / 10 (" + desc + ")";
     }
 
     function ingresarProfesional(e) {
