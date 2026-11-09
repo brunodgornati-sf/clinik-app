@@ -54,7 +54,7 @@
     <!-- ========================================== -->
     <section id="panel-secretaria" class="space-y-6">
       
-      <!-- Fichaje de Asistencia con Control de Reemplazos y Certificados por Falta con Aviso -->
+      <!-- Fichaje de Asistencia con Control de Reemplazos y Certificados -->
       <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
         <h3 class="font-bold text-[#1d4e5f] text-sm flex items-center justify-between">
           <span>📋 Fichaje Diario de Asistencia del Staff</span>
@@ -107,7 +107,7 @@
           </div>
         </div>
 
-        <!-- FORMULARIOS DE REEMPLAZO -->
+        <!-- Formularios de Reemplazo -->
         <div id="modal-lucia" class="hidden bg-cyan-50 border border-cyan-200 p-4 rounded-xl space-y-3">
           <p class="text-xs font-bold text-[#1d4e5f]">🔄 Datos del Reemplazante (Lucía)</p>
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
@@ -138,13 +138,13 @@
           </div>
         </div>
 
-        <!-- FORMULARIOS DE FALTA CON AVISO Y CERTIFICADO -->
+        <!-- Formularios de Falta con Aviso -->
         <div id="aviso-lucia" class="hidden bg-amber-50 border border-amber-200 p-4 rounded-xl space-y-3">
           <p class="text-xs font-bold text-amber-900">⚠️ Justificación de Falta con Aviso (Lucía)</p>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-            <input type="text" placeholder="Motivo de la falta (Ej: Trámite médico, enfermedad...)" class="p-2 border rounded-lg bg-white w-full" />
+            <input type="text" placeholder="Motivo de la falta" class="p-2 border rounded-lg bg-white w-full" />
             <div>
-              <label class="block text-[11px] font-bold text-slate-700 mb-1">Adjuntar Certificado / Justificativo</label>
+              <label class="block text-[11px] font-bold text-slate-700 mb-1">Adjuntar Certificado</label>
               <input type="file" class="text-xs text-slate-500 file:mr-2 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-amber-700 file:text-white cursor-pointer" />
             </div>
           </div>
@@ -303,283 +303,4 @@
                 <textarea rows="4" placeholder="Ej: Se aplica ultrasonido y movilización pasiva..." class="w-full border border-slate-300 rounded-xl p-3 text-xs focus:ring-2 focus:ring-[#1d4e5f] outline-none"></textarea>
               </div>
             </div>
-            <button onclick="alert('Ficha clínica guardada exitosamente.')" class="w-full bg-[#6b1d2f] text-white font-bold text-sm py-3 rounded-xl shadow hover:bg-rose-900 transition">Guardar Ficha del Día</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================== -->
-    <!-- 3. TURNERO PACIENTES                      -->
-    <!-- ========================================== -->
-    <section id="panel-paciente" class="hidden space-y-6">
-      <div class="max-w-xl mx-auto bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
-        
-        <div class="text-center border-b border-slate-100 pb-4">
-          <span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full">Turnero Online CLINIK</span>
-          <h2 class="text-2xl font-black text-[#1d4e5f] mt-2">Reservá tu Turno</h2>
-          <p class="text-xs text-slate-500">Seleccioná especialidad, día, horario y aboná tu seña</p>
-        </div>
-
-        <div class="space-y-4">
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Nombre y Apellido del Paciente</label>
-            <input type="text" id="input-nombre-paciente" placeholder="Ej: Juan Perez" class="w-full text-sm border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-[#1d4e5f] outline-none font-medium mb-3" />
-          </div>
-
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Especialidad</label>
-            <select id="select-especialidad" onchange="cambiarEspecialidadTurnero()" class="w-full text-sm border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-[#1d4e5f] outline-none font-medium">
-              <option value="convencional">Kinesiología Convencional (L-V 8-12h y 13-20h)</option>
-              <option value="quiropraxia">Quiropraxia (L-V 8-10h y L/M/V 15-21h)</option>
-              <option value="rpg">RPG / ATM (L-V 8-10h y L/M/V 15-21h)</option>
-            </select>
-          </div>
-
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Seleccionar Día y Horario Específico</label>
-            <select id="select-franja" class="w-full text-sm border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-[#1d4e5f] outline-none font-medium">
-              <!-- Se cargan por días separados -->
-            </select>
-          </div>
-
-          <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-3">
-            <div class="flex justify-between items-center">
-              <span class="text-xs font-bold text-slate-600">Monto de Seña Requerido:</span>
-              <span id="monto-seña-display" class="text-lg font-black text-[#6b1d2f]">$3.000</span>
-            </div>
-            
-            <div class="border-t border-slate-200 pt-3 space-y-2 text-xs">
-              <p class="font-bold text-[#1d4e5f]">Datos para Transferencia Bancaria:</p>
-              <p class="text-slate-600"><strong>Alias:</strong> <span class="text-slate-900 font-mono bg-white px-2 py-0.5 rounded border border-slate-200">clinica.donadio</span></p>
-              <p class="text-slate-600"><strong>Titular:</strong> Donadio Hugo Gabriel</p>
-            </div>
-
-            <div class="border-t border-slate-200 pt-3 space-y-1">
-              <label class="block text-xs font-bold text-slate-700">Subir comprobante de transferencia</label>
-              <input type="file" id="input-comprobante" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-[#1d4e5f] file:text-white hover:file:bg-cyan-900 cursor-pointer" />
-            </div>
-          </div>
-
-          <button onclick="confirmarReservaConSeña()" class="w-full bg-[#6b1d2f] text-white font-bold text-sm py-3 rounded-xl shadow hover:bg-rose-900 transition">Confirmar Reserva y Sincronizar con Secretaría</button>
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-400 mt-auto">
-    CLINIK - Sistema de Gestión Profesional para Kinesiología
-  </footer>
-
-  <script>
-    let cupos = {
-      convencional: [
-        { id: 'c_lun_1', horario: 'Lunes - 08:00 a 08:50 hs (Lic. Lucía)', ocupados: 2, max: 4 },
-        { id: 'c_lun_2', horario: 'Lunes - 13:00 a 13:50 hs (Carolina y Tomás)', ocupados: 1, max: 4 },
-        { id: 'c_lun_3', horario: 'Lunes - 19:00 a 19:50 hs (Último Turno - Carolina y Tomás)', ocupados: 0, max: 4 },
-        { id: 'c_mar_1', horario: 'Martes - 08:00 a 08:50 hs (Lic. Lucía)', ocupados: 1, max: 4 },
-        { id: 'c_mar_2', horario: 'Martes - 13:00 a 13:50 hs (Carolina y Tomás)', ocupados: 0, max: 4 },
-        { id: 'c_mie_1', horario: 'Miércoles - 08:00 a 08:50 hs (Lic. Lucía)', ocupados: 3, max: 4 },
-        { id: 'c_mie_2', horario: 'Miércoles - 13:00 a 13:50 hs (Carolina y Tomás)', ocupados: 2, max: 4 },
-        { id: 'c_jue_1', horario: 'Jueves - 08:00 a 08:50 hs (Lic. Lucía)', ocupados: 0, max: 4 },
-        { id: 'c_jue_2', horario: 'Jueves - 13:00 a 13:50 hs (Carolina y Tomás)', ocupados: 1, max: 4 },
-        { id: 'c_vie_1', horario: 'Viernes - 08:00 a 08:50 hs (Lic. Lucía)', ocupados: 4, max: 4 },
-        { id: 'c_vie_2', horario: 'Viernes - 13:00 a 13:50 hs (Carolina y Tomás)', ocupados: 1, max: 4 }
-      ],
-      quiropraxia: [
-        { id: 'q_lun_1', horario: 'Lunes - 08:00 a 08:30 hs (Lic. Gabriel)', ocupados: 1, max: 1 },
-        { id: 'q_lun_2', horario: 'Lunes - 15:00 a 15:30 hs (Lic. Gabriel)', ocupados: 0, max: 1 },
-        { id: 'q_lun_3', horario: 'Lunes - 20:00 a 20:30 hs (Último Turno - Gabriel)', ocupados: 0, max: 1 },
-        { id: 'q_mar_1', horario: 'Martes - 08:00 a 08:30 hs (Lic. Gabriel)', ocupados: 0, max: 1 },
-        { id: 'q_mie_1', horario: 'Miércoles - 08:00 a 08:30 hs (Lic. Gabriel)', ocupados: 0, max: 1 },
-        { id: 'q_mie_2', horario: 'Miércoles - 15:00 a 15:30 hs (Lic. Gabriel)', ocupados: 0, max: 1 },
-        { id: 'q_mie_3', horario: 'Miércoles - 20:00 a 20:30 hs (Último Turno - Gabriel)', ocupados: 0, max: 1 },
-        { id: 'q_jue_1', horario: 'Jueves - 08:00 a 08:30 hs (Lic. Gabriel)', ocupados: 0, max: 1 },
-        { id: 'q_vie_1', horario: 'Viernes - 08:00 a 08:30 hs (Lic. Gabriel)', ocupados: 0, max: 1 },
-        { id: 'q_vie_2', horario: 'Viernes - 15:00 a 15:30 hs (Lic. Gabriel)', ocupados: 0, max: 1 },
-        { id: 'q_vie_3', horario: 'Viernes - 20:00 a 20:30 hs (Último Turno - Gabriel)', ocupados: 0, max: 1 }
-      ],
-      rpg: [
-        { id: 'r_lun_1', horario: 'Lunes - 08:00 a 08:50 hs (Lic. Gabriel)', ocupados: 0, max: 1 },
-        { id: 'r_lun_2', horario: 'Lunes - 15:00 a 15:50 hs (Lic. Gabriel)', ocupados: 1, max: 1 },
-        { id: 'r_lun_3', horario: 'Lunes - 20:00 a 20:50 hs (Último Turno - Gabriel)', ocupados: 0, max: 1 },
-        { id: 'r_mar_1', horario: 'Martes - 08:00 a 08:50 hs (Lic. Gabriel)', ocupados: 0, max: 1 },
-        { id: 'r_mie_1', horario: 'Miércoles - 08:00 a 08:50 hs (Lic. Gabriel)', ocupados: 0, max: 1 },
-        { id: 'r_mie_2', horario: 'Miércoles - 15:00 a 15:50 hs (Lic. Gabriel)', ocupados: 0, max: 1 },
-        { id: 'r_jue_1', horario: 'Jueves - 08:00 a 08:50 hs (Lic. Gabriel)', ocupados: 0, max: 1 },
-        { id: 'r_vie_1', horario: 'Viernes - 08:00 a 08:50 hs (Lic. Gabriel)', ocupados: 0, max: 1 },
-        { id: 'r_vie_2', horario: 'Viernes - 15:00 a 15:50 hs (Lic. Gabriel)', ocupados: 0, max: 1 }
-      ]
-    };
-
-    function seleccionarRol(rol) {
-      document.getElementById('panel-secretaria').classList.add('hidden');
-      document.getElementById('panel-profesional').classList.add('hidden');
-      document.getElementById('panel-paciente').classList.add('hidden');
-
-      document.getElementById('btn-rol-secretaria').className = "px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-300 hover:text-white transition";
-      document.getElementById('btn-rol-profesional').className = "px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-300 hover:text-white transition";
-      document.getElementById('btn-rol-paciente').className = "px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-300 hover:text-white transition";
-
-      if (rol === 'secretaria') {
-        document.getElementById('panel-secretaria').classList.remove('hidden');
-        document.getElementById('btn-rol-secretaria').className = "px-3 py-1.5 text-xs font-semibold rounded-lg bg-[#6b1d2f] text-white shadow transition";
-      } else if (rol === 'profesional') {
-        document.getElementById('panel-profesional').classList.remove('hidden');
-        document.getElementById('btn-rol-profesional').className = "px-3 py-1.5 text-xs font-semibold rounded-lg bg-[#1d4e5f] text-white shadow transition";
-      } else if (rol === 'paciente') {
-        document.getElementById('panel-paciente').classList.remove('hidden');
-        document.getElementById('btn-rol-paciente').className = "px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-700 text-white shadow transition";
-        cambiarEspecialidadTurnero();
-      }
-    }
-
-    function cambiarEspecialidadTurnero() {
-      const especialidad = document.getElementById('select-especialidad').value;
-      const selectFranja = document.getElementById('select-franja');
-      const displaySeña = document.getElementById('monto-seña-display');
-
-      selectFranja.innerHTML = '';
-      const lista = cupos[especialidad];
-
-      if (especialidad === 'convencional') {
-        displaySeña.innerText = "$3.000";
-      } else {
-        displaySeña.innerText = "$20.000";
-      }
-
-      lista.forEach(item => {
-        const disponibles = item.max - item.ocupados;
-        const opt = document.createElement('option');
-        opt.value = item.id;
-        if (disponibles > 0) {
-          opt.innerText = `${item.horario} - [Quedan ${disponibles} de ${item.max} lugares]`;
-        } else {
-          opt.innerText = `${item.horario} - [❌ AGOTADO]`;
-          opt.disabled = true;
-        }
-        selectFranja.appendChild(opt);
-      });
-    }
-
-    // Control dinámico de fichaje de secretaría (reemplazos o faltas con aviso y certificados)
-    function gestionarEstadoStaff(selectElem, modalId, avisoId) {
-      const modal = document.getElementById(modalId);
-      const aviso = document.getElementById(avisoId);
-      
-      modal.classList.add('hidden');
-      aviso.classList.add('hidden');
-
-      if (selectElem.value === 'reemplazo') {
-        modal.classList.remove('hidden');
-      } else if (selectElem.value === 'falta_aviso') {
-        aviso.classList.remove('hidden');
-      }
-    }
-
-    function confirmarReservaConSeña() {
-      const nombre = document.getElementById('input-nombre-paciente').value.trim();
-      const archivo = document.getElementById('input-comprobante').files[0];
-      const especialidad = document.getElementById('select-especialidad').value;
-      const idTurno = document.getElementById('select-franja').value;
-
-      if (!nombre) {
-        alert("Por favor, ingresá tu Nombre y Apellido.");
-        return;
-      }
-
-      if (!archivo) {
-        alert("Por favor, subí el comprobante de transferencia al alias clinica.donadio.");
-        return;
-      }
-
-      const objetoTurno = cupos[especialidad].find(t => t.id === idTurno);
-      if (objetoTurno && objetoTurno.ocupados < objetoTurno.max) {
-        objetoTurno.ocupados++;
-
-        const tabla = document.getElementById('tabla-agenda-cruzada');
-        const nuevaFila = document.createElement('tr');
-        nuevaFila.className = "hover:bg-slate-50 font-semibold bg-emerald-50/50";
-        
-        let profAsignado = "Lic. Lucía";
-        if (especialidad === 'convencional' && objetoTurno.horario.includes('Carolina y Tomás')) {
-          profAsignado = "Carolina y Tomás";
-        } else if (especialidad !== 'convencional') {
-          profAsignado = "Lic. Gabriel";
-        }
-
-        nuevaFila.innerHTML = `
-          <td class="p-3 text-[#1d4e5f] font-bold">${objetoTurno.horario.split('(')[0]}</td>
-          <td class="p-3 capitalize">${especialidad}</td>
-          <td class="p-3 font-bold text-slate-800">${nombre}</td>
-          <td class="p-3"><span class="px-2 py-1 bg-teal-100 text-teal-900 font-semibold rounded-lg">${profAsignado}</span></td>
-          <td class="p-3">
-            <select class="p-1.5 bg-yellow-100 text-yellow-900 font-bold rounded-lg border border-yellow-300">
-              <option value="espera" selected>🟡 En Espera (Nuevo)</option>
-              <option value="atendido">🟢 Atendido / Finalizado</option>
-              <option value="en-atencion">🔵 Siendo Atendido</option>
-              <option value="demorado">🟠 Demorado</option>
-              <option value="reprogramo">🟣 Reprogramó</option>
-              <option value="cancelo">🔴 Canceló</option>
-            </select>
-          </td>
-          <td class="p-3 text-slate-500">Seña validada ✓ ($${especialidad === 'convencional' ? '3.000' : '20.000'})</td>
-        `;
-
-        tabla.insertBefore(nuevaFila, tabla.firstChild);
-
-        alert(`¡Turno reservado exitosamente por ${nombre}! Sincronizado en la agenda.`);
-        document.getElementById('input-nombre-paciente').value = '';
-        document.getElementById('input-comprobante').value = '';
-        cambiarEspecialidadTurnero();
-      }
-    }
-
-    let totalPuntos = 0;
-    function marcarBodyMap(event) {
-      const area = event.currentTarget;
-      const rect = area.getBoundingClientRect();
-      const x = event.clientX - rect.left;
-      const y = event.clientY - rect.top;
-
-      const punto = document.createElement('div');
-      punto.className = 'absolute w-4 h-4 bg-[#6b1d2f] rounded-full border-2 border-white shadow-lg -ml-2 -mt-2 pointer-events-none animate-bounce';
-      punto.style.left = x + 'px';
-      punto.style.top = y + 'px';
-
-      document.getElementById('puntos-container').appendChild(punto);
-      totalPuntos++;
-      document.getElementById('contador-puntos').innerText = totalPuntos;
-    }
-
-    function limpiarBodyMap() {
-      document.getElementById('puntos-container').innerHTML = '';
-      totalPuntos = 0;
-      document.getElementById('contador-puntos').innerText = 0;
-    }
-
-    function actualizarEva(val) {
-      let desc = "Leve";
-      if (val >= 4 && val <= 7) desc = "Moderado";
-      if (val >= 8) desc = "Severo / Extremo";
-      document.getElementById('eva-valor-label').innerText = val + " / 10 (" + desc + ")";
-    }
-
-    function ingresarProfesional(e) {
-      e.preventDefault();
-      const prof = document.getElementById('select-profesional').value;
-      document.getElementById('login-profesional').classList.add('hidden');
-      document.getElementById('contenido-profesional').classList.remove('hidden');
-      document.getElementById('titulo-profesional-activo').innerText = "Ficha Clínica - Lic. " + prof;
-    }
-
-    function cerrarSesionProfesional() {
-      document.getElementById('login-profesional').classList.remove('hidden');
-      document.getElementById('contenido-profesional').classList.add('hidden');
-      document.getElementById('input-pass').value = '';
-    }
-  </script>
-</body>
-</html> 
+            <button onclick="alert('Ficha clínica guardada exitosamente.')" class="w-full bg-[#6b1d2f] text-white font-bold text-sm py-3 rounded-xl shadow hover:bg-rose-900 transition
