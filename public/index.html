@@ -54,18 +54,19 @@
     <!-- ========================================== -->
     <section id="panel-secretaria" class="space-y-6">
       
-      <!-- Fichaje de Asistencia del Staff -->
-      <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-        <h3 class="font-bold text-[#1d4e5f] text-sm mb-3 flex items-center justify-between">
+      <!-- Fichaje de Asistencia con Control Dinámico de Reemplazos -->
+      <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+        <h3 class="font-bold text-[#1d4e5f] text-sm flex items-center justify-between">
           <span>📋 Fichaje Diario de Asistencia del Staff</span>
           <span class="text-xs font-normal text-slate-400">Control interno para liquidaciones</span>
         </h3>
+        
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           
           <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
             <p class="font-bold text-xs text-slate-700">Lic. Lucía</p>
             <p class="text-[11px] text-slate-500 mb-2">Mañana (08:00 - 12:00)</p>
-            <select class="w-full text-xs border border-slate-300 rounded-lg p-1.5 bg-white font-medium">
+            <select onchange="verificarReemplazo(this, 'modal-lucia')" class="w-full text-xs border border-slate-300 rounded-lg p-1.5 bg-white font-medium">
               <option value="presente">✓ Presente</option>
               <option value="falta_aviso">⚠️ Falta c/Aviso</option>
               <option value="falta_sin_aviso">❌ Falta s/Aviso</option>
@@ -76,7 +77,7 @@
           <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
             <p class="font-bold text-xs text-slate-700">Lic. Carolina</p>
             <p class="text-[11px] text-slate-500 mb-2">Tarde (13:00 - 20:00)</p>
-            <select class="w-full text-xs border border-slate-300 rounded-lg p-1.5 bg-white font-medium">
+            <select onchange="verificarReemplazo(this, 'modal-carolina')" class="w-full text-xs border border-slate-300 rounded-lg p-1.5 bg-white font-medium">
               <option value="presente">✓ Presente</option>
               <option value="falta_aviso">⚠️ Falta c/Aviso</option>
               <option value="falta_sin_aviso">❌ Falta s/Aviso</option>
@@ -87,7 +88,7 @@
           <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
             <p class="font-bold text-xs text-slate-700">Lic. Tomás</p>
             <p class="text-[11px] text-slate-500 mb-2">Tarde (13:00 - 20:00)</p>
-            <select class="w-full text-xs border border-slate-300 rounded-lg p-1.5 bg-white font-medium">
+            <select onchange="verificarReemplazo(this, 'modal-tomas')" class="w-full text-xs border border-slate-300 rounded-lg p-1.5 bg-white font-medium">
               <option value="presente">✓ Presente</option>
               <option value="falta_aviso">⚠️ Falta c/Aviso</option>
               <option value="falta_sin_aviso">❌ Falta s/Aviso</option>
@@ -98,7 +99,7 @@
           <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
             <p class="font-bold text-xs text-slate-700">Lic. Gabriel</p>
             <p class="text-[11px] text-slate-500 mb-2">Quiropraxia / RPG / ATM</p>
-            <select class="w-full text-xs border border-slate-300 rounded-lg p-1.5 bg-white font-medium">
+            <select onchange="verificarReemplazo(this, 'modal-gabriel')" class="w-full text-xs border border-slate-300 rounded-lg p-1.5 bg-white font-medium">
               <option value="presente">✓ Presente</option>
               <option value="falta_aviso">⚠️ Falta c/Aviso</option>
               <option value="falta_sin_aviso">❌ Falta s/Aviso</option>
@@ -107,8 +108,58 @@
           </div>
 
         </div>
-        <div class="mt-4 flex justify-end">
-          <button onclick="alert('Registro de asistencia guardado con éxito')" class="px-5 bg-[#6b1d2f] text-white font-bold text-xs py-2 rounded-lg shadow hover:bg-rose-900 transition">
+
+        <!-- FORMULARIOS OCULTOS DE DATOS DE REEMPLAZO -->
+        <div id="modal-lucia" class="hidden bg-cyan-50 border border-cyan-200 p-4 rounded-xl space-y-3">
+          <p class="text-xs font-bold text-[#1d4e5f]">🔄 Datos del Kinesiólogo Reemplazante (Lucía)</p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+            <input type="text" placeholder="Nombre" class="p-2 border rounded-lg bg-white" />
+            <input type="text" placeholder="Apellido" class="p-2 border rounded-lg bg-white" />
+            <input type="text" placeholder="DNI" class="p-2 border rounded-lg bg-white" />
+            <input type="text" placeholder="Dirección" class="p-2 border rounded-lg bg-white" />
+            <input type="text" placeholder="Teléfono" class="p-2 border rounded-lg bg-white" />
+            <input type="text" placeholder="Alias Bancario" class="p-2 border rounded-lg bg-white" />
+          </div>
+        </div>
+
+        <div id="modal-carolina" class="hidden bg-cyan-50 border border-cyan-200 p-4 rounded-xl space-y-3">
+          <p class="text-xs font-bold text-[#1d4e5f]">🔄 Datos del Kinesiólogo Reemplazante (Carolina)</p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+            <input type="text" placeholder="Nombre" class="p-2 border rounded-lg bg-white" />
+            <input type="text" placeholder="Apellido" class="p-2 border rounded-lg bg-white" />
+            <input type="text" placeholder="DNI" class="p-2 border rounded-lg bg-white" />
+            <input type="text" placeholder="Dirección" class="p-2 border rounded-lg bg-white" />
+            <input type="text" placeholder="Teléfono" class="p-2 border rounded-lg bg-white" />
+            <input type="text" placeholder="Alias Bancario" class="p-2 border rounded-lg bg-white" />
+          </div>
+        </div>
+
+        <div id="modal-tomas" class="hidden bg-cyan-50 border border-cyan-200 p-4 rounded-xl space-y-3">
+          <p class="text-xs font-bold text-[#1d4e5f]">🔄 Datos del Kinesiólogo Reemplazante (Tomás)</p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+            <input type="text" placeholder="Nombre" class="p-2 border rounded-lg bg-white" />
+            <input type="text" placeholder="Apellido" class="p-2 border rounded-lg bg-white" />
+            <input type="text" placeholder="DNI" class="p-2 border rounded-lg bg-white" />
+            <input type="text" placeholder="Dirección" class="p-2 border rounded-lg bg-white" />
+            <input type="text" placeholder="Teléfono" class="p-2 border rounded-lg bg-white" />
+            <input type="text" placeholder="Alias Bancario" class="p-2 border rounded-lg bg-white" />
+          </div>
+        </div>
+
+        <div id="modal-gabriel" class="hidden bg-cyan-50 border border-cyan-200 p-4 rounded-xl space-y-3">
+          <p class="text-xs font-bold text-[#1d4e5f]">🔄 Datos del Kinesiólogo Reemplazante (Gabriel)</p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+            <input type="text" placeholder="Nombre" class="p-2 border rounded-lg bg-white" />
+            <input type="text" placeholder="Apellido" class="p-2 border rounded-lg bg-white" />
+            <input type="text" placeholder="DNI" class="p-2 border rounded-lg bg-white" />
+            <input type="text" placeholder="Dirección" class="p-2 border rounded-lg bg-white" />
+            <input type="text" placeholder="Teléfono" class="p-2 border rounded-lg bg-white" />
+            <input type="text" placeholder="Alias Bancario" class="p-2 border rounded-lg bg-white" />
+          </div>
+        </div>
+
+        <div class="flex justify-end pt-2">
+          <button onclick="alert('Presentismo y datos de reemplazos guardados correctamente')" class="px-5 bg-[#6b1d2f] text-white font-bold text-xs py-2 rounded-lg shadow hover:bg-rose-900 transition">
             Guardar Presentismo
           </button>
         </div>
@@ -116,35 +167,20 @@
 
       <!-- LIQUIDADOR CÍRCULO & MENSAJERÍA -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        
-        <!-- Liquidador Círculo -->
         <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
           <div class="flex justify-between items-center">
-            <h3 class="font-bold text-[#1d4e5f] text-sm flex items-center space-x-2">
-              <span>🏛️ Liquidador Círculo de Kinesiólogos</span>
-            </h3>
+            <h3 class="font-bold text-[#1d4e5f] text-sm">🏛️ Liquidador Círculo de Kinesiólogos</h3>
             <button onclick="alert('Exportando liquidación...')" class="px-3 py-1 bg-[#6b1d2f] text-white font-bold text-[11px] rounded-lg">Exportar</button>
           </div>
           <p class="text-xs text-slate-500">Control de órdenes a 3 meses y débitos de obras sociales.</p>
-          <div class="bg-amber-50 border border-amber-200 p-3 rounded-xl text-xs text-amber-900 font-medium">
-            ⚠️ 3 órdenes próximas a vencer (&lt; 3 meses desde 1ra atención). 1 débito por refacturar.
-          </div>
         </div>
 
-        <!-- Mensajería WhatsApp -->
         <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
           <div class="flex justify-between items-center">
-            <h3 class="font-bold text-[#1d4e5f] text-sm flex items-center space-x-2">
-              <span>📲 Centro de Fidelización (WhatsApp)</span>
-            </h3>
+            <h3 class="font-bold text-[#1d4e5f] text-sm">📲 Centro de Fidelización (WhatsApp)</h3>
           </div>
           <p class="text-xs text-slate-500">Automatización de cumpleaños, post-sesión y seguimiento a 7 días.</p>
-          <div class="flex gap-2">
-            <button onclick="alert('Saludos enviados')" class="flex-1 py-2 bg-[#1d4e5f] text-white text-xs font-bold rounded-lg">Cumpleaños (2)</button>
-            <button onclick="alert('Seguimientos activos')" class="flex-1 py-2 bg-emerald-700 text-white text-xs font-bold rounded-lg">Seguimiento (3)</button>
-          </div>
         </div>
-
       </div>
 
     </section>
@@ -153,7 +189,6 @@
     <!-- 2. PANEL DE PROFESIONALES (CON CLAVE & BODY MAP) -->
     <!-- ========================================== -->
     <section id="panel-profesional" class="hidden space-y-6">
-      
       <div id="login-profesional" class="max-w-md mx-auto bg-white p-8 rounded-3xl border border-slate-200 shadow-md">
         <div class="text-center mb-6">
           <div class="w-12 h-12 bg-[#1d4e5f] text-white rounded-2xl flex items-center justify-center font-bold text-2xl mx-auto mb-2">🔒</div>
@@ -179,7 +214,6 @@
       </div>
 
       <div id="contenido-profesional" class="hidden space-y-6">
-        
         <div class="flex justify-between items-center bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
           <div>
             <h2 id="titulo-profesional-activo" class="text-lg font-bold text-[#1d4e5f]">Ficha Clínica Digital (HCD)</h2>
@@ -189,16 +223,11 @@
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          
           <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
             <div class="flex justify-between items-center">
-              <h3 class="font-bold text-slate-800 text-sm flex items-center space-x-2">
-                <span>🗺️ Body Map (Mapeo de Dolor)</span>
-              </h3>
+              <h3 class="font-bold text-slate-800 text-sm">🗺️ Body Map (Mapeo de Dolor)</h3>
               <button onclick="limpiarBodyMap()" class="text-xs text-rose-700 hover:underline font-semibold">Limpiar Puntos</button>
             </div>
-            <p class="text-xs text-slate-500">Hacé clic sobre la silueta anatómica para marcar los puntos exactos de dolor:</p>
-
             <div id="body-map-area" onclick="marcarBodyMap(event)" class="relative bg-slate-50 border-2 border-dashed border-slate-300 rounded-2xl h-80 flex flex-col items-center justify-center cursor-crosshair overflow-hidden group select-none">
               <svg class="h-64 opacity-30 group-hover:opacity-50 transition pointer-events-none" viewBox="0 0 100 200" fill="none" stroke="#1d4e5f" stroke-width="2.5">
                 <circle cx="50" cy="22" r="14" />
@@ -212,10 +241,8 @@
           </div>
 
           <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between space-y-5">
-            
             <div class="space-y-4">
               <h3 class="font-bold text-slate-800 text-sm">📈 Escala Visual Analógica (EVA - Dolor)</h3>
-              
               <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
                 <div class="flex justify-between items-center text-xs font-bold">
                   <span class="text-emerald-700">0 - Sin Dolor</span>
@@ -224,21 +251,16 @@
                 </div>
                 <input type="range" id="rango-eva" min="0" max="10" value="5" oninput="actualizarEva(this.value)" class="w-full accent-[#6b1d2f] cursor-pointer" />
               </div>
-
               <div>
                 <label class="block text-xs font-bold text-slate-700 mb-1">Notas de Evolución de Fisioterapia</label>
                 <textarea rows="4" placeholder="Ej: Se aplica ultrasonido y movilización pasiva..." class="w-full border border-slate-300 rounded-xl p-3 text-xs focus:ring-2 focus:ring-[#1d4e5f] outline-none"></textarea>
               </div>
             </div>
-
-            <button onclick="alert('Ficha clínica guardada exitosamente.')" class="w-full bg-[#6b1d2f] text-white font-bold text-xs py-3 rounded-xl shadow hover:bg-rose-900 transition">
+            <button onclick="alert('Ficha clínica guardada exitosamente.')" class="w-full bg-[#6b1d2f] text-white font-bold text-sm py-3 rounded-xl shadow hover:bg-rose-900 transition">
               Guardar Ficha del Día
             </button>
-
           </div>
-
         </div>
-
       </div>
     </section>
 
@@ -257,23 +279,19 @@
         <div class="space-y-4">
           <div>
             <label class="block text-xs font-bold text-slate-700 mb-1">Especialidad</label>
-            <select id="select-especialidad" onchange="actualizarMontoSeña()" class="w-full text-sm border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-[#1d4e5f] outline-none font-medium">
-              <option value="convencional">Kinesiología Convencional (Obra Social - 60 min)</option>
-              <option value="especializada">Quiropraxia / RPG / ATM (30/60 min)</option>
+            <select id="select-especialidad" onchange="cambiarEspecialidadTurnero()" class="w-full text-sm border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-[#1d4e5f] outline-none font-medium">
+              <option value="convencional">Kinesiología Convencional (Obra Social)</option>
+              <option value="especializada">Quiropraxia / RPG / ATM</option>
             </select>
           </div>
 
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Día y Franja Horaria</label>
-            <select id="select-franja" onchange="actualizarMontoSeña()" class="w-full text-sm border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-[#1d4e5f] outline-none font-medium">
-              <option value="lucia-mañana">Lunes a Viernes 08:00 a 09:00 hs (Lic. Lucía)</option>
-              <option value="carolina-tarde">Lunes a Viernes 13:00 a 20:00 hs (Carolina y Tomás)</option>
-              <option value="gabriel-mañana">Lunes a Viernes 08:00 a 10:00 hs (Lic. Gabriel)</option>
-              <option value="gabriel-tarde">Lunes, Miércoles y Viernes 15:00 a 20:00 hs (Lic. Gabriel)</option>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Horarios y Profesionales Disponibles</label>
+            <select id="select-franja" class="w-full text-sm border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-[#1d4e5f] outline-none font-medium">
+              <!-- Se carga dinámicamente con JavaScript -->
             </select>
           </div>
 
-          <!-- TARJETA DE PAGO DE SEÑA -->
           <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-3">
             <div class="flex justify-between items-center">
               <span class="text-xs font-bold text-slate-600">Monto de Seña Requerido:</span>
@@ -327,24 +345,60 @@
       } else if (rol === 'paciente') {
         document.getElementById('panel-paciente').classList.remove('hidden');
         document.getElementById('btn-rol-paciente').className = "px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-700 text-white shadow transition";
+        cambiarEspecialidadTurnero(); // Inicializar opciones al abrir
       }
     }
 
-    function actualizarMontoSeña() {
+    // Lógica dinámica para los turnos según especialidad
+    function cambiarEspecialidadTurnero() {
       const especialidad = document.getElementById('select-especialidad').value;
-      const display = document.getElementById('monto-seña-display');
+      const selectFranja = document.getElementById('select-franja');
+      const displaySeña = document.getElementById('monto-seña-display');
+
+      selectFranja.innerHTML = '';
 
       if (especialidad === 'convencional') {
-        display.innerText = "$3.000";
+        displaySeña.innerText = "$3.000";
+        
+        const opt1 = document.createElement('option');
+        opt1.value = 'lucia-mañana';
+        opt1.innerText = 'Lunes a Viernes 08:00 a 09:00 hs - Lic. Lucía (Mañana)';
+        selectFranja.appendChild(opt1);
+
+        const opt2 = document.createElement('option');
+        opt2.value = 'carolina-tomas-tarde';
+        opt2.innerText = 'Lunes a Viernes 13:00 a 20:00 hs - Carolina y Tomás (Tarde)';
+        selectFranja.appendChild(opt2);
+
       } else {
-        display.innerText = "$20.000";
+        displaySeña.innerText = "$20.000";
+
+        const opt1 = document.createElement('option');
+        opt1.value = 'gabriel-mañana';
+        opt1.innerText = 'Lunes a Viernes 08:00 a 10:00 hs - Lic. Gabriel (Mañana)';
+        selectFranja.appendChild(opt1);
+
+        const opt2 = document.createElement('option');
+        opt2.value = 'gabriel-tarde';
+        opt2.innerText = 'Lunes, Miércoles y Viernes 15:00 a 20:00 hs - Lic. Gabriel (Tarde)';
+        selectFranja.appendChild(opt2);
+      }
+    }
+
+    // Mostrar u ocultar el formulario de reemplazo en secretaría
+    function verificarReemplazo(selectElem, modalId) {
+      const modal = document.getElementById(modalId);
+      if (selectElem.value === 'reemplazo') {
+        modal.classList.remove('hidden');
+      } else {
+        modal.classList.add('hidden');
       }
     }
 
     function confirmarReservaConSeña() {
       const archivo = document.getElementById('input-comprobante').files[0];
       if (!archivo) {
-        alert("Por favor, subí el comprobante de transferencia para validar tu seña.");
+        alert("Por favor, subí el comprobante de transferencia al alias clinica.donadio para validar tu seña.");
         return;
       }
       alert("¡Turno reservado y comprobante enviado con éxito a la secretaría de CLINIK!");
@@ -395,4 +449,4 @@
     }
   </script>
 </body>
-</html> 
+</html>
