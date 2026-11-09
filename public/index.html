@@ -54,7 +54,7 @@
     <!-- ========================================== -->
     <section id="panel-secretaria" class="space-y-6">
       
-      <!-- Fichaje de Asistencia con Control Dinámico de Reemplazos -->
+      <!-- Fichaje de Asistencia con Control de Reemplazos -->
       <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
         <h3 class="font-bold text-[#1d4e5f] text-sm flex items-center justify-between">
           <span>📋 Fichaje Diario de Asistencia del Staff</span>
@@ -62,7 +62,6 @@
         </h3>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          
           <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
             <p class="font-bold text-xs text-slate-700">Lic. Lucía</p>
             <p class="text-[11px] text-slate-500 mb-2">Mañana (08:00 - 12:00)</p>
@@ -106,12 +105,11 @@
               <option value="reemplazo">🔄 Reemplazo</option>
             </select>
           </div>
-
         </div>
 
-        <!-- FORMULARIOS OCULTOS DE DATOS DE REEMPLAZO -->
+        <!-- Formularios de Reemplazo -->
         <div id="modal-lucia" class="hidden bg-cyan-50 border border-cyan-200 p-4 rounded-xl space-y-3">
-          <p class="text-xs font-bold text-[#1d4e5f]">🔄 Datos del Kinesiólogo Reemplazante (Lucía)</p>
+          <p class="text-xs font-bold text-[#1d4e5f]">🔄 Datos del Reemplazante (Lucía)</p>
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
             <input type="text" placeholder="Nombre" class="p-2 border rounded-lg bg-white" />
             <input type="text" placeholder="Apellido" class="p-2 border rounded-lg bg-white" />
@@ -121,72 +119,89 @@
             <input type="text" placeholder="Alias Bancario" class="p-2 border rounded-lg bg-white" />
           </div>
         </div>
-
         <div id="modal-carolina" class="hidden bg-cyan-50 border border-cyan-200 p-4 rounded-xl space-y-3">
-          <p class="text-xs font-bold text-[#1d4e5f]">🔄 Datos del Kinesiólogo Reemplazante (Carolina)</p>
+          <p class="text-xs font-bold text-[#1d4e5f]">🔄 Datos del Reemplazante (Carolina)</p>
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-            <input type="text" placeholder="Nombre" class="p-2 border rounded-lg bg-white" />
-            <input type="text" placeholder="Apellido" class="p-2 border rounded-lg bg-white" />
-            <input type="text" placeholder="DNI" class="p-2 border rounded-lg bg-white" />
-            <input type="text" placeholder="Dirección" class="p-2 border rounded-lg bg-white" />
-            <input type="text" placeholder="Teléfono" class="p-2 border rounded-lg bg-white" />
-            <input type="text" placeholder="Alias Bancario" class="p-2 border rounded-lg bg-white" />
+            <input type="text" placeholder="Nombre" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Apellido" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="DNI" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Dirección" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Teléfono" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Alias Bancario" class="p-2 border rounded-lg bg-white" />
           </div>
         </div>
-
         <div id="modal-tomas" class="hidden bg-cyan-50 border border-cyan-200 p-4 rounded-xl space-y-3">
-          <p class="text-xs font-bold text-[#1d4e5f]">🔄 Datos del Kinesiólogo Reemplazante (Tomás)</p>
+          <p class="text-xs font-bold text-[#1d4e5f]">🔄 Datos del Reemplazante (Tomás)</p>
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-            <input type="text" placeholder="Nombre" class="p-2 border rounded-lg bg-white" />
-            <input type="text" placeholder="Apellido" class="p-2 border rounded-lg bg-white" />
-            <input type="text" placeholder="DNI" class="p-2 border rounded-lg bg-white" />
-            <input type="text" placeholder="Dirección" class="p-2 border rounded-lg bg-white" />
-            <input type="text" placeholder="Teléfono" class="p-2 border rounded-lg bg-white" />
-            <input type="text" placeholder="Alias Bancario" class="p-2 border rounded-lg bg-white" />
+            <input type="text" placeholder="Nombre" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Apellido" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="DNI" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Dirección" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Teléfono" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Alias Bancario" class="p-2 border rounded-lg bg-white" />
           </div>
         </div>
-
         <div id="modal-gabriel" class="hidden bg-cyan-50 border border-cyan-200 p-4 rounded-xl space-y-3">
-          <p class="text-xs font-bold text-[#1d4e5f]">🔄 Datos del Kinesiólogo Reemplazante (Gabriel)</p>
+          <p class="text-xs font-bold text-[#1d4e5f]">🔄 Datos del Reemplazante (Gabriel)</p>
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-            <input type="text" placeholder="Nombre" class="p-2 border rounded-lg bg-white" />
-            <input type="text" placeholder="Apellido" class="p-2 border rounded-lg bg-white" />
-            <input type="text" placeholder="DNI" class="p-2 border rounded-lg bg-white" />
-            <input type="text" placeholder="Dirección" class="p-2 border rounded-lg bg-white" />
-            <input type="text" placeholder="Teléfono" class="p-2 border rounded-lg bg-white" />
-            <input type="text" placeholder="Alias Bancario" class="p-2 border rounded-lg bg-white" />
+            <input type="text" placeholder="Nombre" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Apellido" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="DNI" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Dirección" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Teléfono" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Alias Bancario" class="p-2 border rounded-lg bg-white" />
           </div>
         </div>
 
         <div class="flex justify-end pt-2">
-          <button onclick="alert('Presentismo y datos de reemplazos guardados correctamente')" class="px-5 bg-[#6b1d2f] text-white font-bold text-xs py-2 rounded-lg shadow hover:bg-rose-900 transition">
-            Guardar Presentismo
-          </button>
+          <button onclick="alert('Presentismo y datos guardados')" class="px-5 bg-[#6b1d2f] text-white font-bold text-xs py-2 rounded-lg shadow hover:bg-rose-900 transition">Guardar Presentismo</button>
         </div>
       </div>
 
-      <!-- LIQUIDADOR CÍRCULO & MENSAJERÍA -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-          <div class="flex justify-between items-center">
-            <h3 class="font-bold text-[#1d4e5f] text-sm">🏛️ Liquidador Círculo de Kinesiólogos</h3>
-            <button onclick="alert('Exportando liquidación...')" class="px-3 py-1 bg-[#6b1d2f] text-white font-bold text-[11px] rounded-lg">Exportar</button>
+      <!-- AGENDA CRUZADA GENERAL EN TIEMPO REAL (RECUPERADA) -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
+        <div class="flex justify-between items-center">
+          <div>
+            <h2 class="text-lg font-bold text-[#1d4e5f]">Agenda Cruzada en Tiempo Real</h2>
+            <p class="text-xs text-slate-500">Monitoreo de turnos ocupados, sanitización y profesionales</p>
           </div>
-          <p class="text-xs text-slate-500">Control de órdenes a 3 meses y débitos de obras sociales.</p>
+          <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full">En Vivo</span>
         </div>
 
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-          <div class="flex justify-between items-center">
-            <h3 class="font-bold text-[#1d4e5f] text-sm">📲 Centro de Fidelización (WhatsApp)</h3>
-          </div>
-          <p class="text-xs text-slate-500">Automatización de cumpleaños, post-sesión y seguimiento a 7 días.</p>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-sm">
+            <thead>
+              <tr class="bg-slate-100 text-slate-600 text-xs uppercase tracking-wider">
+                <th class="p-3">Horario</th>
+                <th class="p-3">Especialidad</th>
+                <th class="p-3">Paciente</th>
+                <th class="p-3">Profesional</th>
+                <th class="p-3">Cupo / Estado</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 text-xs">
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-[#1d4e5f]">08:00 - 08:50 hs <span class="block text-[10px] text-amber-600 font-normal">+10m sanitización</span></td>
+                <td class="p-3">Kinesiología Convencional</td>
+                <td class="p-3 font-medium">Carlos Gómez</td>
+                <td class="p-3"><span class="px-2 py-1 bg-blue-100 text-[#1d4e5f] font-semibold rounded-lg">Lic. Lucía</span></td>
+                <td class="p-3"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 font-bold rounded-full">Cupo 3/4 Ocupado</span></td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-[#1d4e5f]">08:00 - 08:30 hs</td>
+                <td class="p-3">Quiropraxia (30m)</td>
+                <td class="p-3 font-medium">Marcos Paz</td>
+                <td class="p-3"><span class="px-2 py-1 bg-teal-100 text-teal-800 font-semibold rounded-lg">Lic. Gabriel</span></td>
+                <td class="p-3"><span class="px-2.5 py-1 bg-rose-100 text-rose-800 font-bold rounded-full">Cupo 1/1 Ocupado</span></td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-[#1d4e5f]">08:30 - 09:20 hs <span class="block text-[10px] text-amber-600 font-normal">+10m sanitización</span></td>
+                <td class="p-3">RPG / ATM (50m)</td>
+                <td class="p-3 font-medium">Ana Rossi</td>
+                <td class="p-3"><span class="px-2 py-1 bg-teal-100 text-teal-800 font-semibold rounded-lg">Lic. Gabriel</span></td>
+                <td class="p-3"><span class="px-2.5 py-1 bg-rose-100 text-rose-800 font-bold rounded-full">Cupo 1/1 Ocupado</span></td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-[#1d4e5f]">13:00 - 13:50 hs <span class="block text-[10px] text-amber-600 font-normal">+10m sanitización</span></td>
+                <td class="p-3">Kinesiología Convencional</td>
+                <td class="p-3 font-medium">Esteban Quito</td>
+                <td class="p-3"><span class="px-2 py-1 bg-rose-100 text-[#6b1d2f] font-semibold rounded-lg">Carolina y Tomás</span></td>
+                <td class="p-3"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 font-bold rounded-full">Cupo 2/4 Ocupado</span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
     </section>
 
     <!-- ========================================== -->
-    <!-- 2. PANEL DE PROFESIONALES (CON CLAVE & BODY MAP) -->
+    <!-- 2. PANEL DE PROFESIONALES                  -->
     <!-- ========================================== -->
     <section id="panel-profesional" class="hidden space-y-6">
       <div id="login-profesional" class="max-w-md mx-auto bg-white p-8 rounded-3xl border border-slate-200 shadow-md">
@@ -256,16 +271,14 @@
                 <textarea rows="4" placeholder="Ej: Se aplica ultrasonido y movilización pasiva..." class="w-full border border-slate-300 rounded-xl p-3 text-xs focus:ring-2 focus:ring-[#1d4e5f] outline-none"></textarea>
               </div>
             </div>
-            <button onclick="alert('Ficha clínica guardada exitosamente.')" class="w-full bg-[#6b1d2f] text-white font-bold text-sm py-3 rounded-xl shadow hover:bg-rose-900 transition">
-              Guardar Ficha del Día
-            </button>
+            <button onclick="alert('Ficha clínica guardada exitosamente.')" class="w-full bg-[#6b1d2f] text-white font-bold text-sm py-3 rounded-xl shadow hover:bg-rose-900 transition">Guardar Ficha del Día</button>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ========================================== -->
-    <!-- 3. TURNERO PACIENTES (RESERVAS & SEÑA)     -->
+    <!-- 3. TURNERO PACIENTES (GRILLA Y DURACIONES) -->
     <!-- ========================================== -->
     <section id="panel-paciente" class="hidden space-y-6">
       <div class="max-w-xl mx-auto bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
@@ -273,22 +286,23 @@
         <div class="text-center border-b border-slate-100 pb-4">
           <span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full">Turnero Online CLINIK</span>
           <h2 class="text-2xl font-black text-[#1d4e5f] mt-2">Reservá tu Turno</h2>
-          <p class="text-xs text-slate-500">Seleccioná especialidad y aboná tu seña para confirmar</p>
+          <p class="text-xs text-slate-500">Seleccioná especialidad, horario sin solapamientos y aboná tu seña</p>
         </div>
 
         <div class="space-y-4">
           <div>
             <label class="block text-xs font-bold text-slate-700 mb-1">Especialidad</label>
             <select id="select-especialidad" onchange="cambiarEspecialidadTurnero()" class="w-full text-sm border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-[#1d4e5f] outline-none font-medium">
-              <option value="convencional">Kinesiología Convencional (Obra Social)</option>
-              <option value="especializada">Quiropraxia / RPG / ATM</option>
+              <option value="convencional">Kinesiología Convencional (50 min + 10 min sanitización - 4 cupos/hora)</option>
+              <option value="quiropraxia">Quiropraxia (30 min - 1 cupo exclusivo con Gabriel)</option>
+              <option value="rpg">RPG / ATM (50 min + 10 min sanitización - 1 cupo exclusivo con Gabriel)</option>
             </select>
           </div>
 
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Horarios y Profesionales Disponibles</label>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Horarios Disponibles (Correlativos sin solaparse)</label>
             <select id="select-franja" class="w-full text-sm border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-[#1d4e5f] outline-none font-medium">
-              <!-- Se carga dinámicamente con JavaScript -->
+              <!-- Se cargan dinámicamente -->
             </select>
           </div>
 
@@ -311,7 +325,7 @@
           </div>
 
           <div class="bg-amber-50 border border-amber-200 p-3 rounded-xl text-xs text-amber-800">
-            <strong>Nota de Sanitización:</strong> Las sesiones incluyen 50 minutos de atención + 10 minutos de sanitización previa del box.
+            <strong>Nota:</strong> Los horarios de Quiropraxia y RPG/ATM son correlativos y exclusivos con el Lic. Gabriel para evitar solapamientos.
           </div>
 
           <button onclick="confirmarReservaConSeña()" class="w-full bg-[#6b1d2f] text-white font-bold text-sm py-3 rounded-xl shadow hover:bg-rose-900 transition">Confirmar Reserva y Enviar Comprobante</button>
@@ -345,11 +359,11 @@
       } else if (rol === 'paciente') {
         document.getElementById('panel-paciente').classList.remove('hidden');
         document.getElementById('btn-rol-paciente').className = "px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-700 text-white shadow transition";
-        cambiarEspecialidadTurnero(); // Inicializar opciones al abrir
+        cambiarEspecialidadTurnero();
       }
     }
 
-    // Lógica dinámica para los turnos según especialidad
+    // Grilla horaria exacta con duraciones y cupos sin solaparse para Gabriel
     function cambiarEspecialidadTurnero() {
       const especialidad = document.getElementById('select-especialidad').value;
       const selectFranja = document.getElementById('select-franja');
@@ -360,32 +374,62 @@
       if (especialidad === 'convencional') {
         displaySeña.innerText = "$3.000";
         
-        const opt1 = document.createElement('option');
-        opt1.value = 'lucia-mañana';
-        opt1.innerText = 'Lunes a Viernes 08:00 a 09:00 hs - Lic. Lucía (Mañana)';
-        selectFranja.appendChild(opt1);
+        const turnosConvencionales = [
+          "08:00 a 08:50 hs (Mañana - Lic. Lucía) [4 cupos]",
+          "09:00 a 09:50 hs (Mañana - Lic. Lucía) [4 cupos]",
+          "10:00 a 10:50 hs (Mañana - Lic. Lucía) [4 cupos]",
+          "13:00 a 13:50 hs (Tarde - Carolina y Tomás) [4 cupos]",
+          "14:00 a 14:50 hs (Tarde - Carolina y Tomás) [4 cupos]",
+          "15:00 a 15:50 hs (Tarde - Carolina y Tomás) [4 cupos]",
+          "16:00 a 16:50 hs (Tarde - Carolina y Tomás) [4 cupos]"
+        ];
 
-        const opt2 = document.createElement('option');
-        opt2.value = 'carolina-tomas-tarde';
-        opt2.innerText = 'Lunes a Viernes 13:00 a 20:00 hs - Carolina y Tomás (Tarde)';
-        selectFranja.appendChild(opt2);
+        turnosConvencionales.forEach(t => {
+          const opt = document.createElement('option');
+          opt.value = t;
+          opt.innerText = t;
+          selectFranja.appendChild(opt);
+        });
 
-      } else {
+      } else if (especialidad === 'quiropraxia') {
         displaySeña.innerText = "$20.000";
 
-        const opt1 = document.createElement('option');
-        opt1.value = 'gabriel-mañana';
-        opt1.innerText = 'Lunes a Viernes 08:00 a 10:00 hs - Lic. Gabriel (Mañana)';
-        selectFranja.appendChild(opt1);
+        const turnosQuiro = [
+          "08:00 a 08:30 hs (Mañana - Lic. Gabriel) [1 cupo]",
+          "08:30 a 09:00 hs (Mañana - Lic. Gabriel) [1 cupo]",
+          "09:00 a 09:30 hs (Mañana - Lic. Gabriel) [1 cupo]",
+          "09:30 a 10:00 hs (Mañana - Lic. Gabriel) [1 cupo]",
+          "15:00 a 15:30 hs (Tarde L/M/V - Lic. Gabriel) [1 cupo]",
+          "15:30 a 16:00 hs (Tarde L/M/V - Lic. Gabriel) [1 cupo]",
+          "16:00 a 16:30 hs (Tarde L/M/V - Lic. Gabriel) [1 cupo]"
+        ];
 
-        const opt2 = document.createElement('option');
-        opt2.value = 'gabriel-tarde';
-        opt2.innerText = 'Lunes, Miércoles y Viernes 15:00 a 20:00 hs - Lic. Gabriel (Tarde)';
-        selectFranja.appendChild(opt2);
+        turnosQuiro.forEach(t => {
+          const opt = document.createElement('option');
+          opt.value = t;
+          opt.innerText = t;
+          selectFranja.appendChild(opt);
+        });
+
+      } else if (especialidad === 'rpg') {
+        displaySeña.innerText = "$20.000";
+
+        const turnosRpg = [
+          "08:00 a 08:50 hs (Mañana - Lic. Gabriel) [1 cupo exclusivo]",
+          "09:00 a 09:50 hs (Mañana - Lic. Gabriel) [1 cupo exclusivo]",
+          "15:00 a 15:50 hs (Tarde L/M/V - Lic. Gabriel) [1 cupo exclusivo]",
+          "16:00 a 16:50 hs (Tarde L/M/V - Lic. Gabriel) [1 cupo exclusivo]"
+        ];
+
+        turnosRpg.forEach(t => {
+          const opt = document.createElement('option');
+          opt.value = t;
+          opt.innerText = t;
+          selectFranja.appendChild(opt);
+        });
       }
     }
 
-    // Mostrar u ocultar el formulario de reemplazo en secretaría
     function verificarReemplazo(selectElem, modalId) {
       const modal = document.getElementById(modalId);
       if (selectElem.value === 'reemplazo') {
