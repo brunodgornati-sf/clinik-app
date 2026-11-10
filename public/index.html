@@ -35,7 +35,7 @@
 
     <div class="flex items-center bg-slate-900/40 p-1.5 rounded-xl border border-white/10 space-x-1">
       <button id="btn-rol-secretaria" onclick="seleccionarRol('secretaria')" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-[#6b1d2f] text-white shadow transition">
-        Secretaría (Control Total)
+        Secretaría (Control & HCD)
       </button>
       <button id="btn-rol-profesional" onclick="seleccionarRol('profesional')" class="px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-300 hover:text-white transition">
         Profesionales (HCD & Turnos)
@@ -50,11 +50,11 @@
   <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 space-y-6">
 
     <!-- ========================================== -->
-    <!-- 1. PANEL DE SECRETARÍA (CONTROL TOTAL)      -->
+    <!-- 1. PANEL DE SECRETARÍA (CONTROL & HCD)     -->
     <!-- ========================================== -->
     <section id="panel-secretaria" class="space-y-6">
       
-      <!-- Fichaje de Asistencia con Control de Reemplazos y Certificados -->
+      <!-- Fichaje de Asistencia del Staff -->
       <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
         <h3 class="font-bold text-[#1d4e5f] text-sm flex items-center justify-between">
           <span>📋 Fichaje Diario de Asistencia del Staff</span>
@@ -107,53 +107,57 @@
           </div>
         </div>
 
-        <!-- Formularios de Reemplazo y Falta con Aviso -->
-        <div id="modal-lucia" class="hidden bg-cyan-50 border border-cyan-200 p-4 rounded-xl space-y-3">
-          <p class="text-xs font-bold text-[#1d4e5f]">🔄 Datos del Reemplazante (Lucía)</p>
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-            <input type="text" placeholder="Nombre" class="p-2 border rounded-lg bg-white" />
-            <input type="text" placeholder="Apellido" class="p-2 border rounded-lg bg-white" />
-            <input type="text" placeholder="DNI" class="p-2 border rounded-lg bg-white" />
-            <input type="text" placeholder="Dirección" class="p-2 border rounded-lg bg-white" />
-            <input type="text" placeholder="Teléfono" class="p-2 border rounded-lg bg-white" />
-            <input type="text" placeholder="Alias Bancario" class="p-2 border rounded-lg bg-white" />
-          </div>
-        </div>
-        <div id="modal-carolina" class="hidden bg-cyan-50 border border-cyan-200 p-4 rounded-xl space-y-3">
-          <p class="text-xs font-bold text-[#1d4e5f]">🔄 Datos del Reemplazante (Carolina)</p>
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs"><input type="text" placeholder="Nombre" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Apellido" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="DNI" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Dirección" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Teléfono" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Alias Bancario" class="p-2 border rounded-lg bg-white" /></div>
-        </div>
-        <div id="modal-tomas" class="hidden bg-cyan-50 border border-cyan-200 p-4 rounded-xl space-y-3">
-          <p class="text-xs font-bold text-[#1d4e5f]">🔄 Datos del Reemplazante (Tomás)</p>
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs"><input type="text" placeholder="Nombre" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Apellido" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="DNI" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Dirección" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Teléfono" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Alias Bancario" class="p-2 border rounded-lg bg-white" /></div>
-        </div>
-        <div id="modal-gabriel" class="hidden bg-cyan-50 border border-cyan-200 p-4 rounded-xl space-y-3">
-          <p class="text-xs font-bold text-[#1d4e5f]">🔄 Datos del Reemplazante (Gabriel)</p>
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs"><input type="text" placeholder="Nombre" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Apellido" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="DNI" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Dirección" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Teléfono" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Alias Bancario" class="p-2 border rounded-lg bg-white" /></div>
-        </div>
+        <!-- Formularios Modales Staff -->
+        <div id="modal-lucia" class="hidden bg-cyan-50 border border-cyan-200 p-4 rounded-xl space-y-3"><p class="text-xs font-bold text-[#1d4e5f]">🔄 Datos del Reemplazante (Lucía)</p><div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs"><input type="text" placeholder="Nombre" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Apellido" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="DNI" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Dirección" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Teléfono" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Alias Bancario" class="p-2 border rounded-lg bg-white" /></div></div>
+        <div id="modal-carolina" class="hidden bg-cyan-50 border border-cyan-200 p-4 rounded-xl space-y-3"><p class="text-xs font-bold text-[#1d4e5f]">🔄 Datos del Reemplazante (Carolina)</p><div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs"><input type="text" placeholder="Nombre" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Apellido" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="DNI" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Dirección" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Teléfono" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Alias Bancario" class="p-2 border rounded-lg bg-white" /></div></div>
+        <div id="modal-tomas" class="hidden bg-cyan-50 border border-cyan-200 p-4 rounded-xl space-y-3"><p class="text-xs font-bold text-[#1d4e5f]">🔄 Datos del Reemplazante (Tomás)</p><div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs"><input type="text" placeholder="Nombre" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Apellido" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="DNI" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Dirección" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Teléfono" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Alias Bancario" class="p-2 border rounded-lg bg-white" /></div></div>
+        <div id="modal-gabriel" class="hidden bg-cyan-50 border border-cyan-200 p-4 rounded-xl space-y-3"><p class="text-xs font-bold text-[#1d4e5f]">🔄 Datos del Reemplazante (Gabriel)</p><div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs"><input type="text" placeholder="Nombre" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Apellido" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="DNI" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Dirección" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Teléfono" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Alias Bancario" class="p-2 border rounded-lg bg-white" /></div></div>
 
-        <div id="aviso-lucia" class="hidden bg-amber-50 border border-amber-200 p-4 rounded-xl space-y-3">
-          <p class="text-xs font-bold text-amber-900">⚠️ Justificación de Falta con Aviso (Lucía)</p>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-            <input type="text" placeholder="Motivo de la falta (Ej: Certificado médico)" class="p-2 border rounded-lg bg-white w-full" />
-            <div><input type="file" class="text-xs text-slate-500 file:mr-2 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-amber-700 file:text-white cursor-pointer" /></div>
-          </div>
-        </div>
-        <div id="aviso-carolina" class="hidden bg-amber-50 border border-amber-200 p-4 rounded-xl space-y-3">
-          <p class="text-xs font-bold text-amber-900">⚠️ Justificación de Falta con Aviso (Carolina)</p>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs"><input type="text" placeholder="Motivo de la falta" class="p-2 border rounded-lg bg-white w-full" /><div><input type="file" class="text-xs text-slate-500 file:mr-2 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-amber-700 file:text-white cursor-pointer" /></div></div>
-        </div>
-        <div id="aviso-tomas" class="hidden bg-amber-50 border border-amber-200 p-4 rounded-xl space-y-3">
-          <p class="text-xs font-bold text-amber-900">⚠️ Justificación de Falta con Aviso (Tomás)</p>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs"><input type="text" placeholder="Motivo de la falta" class="p-2 border rounded-lg bg-white w-full" /><div><input type="file" class="text-xs text-slate-500 file:mr-2 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-amber-700 file:text-white cursor-pointer" /></div></div>
-        </div>
-        <div id="aviso-gabriel" class="hidden bg-amber-50 border border-amber-200 p-4 rounded-xl space-y-3">
-          <p class="text-xs font-bold text-amber-900">⚠️ Justificación de Falta con Aviso (Gabriel)</p>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs"><input type="text" placeholder="Motivo de la falta" class="p-2 border rounded-lg bg-white w-full" /><div><input type="file" class="text-xs text-slate-500 file:mr-2 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-amber-700 file:text-white cursor-pointer" /></div></div>
-        </div>
+        <div id="aviso-lucia" class="hidden bg-amber-50 border border-amber-200 p-4 rounded-xl space-y-3"><p class="text-xs font-bold text-amber-900">⚠️ Justificación de Falta con Aviso (Lucía)</p><div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs"><input type="text" placeholder="Motivo de la falta" class="p-2 border rounded-lg bg-white w-full" /><div><input type="file" class="text-xs text-slate-500 file:mr-2 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-amber-700 file:text-white cursor-pointer" /></div></div></div>
+        <div id="aviso-carolina" class="hidden bg-amber-50 border border-amber-200 p-4 rounded-xl space-y-3"><p class="text-xs font-bold text-amber-900">⚠️ Justificación de Falta con Aviso (Carolina)</p><div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs"><input type="text" placeholder="Motivo de la falta" class="p-2 border rounded-lg bg-white w-full" /><div><input type="file" class="text-xs text-slate-500 file:mr-2 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-amber-700 file:text-white cursor-pointer" /></div></div></div>
+        <div id="aviso-tomas" class="hidden bg-amber-50 border border-amber-200 p-4 rounded-xl space-y-3"><p class="text-xs font-bold text-amber-900">⚠️ Justificación de Falta con Aviso (Tomás)</p><div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs"><input type="text" placeholder="Motivo de la falta" class="p-2 border rounded-lg bg-white w-full" /><div><input type="file" class="text-xs text-slate-500 file:mr-2 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-amber-700 file:text-white cursor-pointer" /></div></div></div>
+        <div id="aviso-gabriel" class="hidden bg-amber-50 border border-amber-200 p-4 rounded-xl space-y-3"><p class="text-xs font-bold text-amber-900">⚠️ Justificación de Falta con Aviso (Gabriel)</p><div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs"><input type="text" placeholder="Motivo de la falta" class="p-2 border rounded-lg bg-white w-full" /><div><input type="file" class="text-xs text-slate-500 file:mr-2 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-amber-700 file:text-white cursor-pointer" /></div></div></div>
 
         <div class="flex justify-end pt-2">
-          <button onclick="alert('Presentismo y justificaciones guardadas correctamente')" class="px-5 bg-[#6b1d2f] text-white font-bold text-xs py-2 rounded-lg shadow hover:bg-rose-900 transition">Guardar Presentismo</button>
+          <button onclick="alert('Presentismo guardado correctamente')" class="px-5 bg-[#6b1d2f] text-white font-bold text-xs py-2 rounded-lg shadow hover:bg-rose-900 transition">Guardar Presentismo</button>
+        </div>
+      </div>
+
+      <!-- ACCESO DE SECRETARÍA A HISTORIA CLÍNICA COMPLETA -->
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+        <h3 class="font-bold text-[#1d4e5f] text-sm">🔍 Expediente Clínico Completo (Buscador Universal)</h3>
+        <p class="text-xs text-slate-500">Buscá un paciente por nombre para verificar afección, diagnóstico médico, sesiones, deudas y estudios cargados.</p>
+        
+        <div class="flex gap-2">
+          <input type="text" id="input-buscar-paciente-sec" placeholder="Ej: Carlos Gómez..." class="flex-1 text-xs border rounded-xl p-2.5 outline-none focus:ring-2 focus:ring-[#1d4e5f]" />
+          <button onclick="buscarHistorialPaciente('sec')" class="px-4 py-2 bg-[#1d4e5f] hover:bg-cyan-900 text-white font-bold text-xs rounded-xl shadow transition">Buscar Expediente</button>
+        </div>
+
+        <div id="resultado-busqueda-paciente-sec" class="hidden bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-3 text-xs">
+          <div class="flex justify-between items-center border-b pb-2">
+            <span id="res-nombre-sec" class="font-black text-sm text-[#1d4e5f]">CARLOS GÓMEZ</span>
+            <span id="res-deuda-sec" class="px-2.5 py-1 bg-emerald-100 text-emerald-800 font-bold rounded-full">✓ Al día</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+            <div>
+              <p class="font-bold text-slate-700">Patología Médica / Diagnóstico:</p>
+              <p id="res-patologia-sec" class="text-slate-600 font-medium">-</p>
+            </div>
+            <div>
+              <p class="font-bold text-slate-700">Afección / Síntoma Principal:</p>
+              <p id="res-afeccion-sec" class="text-slate-600">-</p>
+            </div>
+            <div>
+              <p class="font-bold text-slate-700">Sesiones Realizadas:</p>
+              <p id="res-sesiones-sec" class="text-slate-600">-</p>
+            </div>
+          </div>
+          <div class="border-t pt-2">
+            <p class="font-bold text-slate-700 mb-1">📁 Estudios Complementarios cargados:</p>
+            <ul id="res-estudios-sec" class="list-disc list-inside text-slate-600 space-y-0.5">
+              <li>Resonancia Magnética Lumbar (PDF / Imagen)</li>
+            </ul>
+          </div>
         </div>
       </div>
 
@@ -205,14 +209,14 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- 2. PANEL DE PROFESIONALES (HCD & TURNOS)   -->
+    <!-- 2. PANEL DE PROFESIONALES (BODY MAP & HCD) -->
     <!-- ========================================== -->
     <section id="panel-profesional" class="hidden space-y-6">
       <div id="login-profesional" class="max-w-md mx-auto bg-white p-8 rounded-3xl border border-slate-200 shadow-md">
         <div class="text-center mb-6">
           <div class="w-12 h-12 bg-[#1d4e5f] text-white rounded-2xl flex items-center justify-center font-bold text-2xl mx-auto mb-2">🔒</div>
           <h2 class="text-xl font-bold text-slate-800">Acceso a Profesionales</h2>
-          <p class="text-xs text-slate-500 mt-1">Ingresá para ver turnos filtrados y buscar historias clínicas.</p>
+          <p class="text-xs text-slate-500 mt-1">Ingresá para ver turnos filtrados, Body Map doble cara y la Historia Clínica.</p>
         </div>
         <form onsubmit="ingresarProfesional(event)" class="space-y-4">
           <div>
@@ -237,17 +241,17 @@
         <div class="flex justify-between items-center bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
           <div>
             <h2 id="titulo-profesional-activo" class="text-lg font-bold text-[#1d4e5f]">Panel Profesional</h2>
-            <p class="text-xs text-slate-500">Gestión de turnos asignados e historias clínicas</p>
+            <p class="text-xs text-slate-500">Gestión de turnos, Body Map Doble Vista, Escala EVA y Estudios</p>
           </div>
           <button onclick="cerrarSesionProfesional()" class="px-3 py-1.5 text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 font-semibold rounded-xl">Cerrar Sesión</button>
         </div>
 
         <!-- 1. VISTA DE TURNOS FILTRADOS POR PROFESIONAL -->
         <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-          <h3 id="titulo-seccion-turnos" class="font-bold text-[#1d4e5f] text-sm flex items-center justify-between">
+          <h3 class="font-bold text-[#1d4e5f] text-sm flex items-center justify-between">
             <span>📅 Mis Turnos Asignados (Filtrados por Horario)</span>
           </h3>
-          <!-- Calendario interactivo exclusivo para Gabriel -->
+          <!-- Calendario interactivo para Gabriel -->
           <div id="contenedor-calendario-gabriel" class="hidden bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
             <div class="flex justify-between items-center">
               <span class="text-xs font-bold text-slate-700">Seleccioná el Día:</span>
@@ -278,37 +282,117 @@
           </div>
         </div>
 
-        <!-- 2. BUSCADOR DE ARCHIVOS DE PACIENTES & HISTORIA CLÍNICA -->
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-          <h3 class="font-bold text-[#1d4e5f] text-sm">🔍 Buscador de Archivos e Historia Clínica de Pacientes</h3>
-          <p class="text-xs text-slate-500">Buscá por nombre para ver la afección, sesiones realizadas y estado de pago (estampilla / sesión)</p>
-          
-          <div class="flex gap-2">
-            <input type="text" id="input-buscar-paciente" placeholder="Ingrese nombre del paciente (Ej: Carlos Gómez)..." class="flex-1 text-xs border rounded-xl p-2.5 outline-none focus:ring-2 focus:ring-[#1d4e5f]" />
-            <button onclick="buscarHistorialPaciente()" class="px-4 py-2 bg-[#1d4e5f] hover:bg-cyan-900 text-white font-bold text-xs rounded-xl shadow transition">Buscar Paciente</button>
+        <!-- 2. BODY MAP INTERACTIVO DOBLE (FRENTE Y ESPALDAS) + REGISTROS CLÍNICOS -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+          <div class="flex justify-between items-center border-b pb-3">
+            <div>
+              <h3 class="font-bold text-slate-800 text-sm">🗺️ Mapeo Corporal Doble Vista (Frente & Espaldas)</h3>
+              <p class="text-xs text-slate-500">Hacé clic sobre las siluetas para colocar los puntos exactos de dolor.</p>
+            </div>
+            <button onclick="limpiarBodyMaps()" class="text-xs text-rose-700 hover:underline font-semibold">Limpiar Puntos</button>
           </div>
 
-          <!-- Resultado del Expediente -->
-          <div id="resultado-busqueda-paciente" class="hidden bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-3 text-xs">
-            <div class="flex justify-between items-center border-b pb-2">
-              <span id="res-nombre" class="font-black text-sm text-[#1d4e5f]">Carlos Gómez</span>
-              <span id="res-deuda" class="px-2.5 py-1 bg-emerald-100 text-emerald-800 font-bold rounded-full">✓ Al día (Sesión y Estampilla pagas)</span>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- VISTA DE FRENTE -->
+            <div class="space-y-2">
+              <p class="text-center font-bold text-xs text-[#1d4e5f] bg-slate-100 py-1 rounded-lg">VISTA DE FRENTE</p>
+              <div id="body-map-frente" onclick="marcarBodyMap(event, 'frente')" class="relative bg-slate-50 border-2 border-dashed border-slate-300 rounded-2xl h-80 flex flex-col items-center justify-center cursor-crosshair overflow-hidden select-none">
+                <svg class="h-64 opacity-40 hover:opacity-60 transition pointer-events-none" viewBox="0 0 100 200" fill="none" stroke="#1d4e5f" stroke-width="2">
+                  <circle cx="50" cy="22" r="12" />
+                  <path d="M50 34 L50 110 M25 50 L75 50 M25 50 L20 110 M75 50 L80 110 M50 110 L38 185 M50 110 L62 185" />
+                  <text x="50" y="25" font-size="6" text-anchor="middle" fill="#1d4e5f" font-weight="bold">FRENTE</text>
+                </svg>
+                <div id="puntos-frente-container"></div>
+              </div>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+
+            <!-- VISTA DE ESPALDAS -->
+            <div class="space-y-2">
+              <p class="text-center font-bold text-xs text-[#6b1d2f] bg-slate-100 py-1 rounded-lg">VISTA DE ESPALDAS</p>
+              <div id="body-map-espalda" onclick="marcarBodyMap(event, 'espalda')" class="relative bg-slate-50 border-2 border-dashed border-slate-300 rounded-2xl h-80 flex flex-col items-center justify-center cursor-crosshair overflow-hidden select-none">
+                <svg class="h-64 opacity-40 hover:opacity-60 transition pointer-events-none" viewBox="0 0 100 200" fill="none" stroke="#6b1d2f" stroke-width="2">
+                  <circle cx="50" cy="22" r="12" />
+                  <path d="M50 34 L50 110 M25 50 L75 50 M25 50 L20 110 M75 50 L80 110 M50 110 L38 185 M50 110 L62 185" />
+                  <path d="M42 45 L58 45 M45 60 L55 60 M46 80 L54 80" stroke-dasharray="2 2" />
+                  <text x="50" y="25" font-size="6" text-anchor="middle" fill="#6b1d2f" font-weight="bold">ESPALDAS</text>
+                </svg>
+                <div id="puntos-espalda-container"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EVALUACIÓN EVA Y DATOS MÉDICOS DEL PACIENTE -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-slate-100">
+            <div class="space-y-4">
+              <h4 class="font-bold text-xs text-slate-800">📈 Escala Visual Analógica (EVA - Dolor)</h4>
+              <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                <div class="flex justify-between items-center text-xs font-bold">
+                  <span class="text-emerald-700">0 - Sin Dolor</span>
+                  <span id="eva-valor-label" class="text-base text-[#6b1d2f] font-black">5 / 10 (Moderado)</span>
+                  <span class="text-rose-700">10 - Dolor Extremo</span>
+                </div>
+                <input type="range" id="rango-eva" min="0" max="10" value="5" oninput="actualizarEva(this.value)" class="w-full accent-[#6b1d2f] cursor-pointer" />
+              </div>
+
               <div>
-                <p class="font-bold text-slate-700">Afección Principal:</p>
-                <p id="res-afeccion" class="text-slate-600">Tendinitis rotuliana crónica miembro inferior derecho.</p>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Patología Derivada por el Médico Traumatólogo / Médico Cabecera</label>
+                <input type="text" id="input-patologia-medica" placeholder="Ej: Hernia de Disco L4-L5 / Rectificación Cervical" class="w-full border border-slate-300 rounded-xl p-2.5 text-xs focus:ring-2 focus:ring-[#1d4e5f] outline-none" />
+              </div>
+            </div>
+
+            <div class="space-y-4 flex flex-col justify-between">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">📁 Cargar Fotos o Enlaces de Estudios (RX / Resonancias / Ecografías)</label>
+                <input type="file" multiple class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-[#1d4e5f] file:text-white cursor-pointer mb-2" />
+                <input type="url" id="input-link-estudios" placeholder="O pegá un enlace directo a Google Drive / Dropbox..." class="w-full border border-slate-300 rounded-xl p-2.5 text-xs focus:ring-2 focus:ring-[#1d4e5f] outline-none" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Notas de Evolución Fisioterapéutica</label>
+                <textarea rows="3" placeholder="Ej: Paciente refiere mejoría tras 4ta sesión. Movilización pasiva..." class="w-full border border-slate-300 rounded-xl p-2.5 text-xs focus:ring-2 focus:ring-[#1d4e5f] outline-none"></textarea>
+              </div>
+
+              <button onclick="guardarFichaCompleta()" class="w-full bg-[#6b1d2f] text-white font-bold text-sm py-3 rounded-xl shadow hover:bg-rose-900 transition">Guardar Ficha Corporal & Estudios del Paciente</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. BUSCADOR UNIVERSAL DE ARCHIVOS E HISTORIA CLÍNICA -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+          <h3 class="font-bold text-[#1d4e5f] text-sm">🔍 Buscador Universal de Historia Clínica del Paciente</h3>
+          <p class="text-xs text-slate-500">Ingresá el nombre para consultar los puntos de dolor, patología, sesiones y si debe estampilla/sesión.</p>
+          
+          <div class="flex gap-2">
+            <input type="text" id="input-buscar-paciente-prof" placeholder="Ingrese nombre del paciente (Ej: Carlos Gómez)..." class="flex-1 text-xs border rounded-xl p-2.5 outline-none focus:ring-2 focus:ring-[#1d4e5f]" />
+            <button onclick="buscarHistorialPaciente('prof')" class="px-4 py-2 bg-[#1d4e5f] hover:bg-cyan-900 text-white font-bold text-xs rounded-xl shadow transition">Buscar Paciente</button>
+          </div>
+
+          <!-- Expediente de Paciente Sincronizado -->
+          <div id="resultado-busqueda-paciente-prof" class="hidden bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-3 text-xs">
+            <div class="flex justify-between items-center border-b pb-2">
+              <span id="res-nombre-prof" class="font-black text-sm text-[#1d4e5f]">CARLOS GÓMEZ</span>
+              <span id="res-deuda-prof" class="px-2.5 py-1 bg-emerald-100 text-emerald-800 font-bold rounded-full">✓ Al día (Sesión y Estampilla pagas)</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div>
+                <p class="font-bold text-slate-700">Patología Médica:</p>
+                <p id="res-patologia-prof" class="text-slate-600 font-semibold">Tendinitis rotuliana crónica D</p>
+              </div>
+              <div>
+                <p class="font-bold text-slate-700">Afección / Síntoma:</p>
+                <p id="res-afeccion-prof" class="text-slate-600">Dolor punzante al flexionar rodilla derecho</p>
               </div>
               <div>
                 <p class="font-bold text-slate-700">Sesiones Realizadas:</p>
-                <p id="res-sesiones" class="text-slate-600">8 / 10 sesiones (Obra Social OSDE 210).</p>
+                <p id="res-sesiones-prof" class="text-slate-600">8 / 10 sesiones (OSDE 210)</p>
               </div>
             </div>
-            <div>
-              <p class="font-bold text-slate-700 mb-1">Notas de Evolución y HCD:</p>
-              <textarea rows="3" class="w-full border rounded-xl p-2 text-xs bg-white" placeholder="Escribir evolución de fisioterapia...">Se aplica magnetoterapia y ultrasonido. Buena respuesta al tratamiento.</textarea>
+            <div class="border-t pt-2">
+              <p class="font-bold text-slate-700 mb-1">📁 Estudios Adjuntos:</p>
+              <ul id="res-estudios-prof" class="list-disc list-inside text-slate-600">
+                <li>Resonancia Magnética de Rodilla Derecha (Archivo PDF)</li>
+              </ul>
             </div>
-            <button onclick="alert('Evolución guardada en el archivo del paciente.')" class="px-4 py-2 bg-[#6b1d2f] text-white font-bold rounded-lg">Guardar Evolución</button>
           </div>
         </div>
 
@@ -344,7 +428,7 @@
 
           <div>
             <label class="block text-xs font-bold text-slate-700 mb-2">Elegí un Horario en la Grilla Disponible (Hacé clic en la tarjeta):</label>
-            <!-- GRILLA DE TARJETAS INTERACTIVAS (CORREGIDO Y VISIBLE) -->
+            <!-- GRILLA DE TARJETAS INTERACTIVAS CON DÍAS Y LUGARES -->
             <div id="grilla-turnos-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-72 overflow-y-auto p-2 border border-slate-200 rounded-2xl bg-slate-50">
               <!-- Se generan dinámicamente -->
             </div>
@@ -422,11 +506,11 @@
       ]
     };
 
-    // Base de datos simulada de historias clínicas para profesionales
+    // Base de datos de expedientes compartidos (Secretaría y Profesionales)
     let basePacientes = {
-      "carlos gómez": { afeccion: "Tendinitis rotuliana D", sesiones: "8 / 10 (OSDE 210)", estadoDeuda: "✓ Al día (Sesión y Estampilla pagas)" },
-      "marcos paz": { afeccion: "Lumbalgia mecánica aguda", sesiones: "3 / 5 (IAPOS)", estadoDeuda: "⚠️ Debe Estampilla ($4.500)" },
-      "maria paez": { afeccion: "Cervicobraquialgia", sesiones: "1 / 10 (Swiss Medical)", estadoDeuda: "❌ Debe Sesión y Estampilla" }
+      "carlos gómez": { patologia: "Tendinitis rotuliana crónica D", afeccion: "Dolor en cara anterior de rodilla al subir escaleras", sesiones: "8 / 10 (OSDE 210)", estadoDeuda: "✓ Al día (Sesión y Estampilla pagas)", estudios: ["Resonancia Magnética de Rodilla D (PDF)", "Ecografía partes blandas"] },
+      "marcos paz": { patologia: "Hernia Discal L5-S1", afeccion: "Lumbalgia irradiada a cara posterior del muslo", sesiones: "3 / 5 (IAPOS)", estadoDeuda: "⚠️ Debe Estampilla ($4.500)", estudios: ["RX de Columna Lumbosacra"] },
+      "maria paez": { patologia: "Cervicobraquialgia C6-C7", afeccion: "Parestesia en trapecio y miembro superior izq.", sesiones: "1 / 10 (Swiss Medical)", estadoDeuda: "❌ Debe Sesión y Estampilla", estudios: ["Enlace a Drive: RMN Cervical"] }
     };
 
     let profesionalActivo = "";
@@ -523,7 +607,7 @@
       }
     }
 
-    // Login y filtrado de turnos para el panel de profesionales
+    // Login y turnos filtrados por profesional
     function ingresarProfesional(e) {
       e.preventDefault();
       profesionalActivo = document.getElementById('select-profesional').value;
@@ -587,28 +671,79 @@
       cargarTurnosProfesional();
     }
 
-    // Buscador de HCD y deuda de estampilla / sesión
-    function buscarHistorialPaciente() {
-      const query = document.getElementById('input-buscar-paciente').value.trim().toLowerCase();
-      const contenedorRes = document.getElementById('resultado-busqueda-paciente');
+    // Buscador universal de HCD (para Secretaría y Profesionales)
+    function buscarHistorialPaciente(tipo) {
+      const inputId = tipo === 'sec' ? 'input-buscar-paciente-sec' : 'input-buscar-paciente-prof';
+      const containerId = tipo === 'sec' ? 'resultado-busqueda-paciente-sec' : 'resultado-busqueda-paciente-prof';
       
-      const pacienteEncontrado = basePacientes[query];
-      if (pacienteEncontrado) {
+      const query = document.getElementById(inputId).value.trim().toLowerCase();
+      const contenedorRes = document.getElementById(containerId);
+      
+      const p = basePacientes[query];
+      if (p) {
         contenedorRes.classList.remove('hidden');
-        document.getElementById('res-nombre').innerText = query.toUpperCase();
-        document.getElementById('res-afeccion').innerText = pacienteEncontrado.afeccion;
-        document.getElementById('res-sesiones').innerText = pacienteEncontrado.sesiones;
-        const badgeDeuda = document.getElementById('res-deuda');
-        badgeDeuda.innerText = pacienteEncontrado.estadoDeuda;
-        if (pacienteEncontrado.estadoDeuda.includes('Al día')) {
-          badgeDeuda.className = "px-2.5 py-1 bg-emerald-100 text-emerald-800 font-bold rounded-full";
+        document.getElementById(tipo === 'sec' ? 'res-nombre-sec' : 'res-nombre-prof').innerText = query.toUpperCase();
+        document.getElementById(tipo === 'sec' ? 'res-patologia-sec' : 'res-patologia-prof').innerText = p.patologia || "-";
+        document.getElementById(tipo === 'sec' ? 'res-afeccion-sec' : 'res-afeccion-prof').innerText = p.afeccion;
+        document.getElementById(tipo === 'sec' ? 'res-sesiones-sec' : 'res-sesiones-prof').innerText = p.sesiones;
+        
+        const badgeDeuda = document.getElementById(tipo === 'sec' ? 'res-deuda-sec' : 'res-deuda-prof');
+        badgeDeuda.innerText = p.estadoDeuda;
+        badgeDeuda.className = p.estadoDeuda.includes('Al día') 
+          ? "px-2.5 py-1 bg-emerald-100 text-emerald-800 font-bold rounded-full" 
+          : "px-2.5 py-1 bg-rose-100 text-rose-800 font-bold rounded-full";
+
+        // Renderizar lista de estudios adjuntos
+        const ulEstudios = document.getElementById(tipo === 'sec' ? 'res-estudios-sec' : 'res-estudios-prof');
+        ulEstudios.innerHTML = '';
+        if (p.estudios && p.estudios.length > 0) {
+          p.estudios.forEach(est => {
+            const li = document.createElement('li');
+            li.innerText = est;
+            ulEstudios.appendChild(li);
+          });
         } else {
-          badgeDeuda.className = "px-2.5 py-1 bg-rose-100 text-rose-800 font-bold rounded-full";
+          ulEstudios.innerHTML = '<li>No posee estudios cargados.</li>';
         }
+
       } else {
-        alert("Paciente no encontrado en la base de datos local. Verifique el nombre.");
+        alert("Paciente no encontrado en la base de datos. Verifique el nombre.");
         contenedorRes.classList.add('hidden');
       }
+    }
+
+    // Funciones del Body Map Doble (Frente / Espalda)
+    function marcarBodyMap(event, vista) {
+      const area = event.currentTarget;
+      const rect = area.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+
+      const punto = document.createElement('div');
+      const colorBg = vista === 'frente' ? 'bg-[#1d4e5f]' : 'bg-[#6b1d2f]';
+      punto.className = `absolute w-4 h-4 ${colorBg} rounded-full border-2 border-white shadow-lg -ml-2 -mt-2 pointer-events-none animate-bounce`;
+      punto.style.left = x + 'px';
+      punto.style.top = y + 'px';
+
+      document.getElementById(vista === 'frente' ? 'puntos-frente-container' : 'puntos-espalda-container').appendChild(punto);
+    }
+
+    function limpiarBodyMaps() {
+      document.getElementById('puntos-frente-container').innerHTML = '';
+      document.getElementById('puntos-espalda-container').innerHTML = '';
+    }
+
+    function actualizarEva(val) {
+      let desc = "Leve";
+      if (val >= 4 && val <= 7) desc = "Moderado";
+      if (val >= 8) desc = "Severo / Extremo";
+      document.getElementById('eva-valor-label').innerText = val + " / 10 (" + desc + ")";
+    }
+
+    function guardarFichaCompleta() {
+      const patologia = document.getElementById('input-patologia-medica').value;
+      const link = document.getElementById('input-link-estudios').value;
+      alert(`Ficha clínica guardada con éxito:\n• Patología: ${patologia || 'Sin especificar'}\n• Enlace a estudio: ${link || 'Ninguno'}`);
     }
 
     function cerrarSesionProfesional() {
@@ -667,3 +802,4 @@
   </script>
 </body>
 </html>
+ 
