@@ -35,7 +35,7 @@
 
     <div class="flex items-center bg-slate-900/40 p-1.5 rounded-xl border border-white/10 space-x-1">
       <button id="btn-rol-secretaria" onclick="seleccionarRol('secretaria')" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-[#6b1d2f] text-white shadow transition">
-        Secretaría (Control, Caja & HCD)
+        Secretaría (Caja & Control)
       </button>
       <button id="btn-rol-profesional" onclick="seleccionarRol('profesional')" class="px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-300 hover:text-white transition">
         Profesionales (HCD & Turnos)
@@ -50,94 +50,66 @@
   <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 space-y-6">
 
     <!-- ========================================== -->
-    <!-- 1. PANEL DE SECRETARÍA (CAJA & CONTROL)    -->
+    <!-- 1. PANEL DE SECRETARÍA (CAJA, HCD Y STAFF) -->
     <!-- ========================================== -->
     <section id="panel-secretaria" class="space-y-6">
-
-      <!-- MÓDULO DE CAJA DIARIA EN TIEMPO REAL -->
-      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-        <div class="flex justify-between items-center border-b pb-3">
-          <div>
-            <h2 class="text-lg font-bold text-[#1d4e5f]">💰 Caja Diaria & Recaudación en Vivo</h2>
-            <p class="text-xs text-slate-500">Balance diario automático por señas de turnos y cobro de estampillas</p>
-          </div>
-          <button onclick="registrarMovimientoManual()" class="px-3 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs rounded-xl shadow transition">+ Ingreso / Egreso Manual</button>
-        </div>
-
-        <!-- Tarjetas de indicadores monetarios -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-            <p class="text-[11px] font-bold text-slate-500 uppercase">Señas Kinesiología ($3.000)</p>
-            <p id="total-senas-kine" class="text-xl font-black text-[#1d4e5f] mt-1">$6.000</p>
-            <p class="text-[10px] text-slate-400">2 turnos confirmados</p>
-          </div>
-
-          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-            <p class="text-[11px] font-bold text-slate-500 uppercase">Señas Quiro / RPG ($20.000)</p>
-            <p id="total-senas-quiro" class="text-xl font-black text-[#6b1d2f] mt-1">$20.000</p>
-            <p class="text-[10px] text-slate-400">1 turno confirmado</p>
-          </div>
-
-          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-            <p class="text-[11px] font-bold text-slate-500 uppercase">Estampillas Cobradas ($4.500)</p>
-            <p id="total-estampillas" class="text-xl font-black text-amber-700 mt-1">$4.500</p>
-            <p class="text-[10px] text-slate-400">1 paciente abonó hoy</p>
-          </div>
-
-          <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-200">
-            <p class="text-[11px] font-bold text-emerald-800 uppercase">TOTAL GENERAL EN CAJA</p>
-            <p id="total-caja-general" class="text-2xl font-black text-emerald-900 mt-1">$30.500</p>
-            <p class="text-[10px] text-emerald-700">Actualizado en tiempo real</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- CONTROL DE COBRO DE ESTAMPILLAS -->
-      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-        <div class="flex justify-between items-center">
-          <div>
-            <h3 class="font-bold text-[#1d4e5f] text-sm">🏷️ Control de Estampillas Kinesiológicas por Paciente</h3>
-            <p class="text-xs text-slate-500">Registro de estado de pago de la estampilla reglamentaria por orden médica</p>
-          </div>
-          <span class="text-xs font-bold text-slate-500">Valor Estampilla: <strong>$4.500</strong></span>
-        </div>
-
-        <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse text-sm">
-            <thead>
-              <tr class="bg-slate-100 text-slate-600 text-xs uppercase tracking-wider">
-                <th class="p-3">Paciente</th>
-                <th class="p-3">Obra Social</th>
-                <th class="p-3">Monto Estampilla</th>
-                <th class="p-3">Estado de Pago</th>
-                <th class="p-3">Acciones / Modificar</th>
-              </tr>
-            </thead>
-            <tbody id="tabla-control-estampillas" class="divide-y divide-slate-100 text-xs">
-              <tr class="hover:bg-slate-50">
-                <td class="p-3 font-bold text-slate-800">Carlos Gómez</td>
-                <td class="p-3 text-slate-600">OSDE 210</td>
-                <td class="p-3 font-bold text-slate-700">$4.500</td>
-                <td class="p-3"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 font-bold rounded-full">✓ Abonada</span></td>
-                <td class="p-3">
-                  <button onclick="cambiarEstadoEstampilla(this, 'Carlos Gómez')" class="px-2.5 py-1 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-lg text-[11px] font-semibold">Cambiar Estado</button>
-                </td>
-              </tr>
-              <tr class="hover:bg-slate-50">
-                <td class="p-3 font-bold text-slate-800">Marcos Paz</td>
-                <td class="p-3 text-slate-600">IAPOS</td>
-                <td class="p-3 font-bold text-slate-700">$4.500</td>
-                <td class="p-3"><span class="px-2.5 py-1 bg-amber-100 text-amber-800 font-bold rounded-full">⚠️ Pendiente de Cobro</span></td>
-                <td class="p-3">
-                  <button onclick="marcarEstampillaPagada(this, 'Marcos Paz')" class="px-2.5 py-1 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-[11px] font-bold">Cobrar Estampilla</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
       
-      <!-- Fichaje de Asistencia del Staff -->
+      <!-- NUEVO: MÓDULO DE CAJA DIARIA Y CONTROL DE ESTAMPILLAS -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Resumen de Caja -->
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+          <div class="flex justify-between items-center">
+            <h3 class="font-bold text-[#1d4e5f] text-xs uppercase tracking-wider">💰 Caja Diaria (Ingresos)</h3>
+            <span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 text-[10px] font-bold rounded">En Vivo</span>
+          </div>
+          <div class="space-y-1 text-xs">
+            <div class="flex justify-between"><span class="text-slate-500">Señas Convencionales ($3k):</span> <span class="font-bold text-slate-800">$9.000 (3 turnos)</span></div>
+            <div class="flex justify-between"><span class="text-slate-500">Señas Quiro/RPG ($20k):</span> <span class="font-bold text-slate-800">$20.000 (1 turno)</span></div>
+            <div class="flex justify-between border-t pt-2 mt-2 font-black text-sm text-[#6b1d2f]">
+              <span>Total Recaudado:</span>
+              <span>$29.000</span>
+            </div>
+          </div>
+          <button onclick="alert('Cierre de caja parcial generado con éxito.')" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs py-2 rounded-xl transition">Generar Cierre de Caja</button>
+        </div>
+
+        <!-- Control de Cobros y Estampillas Pendientes -->
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3 md:col-span-2">
+          <div class="flex justify-between items-center">
+            <h3 class="font-bold text-[#1d4e5f] text-xs uppercase tracking-wider">🏷️ Control de Deudas (Estampillas y Sesiones)</h3>
+            <span class="text-[11px] text-slate-400">Pacientes pendientes de cobro en recepción</span>
+          </div>
+          
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="bg-slate-50 text-slate-500">
+                  <th class="p-2">Paciente</th>
+                  <th class="p-2">Concepto Pendiente</th>
+                  <th class="p-2">Monto</th>
+                  <th class="p-2">Acción Rápida</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <tr>
+                  <td class="p-2 font-bold text-slate-800">Marcos Paz</td>
+                  <td class="p-2 text-amber-700 font-medium">Debe Estampilla IAPOS</td>
+                  <td class="p-2 font-bold">$4.500</td>
+                  <td class="p-2"><button onclick="alert('Estampilla cobrada y registrada en caja.')" class="px-2 py-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg">Cobrar ✓</button></td>
+                </tr>
+                <tr>
+                  <td class="p-2 font-bold text-slate-800">María Páez</td>
+                  <td class="p-2 text-rose-700 font-medium">Debe Sesión y Estampilla</td>
+                  <td class="p-2 font-bold">$12.000</td>
+                  <td class="p-2"><button onclick="alert('Cobro total registrado con éxito.')" class="px-2 py-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg">Cobrar ✓</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fichaje Diario de Asistencia del Staff -->
       <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
         <h3 class="font-bold text-[#1d4e5f] text-sm flex items-center justify-between">
           <span>📋 Fichaje Diario de Asistencia del Staff</span>
@@ -190,7 +162,7 @@
           </div>
         </div>
 
-        <!-- Modales Staff -->
+        <!-- Formularios Modales Staff -->
         <div id="modal-lucia" class="hidden bg-cyan-50 border border-cyan-200 p-4 rounded-xl space-y-3"><p class="text-xs font-bold text-[#1d4e5f]">🔄 Datos del Reemplazante (Lucía)</p><div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs"><input type="text" placeholder="Nombre" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Apellido" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="DNI" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Dirección" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Teléfono" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Alias Bancario" class="p-2 border rounded-lg bg-white" /></div></div>
         <div id="modal-carolina" class="hidden bg-cyan-50 border border-cyan-200 p-4 rounded-xl space-y-3"><p class="text-xs font-bold text-[#1d4e5f]">🔄 Datos del Reemplazante (Carolina)</p><div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs"><input type="text" placeholder="Nombre" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Apellido" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="DNI" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Dirección" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Teléfono" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Alias Bancario" class="p-2 border rounded-lg bg-white" /></div></div>
         <div id="modal-tomas" class="hidden bg-cyan-50 border border-cyan-200 p-4 rounded-xl space-y-3"><p class="text-xs font-bold text-[#1d4e5f]">🔄 Datos del Reemplazante (Tomás)</p><div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs"><input type="text" placeholder="Nombre" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Apellido" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="DNI" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Dirección" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Teléfono" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Alias Bancario" class="p-2 border rounded-lg bg-white" /></div></div>
@@ -206,7 +178,7 @@
         </div>
       </div>
 
-      <!-- ACCESO DE SECRETARÍA A HISTORIA CLÍNICA COMPLETA -->
+      <!-- ACCESO DE SECRETARÍA A HCD -->
       <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
         <h3 class="font-bold text-[#1d4e5f] text-sm">🔍 Expediente Clínico Completo (Buscador Universal)</h3>
         <p class="text-xs text-slate-500">Buscá un paciente por nombre para verificar afección, diagnóstico médico, sesiones, deudas y estudios cargados.</p>
@@ -235,16 +207,10 @@
               <p id="res-sesiones-sec" class="text-slate-600">-</p>
             </div>
           </div>
-          <div class="border-t pt-2">
-            <p class="font-bold text-slate-700 mb-1">📁 Estudios Complementarios cargados:</p>
-            <ul id="res-estudios-sec" class="list-disc list-inside text-slate-600 space-y-0.5">
-              <li>Resonancia Magnética Lumbar (PDF / Imagen)</li>
-            </ul>
-          </div>
         </div>
       </div>
 
-      <!-- AGENDA CRUZADA EN TIEMPO REAL CON ESTADOS -->
+      <!-- AGENDA CRUZADA -->
       <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
         <div class="flex flex-wrap justify-between items-center gap-2">
           <div>
@@ -292,7 +258,7 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- 2. PANEL DE PROFESIONALES (BODY MAP & HCD) -->
+    <!-- 2. PANEL DE PROFESIONALES                  -->
     <!-- ========================================== -->
     <section id="panel-profesional" class="hidden space-y-6">
       <div id="login-profesional" class="max-w-md mx-auto bg-white p-8 rounded-3xl border border-slate-200 shadow-md">
@@ -320,7 +286,6 @@
       </div>
 
       <div id="contenido-profesional" class="hidden space-y-6">
-        <!-- Header del profesional activo -->
         <div class="flex justify-between items-center bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
           <div>
             <h2 id="titulo-profesional-activo" class="text-lg font-bold text-[#1d4e5f]">Panel Profesional</h2>
@@ -329,12 +294,11 @@
           <button onclick="cerrarSesionProfesional()" class="px-3 py-1.5 text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 font-semibold rounded-xl">Cerrar Sesión</button>
         </div>
 
-        <!-- 1. VISTA DE TURNOS FILTRADOS POR PROFESIONAL -->
+        <!-- Turnos del profesional -->
         <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
           <h3 class="font-bold text-[#1d4e5f] text-sm flex items-center justify-between">
             <span>📅 Mis Turnos Asignados (Filtrados por Horario)</span>
           </h3>
-          <!-- Calendario interactivo para Gabriel -->
           <div id="contenedor-calendario-gabriel" class="hidden bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
             <div class="flex justify-between items-center">
               <span class="text-xs font-bold text-slate-700">Seleccioná el Día:</span>
@@ -347,7 +311,6 @@
               </select>
             </div>
           </div>
-
           <div class="overflow-x-auto">
             <table class="w-full text-left border-collapse text-sm">
               <thead>
@@ -358,14 +321,12 @@
                   <th class="p-3">Estado</th>
                 </tr>
               </thead>
-              <tbody id="tabla-turnos-profesional" class="divide-y divide-slate-100 text-xs">
-                <!-- Se carga dinámicamente -->
-              </tbody>
+              <tbody id="tabla-turnos-profesional" class="divide-y divide-slate-100 text-xs"></tbody>
             </table>
           </div>
         </div>
 
-        <!-- 2. BODY MAP INTERACTIVO DOBLE (FRENTE Y ESPALDAS) + REGISTROS CLÍNICOS -->
+        <!-- Body Map y EVA -->
         <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-6">
           <div class="flex justify-between items-center border-b pb-3">
             <div>
@@ -376,35 +337,29 @@
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- VISTA DE FRENTE -->
             <div class="space-y-2">
               <p class="text-center font-bold text-xs text-[#1d4e5f] bg-slate-100 py-1 rounded-lg">VISTA DE FRENTE</p>
               <div id="body-map-frente" onclick="marcarBodyMap(event, 'frente')" class="relative bg-slate-50 border-2 border-dashed border-slate-300 rounded-2xl h-80 flex flex-col items-center justify-center cursor-crosshair overflow-hidden select-none">
-                <svg class="h-64 opacity-40 hover:opacity-60 transition pointer-events-none" viewBox="0 0 100 200" fill="none" stroke="#1d4e5f" stroke-width="2">
+                <svg class="h-64 opacity-40 pointer-events-none" viewBox="0 0 100 200" fill="none" stroke="#1d4e5f" stroke-width="2">
                   <circle cx="50" cy="22" r="12" />
                   <path d="M50 34 L50 110 M25 50 L75 50 M25 50 L20 110 M75 50 L80 110 M50 110 L38 185 M50 110 L62 185" />
-                  <text x="50" y="25" font-size="6" text-anchor="middle" fill="#1d4e5f" font-weight="bold">FRENTE</text>
                 </svg>
                 <div id="puntos-frente-container"></div>
               </div>
             </div>
 
-            <!-- VISTA DE ESPALDAS -->
             <div class="space-y-2">
               <p class="text-center font-bold text-xs text-[#6b1d2f] bg-slate-100 py-1 rounded-lg">VISTA DE ESPALDAS</p>
               <div id="body-map-espalda" onclick="marcarBodyMap(event, 'espalda')" class="relative bg-slate-50 border-2 border-dashed border-slate-300 rounded-2xl h-80 flex flex-col items-center justify-center cursor-crosshair overflow-hidden select-none">
-                <svg class="h-64 opacity-40 hover:opacity-60 transition pointer-events-none" viewBox="0 0 100 200" fill="none" stroke="#6b1d2f" stroke-width="2">
+                <svg class="h-64 opacity-40 pointer-events-none" viewBox="0 0 100 200" fill="none" stroke="#6b1d2f" stroke-width="2">
                   <circle cx="50" cy="22" r="12" />
                   <path d="M50 34 L50 110 M25 50 L75 50 M25 50 L20 110 M75 50 L80 110 M50 110 L38 185 M50 110 L62 185" />
-                  <path d="M42 45 L58 45 M45 60 L55 60 M46 80 L54 80" stroke-dasharray="2 2" />
-                  <text x="50" y="25" font-size="6" text-anchor="middle" fill="#6b1d2f" font-weight="bold">ESPALDAS</text>
                 </svg>
                 <div id="puntos-espalda-container"></div>
               </div>
             </div>
           </div>
 
-          <!-- EVALUACIÓN EVA Y DATOS MÉDICOS DEL PACIENTE -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-slate-100">
             <div class="space-y-4">
               <h4 class="font-bold text-xs text-slate-800">📈 Escala Visual Analógica (EVA - Dolor)</h4>
@@ -416,31 +371,249 @@
                 </div>
                 <input type="range" id="rango-eva" min="0" max="10" value="5" oninput="actualizarEva(this.value)" class="w-full accent-[#6b1d2f] cursor-pointer" />
               </div>
-
               <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Patología Derivada por el Médico Traumatólogo / Médico Cabecera</label>
-                <input type="text" id="input-patologia-medica" placeholder="Ej: Hernia de Disco L4-L5 / Rectificación Cervical" class="w-full border border-slate-300 rounded-xl p-2.5 text-xs focus:ring-2 focus:ring-[#1d4e5f] outline-none" />
+                <label class="block text-xs font-bold text-slate-700 mb-1">Patología Derivada por Médico</label>
+                <input type="text" id="input-patologia-medica" placeholder="Ej: Hernia L4-L5" class="w-full border rounded-xl p-2.5 text-xs outline-none focus:ring-2 focus:ring-[#1d4e5f]" />
               </div>
             </div>
 
             <div class="space-y-4 flex flex-col justify-between">
               <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">📁 Cargar Fotos o Enlaces de Estudios (RX / Resonancias / Ecografías)</label>
-                <input type="file" multiple class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-[#1d4e5f] file:text-white cursor-pointer mb-2" />
-                <input type="url" id="input-link-estudios" placeholder="O pegá un enlace directo a Google Drive / Dropbox..." class="w-full border border-slate-300 rounded-xl p-2.5 text-xs focus:ring-2 focus:ring-[#1d4e5f] outline-none" />
+                <label class="block text-xs font-bold text-slate-700 mb-1">📁 Enlace o Archivo de Estudios (RX / RMN)</label>
+                <input type="url" id="input-link-estudios" placeholder="Pegá enlace de Drive / Dropbox..." class="w-full border rounded-xl p-2.5 text-xs outline-none focus:ring-2 focus:ring-[#1d4e5f] mb-2" />
               </div>
-
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Notas de Evolución Fisioterapéutica</label>
-                <textarea rows="3" placeholder="Ej: Paciente refiere mejoría tras 4ta sesión. Movilización pasiva..." class="w-full border border-slate-300 rounded-xl p-2.5 text-xs focus:ring-2 focus:ring-[#1d4e5f] outline-none"></textarea>
-              </div>
-
-              <button onclick="guardarFichaCompleta()" class="w-full bg-[#6b1d2f] text-white font-bold text-sm py-3 rounded-xl shadow hover:bg-rose-900 transition">Guardar Ficha Corporal & Estudios del Paciente</button>
+              <button onclick="guardarFichaCompleta()" class="w-full bg-[#6b1d2f] text-white font-bold text-sm py-3 rounded-xl shadow hover:bg-rose-900 transition">Guardar Ficha Corporal & Estudios</button>
             </div>
           </div>
         </div>
 
-        <!-- 3. BUSCADOR UNIVERSAL DE ARCHIVOS E HISTORIA CLÍNICA -->
+        <!-- Buscador HCD Profesionales -->
         <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
           <h3 class="font-bold text-[#1d4e5f] text-sm">🔍 Buscador Universal de Historia Clínica del Paciente</h3>
-          <p class="text-xs text-slate-500">Ingresá el nombre para consultar los puntos de dolor, patología, sesiones y si debe estampilla/sesión.</p>
+          <div class="flex gap-2">
+            <input type="text" id="input-buscar-paciente-prof" placeholder="Ingrese nombre del paciente..." class="flex-1 text-xs border rounded-xl p-2.5 outline-none focus:ring-2 focus:ring-[#1d4e5f]" />
+            <button onclick="buscarHistorialPaciente('prof')" class="px-4 py-2 bg-[#1d4e5f] text-white font-bold text-xs rounded-xl shadow">Buscar</button>
+          </div>
+          <div id="resultado-busqueda-paciente-prof" class="hidden bg-slate-50 border p-4 rounded-2xl space-y-2 text-xs">
+            <p class="font-black text-sm text-[#1d4e5f]" id="res-nombre-prof">-</p>
+            <p><strong>Patología:</strong> <span id="res-patologia-prof">-</span></p>
+            <p><strong>Sesiones:</strong> <span id="res-sesiones-prof">-</span></p>
+            <p><strong>Estado Deuda:</strong> <span id="res-deuda-prof">-</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 3. TURNERO PACIENTES                      -->
+    <!-- ========================================== -->
+    <section id="panel-paciente" class="hidden space-y-6">
+      <div class="max-w-2xl mx-auto bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+        <div class="text-center border-b pb-4">
+          <span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full">Turnero Online CLINIK</span>
+          <h2 class="text-2xl font-black text-[#1d4e5f] mt-2">Reservá tu Turno</h2>
+          <p class="text-xs text-slate-500">Seleccioná especialidad, elegí tu horario en la grilla y aboná tu seña</p>
+        </div>
+
+        <div class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Nombre y Apellido del Paciente</label>
+            <input type="text" id="input-nombre-paciente" placeholder="Ej: Juan Perez" class="w-full text-sm border rounded-xl p-3 outline-none font-medium mb-3" />
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Especialidad</label>
+            <select id="select-especialidad" onchange="renderizarGrillaTurnos()" class="w-full text-sm border rounded-xl p-3 outline-none font-medium">
+              <option value="convencional">Kinesiología Convencional (L-V 8-12h y 13-20h)</option>
+              <option value="quiropraxia">Quiropraxia (L-V 8-10h y L/M/V 15-21h)</option>
+              <option value="rpg">RPG / ATM (L-V 8-10h y L/M/V 15-21h)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-2">Elegí un Horario en la Grilla Disponible:</label>
+            <div id="grilla-turnos-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-72 overflow-y-auto p-2 border rounded-2xl bg-slate-50"></div>
+            <input type="hidden" id="turno-seleccionado-id" value="" />
+          </div>
+
+          <div class="bg-slate-50 border p-4 rounded-2xl space-y-3 text-xs">
+            <div class="flex justify-between items-center">
+              <span class="font-bold text-slate-600">Monto de Seña Requerido:</span>
+              <span id="monto-seña-display" class="text-lg font-black text-[#6b1d2f]">$3.000</span>
+            </div>
+            <p><strong>Alias:</strong> <span class="font-mono bg-white px-2 py-0.5 rounded border">clinica.donadio</span> (Titular: Donadio Hugo Gabriel)</p>
+            <label class="block font-bold">Subir comprobante de transferencia</label>
+            <input type="file" id="input-comprobante" class="w-full text-xs text-slate-500 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:bg-[#1d4e5f] file:text-white cursor-pointer" />
+          </div>
+
+          <button onclick="confirmarReservaConSeña()" class="w-full bg-[#6b1d2f] text-white font-bold text-sm py-3 rounded-xl shadow hover:bg-rose-900 transition">Confirmar Reserva y Sincronizar</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-400 mt-auto">
+    CLINIK - Sistema de Gestión Profesional para Kinesiología
+  </footer>
+
+  <script>
+    let cupos = {
+      convencional: [
+        { id: 'c_lun_1', horario: 'Lunes - 08:00 a 08:50 hs (Lic. Lucía)', ocupados: 2, max: 4 },
+        { id: 'c_lun_2', horario: 'Lunes - 13:00 a 13:50 hs (Carolina y Tomás)', ocupados: 1, max: 4 },
+        { id: 'c_mie_1', horario: 'Miércoles - 08:00 a 08:50 hs (Lic. Lucía)', ocupados: 3, max: 4 }
+      ],
+      quiropraxia: [
+        { id: 'q_lun_1', horario: 'Lunes - 08:00 a 08:30 hs (Lic. Gabriel)', ocupados: 1, max: 1 },
+        { id: 'q_lun_2', horario: 'Lunes - 15:00 a 15:30 hs (Lic. Gabriel)', ocupados: 0, max: 1 }
+      ],
+      rpg: [
+        { id: 'r_lun_1', horario: 'Lunes - 08:00 a 08:50 hs (Lic. Gabriel)', ocupados: 0, max: 1 }
+      ]
+    };
+
+    let basePacientes = {
+      "carlos gómez": { patologia: "Tendinitis rotuliana crónica D", afeccion: "Dolor en rodilla", sesiones: "8 / 10 (OSDE 210)", estadoDeuda: "✓ Al día", estudios: ["RMN Rodilla"] },
+      "marcos paz": { patologia: "Hernia Discal L5-S1", afeccion: "Lumbalgia", sesiones: "3 / 5 (IAPOS)", estadoDeuda: "⚠️ Debe Estampilla ($4.500)", estudios: ["RX Columna"] },
+      "maria paez": { patologia: "Cervicobraquialgia", afeccion: "Parestesia", sesiones: "1 / 10 (Swiss Medical)", estadoDeuda: "❌ Debe Sesión y Estampilla", estudios: ["RMN Cervical"] }
+    };
+
+    let profesionalActivo = "";
+
+    function seleccionarRol(rol) {
+      document.getElementById('panel-secretaria').classList.add('hidden');
+      document.getElementById('panel-profesional').classList.add('hidden');
+      document.getElementById('panel-paciente').classList.add('hidden');
+
+      document.getElementById('btn-rol-secretaria').className = "px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-300 hover:text-white transition";
+      document.getElementById('btn-rol-profesional').className = "px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-300 hover:text-white transition";
+      document.getElementById('btn-rol-paciente').className = "px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-300 hover:text-white transition";
+
+      if (rol === 'secretaria') {
+        document.getElementById('panel-secretaria').classList.remove('hidden');
+        document.getElementById('btn-rol-secretaria').className = "px-3 py-1.5 text-xs font-semibold rounded-lg bg-[#6b1d2f] text-white shadow transition";
+      } else if (rol === 'profesional') {
+        document.getElementById('panel-profesional').classList.remove('hidden');
+        document.getElementById('btn-rol-profesional').className = "px-3 py-1.5 text-xs font-semibold rounded-lg bg-[#1d4e5f] text-white shadow transition";
+      } else if (rol === 'paciente') {
+        document.getElementById('panel-paciente').classList.remove('hidden');
+        document.getElementById('btn-rol-paciente').className = "px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-700 text-white shadow transition";
+        renderizarGrillaTurnos();
+      }
+    }
+
+    function renderizarGrillaTurnos() {
+      const especialidad = document.getElementById('select-especialidad').value;
+      const contenedor = document.getElementById('grilla-turnos-container');
+      const displaySeña = document.getElementById('monto-seña-display');
+
+      contenedor.innerHTML = '';
+      document.getElementById('turno-seleccionado-id').value = '';
+      const lista = cupos[especialidad];
+
+      displaySeña.innerText = especialidad === 'convencional' ? "$3.000" : "$20.000";
+
+      lista.forEach(item => {
+        const disponibles = item.max - item.ocupados;
+        const tarjeta = document.createElement('div');
+        if (disponibles > 0) {
+          tarjeta.className = "p-3 bg-white border rounded-xl cursor-pointer hover:border-[#1d4e5f] transition flex flex-col justify-between";
+          tarjeta.onclick = () => {
+            document.querySelectorAll('#grilla-turnos-container > div').forEach(d => d.classList.remove('border-2', 'border-[#6b1d2f]'));
+            tarjeta.classList.add('border-2', 'border-[#6b1d2f]');
+            document.getElementById('turno-seleccionado-id').value = item.id;
+          };
+          tarjeta.innerHTML = `<div><p class="font-bold text-xs text-[#1d4e5f]">${item.horario}</p></div><span class="text-xs font-bold text-emerald-700 mt-2">Quedan ${disponibles} lugares ➔</span>`;
+        } else {
+          tarjeta.className = "p-3 bg-slate-100 border rounded-xl opacity-60";
+          tarjeta.innerHTML = `<div><p class="font-bold text-xs text-slate-500">${item.horario}</p></div><span class="text-xs font-bold text-rose-700 mt-2">Agotado</span>`;
+        }
+        contenedor.appendChild(tarjeta);
+      });
+    }
+
+    function gestionarEstadoStaff(selectElem, modalId, avisoId) {
+      document.getElementById(modalId).classList.add('hidden');
+      document.getElementById(avisoId).classList.add('hidden');
+      if (selectElem.value === 'reemplazo') document.getElementById(modalId).classList.remove('hidden');
+      if (selectElem.value === 'falta_aviso') document.getElementById(avisoId).classList.remove('hidden');
+    }
+
+    function ingresarProfesional(e) {
+      e.preventDefault();
+      profesionalActivo = document.getElementById('select-profesional').value;
+      document.getElementById('login-profesional').classList.add('hidden');
+      document.getElementById('contenido-profesional').classList.remove('hidden');
+      document.getElementById('titulo-profesional-activo').innerText = "Panel Clínico - Lic. " + profesionalActivo;
+      document.getElementById('contenedor-calendario-gabriel').classList.toggle('hidden', profesionalActivo !== 'Gabriel');
+      cargarTurnosProfesional();
+    }
+
+    function cargarTurnosProfesional() {
+      const tabla = document.getElementById('tabla-turnos-profesional');
+      tabla.innerHTML = `<tr><td colspan="4" class="p-3 text-center text-slate-400">Turnos sincronizados en vivo para Lic. ${profesionalActivo}.</td></tr>`;
+    }
+
+    function buscarHistorialPaciente(tipo) {
+      const query = document.getElementById(tipo === 'sec' ? 'input-buscar-paciente-sec' : 'input-buscar-paciente-prof').value.trim().toLowerCase();
+      const p = basePacientes[query];
+      const resContainer = document.getElementById(tipo === 'sec' ? 'resultado-busqueda-paciente-sec' : 'resultado-busqueda-paciente-prof');
+      if (p) {
+        resContainer.classList.remove('hidden');
+        document.getElementById(tipo === 'sec' ? 'res-nombre-sec' : 'res-nombre-prof').innerText = query.toUpperCase();
+        document.getElementById(tipo === 'sec' ? 'res-patologia-sec' : 'res-patologia-prof').innerText = p.patologia;
+        document.getElementById(tipo === 'sec' ? 'res-afeccion-sec' : 'res-afeccion-prof').innerText = p.afeccion;
+        if(tipo === 'prof') {
+          document.getElementById('res-sesiones-prof').innerText = p.sesiones;
+          document.getElementById('res-deuda-prof').innerText = p.estadoDeuda;
+        }
+      } else {
+        alert("Paciente no encontrado.");
+        resContainer.classList.add('hidden');
+      }
+    }
+
+    function marcarBodyMap(event, vista) {
+      const area = event.currentTarget;
+      const rect = area.getBoundingClientRect();
+      const punto = document.createElement('div');
+      punto.className = `absolute w-4 h-4 ${vista === 'frente' ? 'bg-[#1d4e5f]' : 'bg-[#6b1d2f]'} rounded-full border-2 border-white shadow-lg -ml-2 -mt-2 pointer-events-none`;
+      punto.style.left = (event.clientX - rect.left) + 'px';
+      punto.style.top = (event.clientY - rect.top) + 'px';
+      document.getElementById(vista === 'frente' ? 'puntos-frente-container' : 'puntos-espalda-container').appendChild(punto);
+    }
+
+    function limpiarBodyMaps() {
+      document.getElementById('puntos-frente-container').innerHTML = '';
+      document.getElementById('puntos-espalda-container').innerHTML = '';
+    }
+
+    function actualizarEva(val) {
+      let desc = val < 4 ? "Leve" : (val < 8 ? "Moderado" : "Severo / Extremo");
+      document.getElementById('eva-valor-label').innerText = val + " / 10 (" + desc + ")";
+    }
+
+    function guardarFichaCompleta() {
+      alert("Ficha corporal y estudios guardados correctamente.");
+    }
+
+    function cerrarSesionProfesional() {
+      document.getElementById('login-profesional').classList.remove('hidden');
+      document.getElementById('contenido-profesional').classList.add('hidden');
+    }
+
+    function confirmarReservaConSeña() {
+      const nombre = document.getElementById('input-nombre-paciente').value.trim();
+      const idTurno = document.getElementById('turno-seleccionado-id').value;
+      const archivo = document.getElementById('input-comprobante').files[0];
+
+      if (!nombre || !idTurno || !archivo) {
+        alert("Por favor completá tu nombre, seleccioná un horario y subí el comprobante.");
+        return;
+      }
+      alert(`¡Reserva confirmada con éxito para ${nombre}!`);
+    }
+  </script>
+</body>
+</html>
