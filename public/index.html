@@ -207,7 +207,7 @@
         </div>
       </div>
 
-      <!-- Agenda Cruzada con acceso rápido a historia clínica de pacientes agendados -->
+      <!-- Agenda Cruzada con acceso rápido a historia clínica -->
       <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
         <div class="flex flex-wrap justify-between items-center gap-2">
           <div>
@@ -311,10 +311,9 @@
           <button onclick="cerrarSesionProfesional()" class="px-3 py-1.5 text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 font-semibold rounded-xl">Cerrar Sesión</button>
         </div>
 
-        <!-- Turnos del profesional con acceso directo a la HCD de cada paciente agendado -->
         <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
           <h3 class="font-bold text-[#1d4e5f] text-sm flex items-center justify-between">
-            <span>📅 Mis Turnos Asignados (Clic en HCD del paciente para evaluar)</span>
+            <span>📅 Mis Turnos Asignados (Clic en HCD para consultar paciente)</span>
           </h3>
           <div id="contenedor-calendario-gabriel" class="hidden bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
             <div class="flex justify-between items-center">
@@ -423,38 +422,41 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- 3. TURNERO PACIENTES (CON CANALES DE CONTACTO) -->
+    <!-- 3. TURNERO PACIENTES (CON CONTACTO VISIBLE)-->
     <!-- ========================================== -->
     <section id="panel-paciente" class="hidden space-y-6">
       <div class="max-w-2xl mx-auto bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
         
-        <!-- ENCABEZADO CON INSTAGRAM Y GOOGLE MAPS -->
-        <div class="text-center border-b border-slate-100 pb-4 space-y-2">
+        <!-- ENCABEZADO CON BANNER DE UBICACIÓN E INSTAGRAM BIEN VISIBLE -->
+        <div class="text-center border-b border-slate-100 pb-5 space-y-3">
           <span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full">Turnero Online CLINIK</span>
           <h2 class="text-2xl font-black text-[#1d4e5f]">Reservá tu Turno</h2>
-          
-          <!-- Canales de Contacto Requeridos -->
-          <div class="flex flex-wrap justify-center items-center gap-4 pt-1 text-xs font-semibold text-slate-600">
-            <a href="https://instagram.com/clinik.salud" target="_blank" class="flex items-center gap-1.5 bg-rose-50 text-[#6b1d2f] px-3 py-1.5 rounded-full border border-rose-200 hover:bg-rose-100 transition">
-              <span>📸 Instagram:</span> <span class="font-bold">@clinik.salud</span>
+
+          <!-- BLOQUE DE CANALES DE CONTACTO (UBICACIÓN E INSTAGRAM) -->
+          <div class="flex flex-col sm:flex-row justify-center items-center gap-2 pt-2">
+            <a href="https://maps.google.com/?q=San+Lorenzo+2826+Santa+Fe+Capital" target="_blank" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-cyan-50 hover:bg-cyan-100 text-[#1d4e5f] px-4 py-2 rounded-xl border border-cyan-200 font-medium text-xs transition shadow-sm">
+              <span class="text-base">📍</span>
+              <span><strong>Ubicación:</strong> San Lorenzo 2826, Santa Fe Capital</span>
             </a>
-            <a href="https://maps.google.com/?q=San+Lorenzo+2826+Santa+Fe+Capital" target="_blank" class="flex items-center gap-1.5 bg-cyan-50 text-[#1d4e5f] px-3 py-1.5 rounded-full border border-cyan-200 hover:bg-cyan-100 transition">
-              <span>📍 Ubicación:</span> <span class="font-bold">San Lorenzo 2826, Santa Fe Capital</span>
+            <a href="https://instagram.com/clinik.salud" target="_blank" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-rose-50 hover:bg-rose-100 text-[#6b1d2f] px-4 py-2 rounded-xl border border-rose-200 font-medium text-xs transition shadow-sm">
+              <span class="text-base">📸</span>
+              <span><strong>Instagram:</strong> @clinik.salud</span>
             </a>
           </div>
           
-          <p class="text-xs text-slate-400 pt-1">Seleccioná especialidad, elegí tu horario en la grilla y aboná tu seña</p>
+          <p class="text-xs text-slate-400 pt-1">Completá tus datos a continuación para seleccionar especialidad y horario disponible</p>
         </div>
 
         <div class="space-y-4">
+          <!-- CAMPO DE NOMBRE Y APELLIDO DEL PACIENTE -->
           <div>
             <label class="block text-xs font-bold text-slate-700 mb-1">Nombre y Apellido del Paciente</label>
-            <input type="text" id="input-nombre-paciente" placeholder="Ej: Juan Perez" class="w-full text-sm border rounded-xl p-3 outline-none font-medium mb-3" />
+            <input type="text" id="input-nombre-paciente" placeholder="Ej: Juan Pérez" class="w-full text-sm border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-[#1d4e5f] outline-none font-medium mb-3" />
           </div>
 
           <div>
             <label class="block text-xs font-bold text-slate-700 mb-1">Especialidad</label>
-            <select id="select-especialidad" onchange="renderizarGrillaTurnos()" class="w-full text-sm border rounded-xl p-3 outline-none font-medium">
+            <select id="select-especialidad" onchange="renderizarGrillaTurnos()" class="w-full text-sm border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-[#1d4e5f] outline-none font-medium">
               <option value="convencional">Kinesiología Convencional (L-V 8-12h y 13-20h)</option>
               <option value="quiropraxia">Quiropraxia (L-V 8-10h y L/M/V 15-21h)</option>
               <option value="rpg">RPG / ATM (L-V 8-10h y L/M/V 15-21h)</option>
@@ -462,7 +464,7 @@
           </div>
 
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-2">Elegí un Horario en la Grilla Disponible:</label>
+            <label class="block text-xs font-bold text-slate-700 mb-2">Elegí un Horario en la Grilla Disponible (Clic en la tarjeta):</label>
             <div id="grilla-turnos-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-72 overflow-y-auto p-2 border rounded-2xl bg-slate-50"></div>
             <input type="hidden" id="turno-seleccionado-id" value="" />
           </div>
@@ -534,9 +536,7 @@
       }
     }
 
-    // Acceso directo a la HCD desde la agenda o listado de turnos
     function verHistorialDirecto(nombrePaciente) {
-      // Si el usuario es secretario, va al buscador de secretaría
       seleccionarRol('secretaria');
       document.getElementById('input-buscar-paciente-sec').value = nombrePaciente;
       buscarHistorialPaciente('sec');
@@ -591,7 +591,6 @@
 
     function cargarTurnosProfesional() {
       const tabla = document.getElementById('tabla-turnos-profesional');
-      // Ejemplo de turnos asignados con botón directo a HCD
       tabla.innerHTML = `
         <tr class="hover:bg-slate-50">
           <td class="p-3 font-bold text-[#1d4e5f]">Lunes - 08:00 a 08:50 hs</td>
