@@ -50,10 +50,21 @@
   <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 space-y-6">
 
     <!-- ========================================== -->
-    <!-- 1. PANEL DE SECRETARÍA (CAJA, HCD Y STAFF) -->
+    <!-- 1. PANEL DE SECRETARÍA                     -->
     <!-- ========================================== -->
     <section id="panel-secretaria" class="space-y-6">
       
+      <!-- ENCABEZADO DE SECRETARÍA CON LOGO CIRCULAR EN LATERAL IZQUIERDO -->
+      <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-4">
+        <div class="w-16 h-16 rounded-full p-0.5 bg-gradient-to-tr from-[#1d4e5f] to-[#6b1d2f] shadow-md flex-shrink-0">
+          <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA=" alt="CLINIK Logo" crossorigin="anonymous" onerror="this.src='https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=150'" class="w-full h-full object-cover rounded-full border-2 border-white shadow-inner bg-slate-100" />
+        </div>
+        <div>
+          <h2 class="text-base font-extrabold text-[#1d4e5f]">Panel de Gestión - Secretaría & Recepción</h2>
+          <p class="text-xs text-slate-500">Control de caja diaria, deudas de estampillas, fichaje del staff y agenda cruzada.</p>
+        </div>
+      </div>
+
       <!-- Módulo de Caja Diaria y Control de Estampillas -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
@@ -279,11 +290,16 @@
     <!-- ========================================== -->
     <section id="panel-profesional" class="hidden space-y-6">
       <div id="login-profesional" class="max-w-md mx-auto bg-white p-8 rounded-3xl border border-slate-200 shadow-md">
+        
+        <!-- LOGO CIRCULAR EN LOGIN PROFESIONAL -->
         <div class="text-center mb-6">
-          <div class="w-12 h-12 bg-[#1d4e5f] text-white rounded-2xl flex items-center justify-center font-bold text-2xl mx-auto mb-2">🔒</div>
+          <div class="w-20 h-20 mx-auto rounded-full p-0.5 bg-gradient-to-tr from-[#1d4e5f] to-[#6b1d2f] shadow-lg mb-3">
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA=" alt="CLINIK Logo" crossorigin="anonymous" onerror="this.src='https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=150'" class="w-full h-full object-cover rounded-full border-2 border-white shadow-inner bg-slate-100" />
+          </div>
           <h2 class="text-xl font-bold text-slate-800">Acceso a Profesionales</h2>
           <p class="text-xs text-slate-500 mt-1">Ingresá para ver turnos filtrados, Body Map doble cara y la Historia Clínica.</p>
         </div>
+
         <form onsubmit="ingresarProfesional(event)" class="space-y-4">
           <div>
             <label class="block text-xs font-bold text-slate-600 mb-1">Profesional</label>
@@ -303,10 +319,17 @@
       </div>
 
       <div id="contenido-profesional" class="hidden space-y-6">
+        
+        <!-- ENCABEZADO PROFESIONAL CON LOGO CIRCULAR EN LATERAL IZQUIERDO -->
         <div class="flex justify-between items-center bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
-          <div>
-            <h2 id="titulo-profesional-activo" class="text-lg font-bold text-[#1d4e5f]">Panel Profesional</h2>
-            <p class="text-xs text-slate-500">Gestión de turnos, Body Map Doble Vista, Escala EVA y Estudios</p>
+          <div class="flex items-center gap-3">
+            <div class="w-14 h-14 rounded-full p-0.5 bg-gradient-to-tr from-[#1d4e5f] to-[#6b1d2f] shadow-md flex-shrink-0">
+              <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA=" alt="CLINIK Logo" crossorigin="anonymous" onerror="this.src='https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=150'" class="w-full h-full object-cover rounded-full border-2 border-white shadow-inner bg-slate-100" />
+            </div>
+            <div>
+              <h2 id="titulo-profesional-activo" class="text-base font-bold text-[#1d4e5f]">Panel Profesional</h2>
+              <p class="text-xs text-slate-500">Gestión de turnos, Body Map Doble Vista, Escala EVA y Estudios</p>
+            </div>
           </div>
           <button onclick="cerrarSesionProfesional()" class="px-3 py-1.5 text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 font-semibold rounded-xl">Cerrar Sesión</button>
         </div>
@@ -422,14 +445,19 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- 3. TURNERO PACIENTES (CON CONTACTO VISIBLE)-->
+    <!-- 3. TURNERO PACIENTES                       -->
     <!-- ========================================== -->
     <section id="panel-paciente" class="hidden space-y-6">
       <div class="max-w-2xl mx-auto bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
         
-        <!-- ENCABEZADO CON BANNER DE UBICACIÓN E INSTAGRAM BIEN VISIBLE -->
+        <!-- ENCABEZADO CON LOGO CIRCULAR CENTRADO ARRIBA DE "RESERVÁ TU TURNO" -->
         <div class="text-center border-b border-slate-100 pb-5 space-y-3">
-          <span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full">Turnero Online CLINIK</span>
+          <!-- LOGO CIRCULAR CON RELIEVE Y SOMBRA -->
+          <div class="w-24 h-24 mx-auto rounded-full p-1 bg-gradient-to-tr from-[#1d4e5f] to-[#6b1d2f] shadow-xl hover:scale-105 transition duration-300">
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA=" alt="CLINIK Logo" crossorigin="anonymous" onerror="this.src='https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=150'" class="w-full h-full object-cover rounded-full border-2 border-white shadow-inner bg-slate-100" />
+          </div>
+
+          <span class="inline-block px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full">Turnero Online CLINIK</span>
           <h2 class="text-2xl font-black text-[#1d4e5f]">Reservá tu Turno</h2>
 
           <!-- BLOQUE DE CANALES DE CONTACTO (UBICACIÓN E INSTAGRAM) -->
