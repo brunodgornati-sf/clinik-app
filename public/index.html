@@ -54,9 +54,8 @@
     <!-- ========================================== -->
     <section id="panel-secretaria" class="space-y-6">
       
-      <!-- NUEVO: MÓDULO DE CAJA DIARIA Y CONTROL DE ESTAMPILLAS -->
+      <!-- Módulo de Caja Diaria y Control de Estampillas -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <!-- Resumen de Caja -->
         <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
           <div class="flex justify-between items-center">
             <h3 class="font-bold text-[#1d4e5f] text-xs uppercase tracking-wider">💰 Caja Diaria (Ingresos)</h3>
@@ -73,7 +72,6 @@
           <button onclick="alert('Cierre de caja parcial generado con éxito.')" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs py-2 rounded-xl transition">Generar Cierre de Caja</button>
         </div>
 
-        <!-- Control de Cobros y Estampillas Pendientes -->
         <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3 md:col-span-2">
           <div class="flex justify-between items-center">
             <h3 class="font-bold text-[#1d4e5f] text-xs uppercase tracking-wider">🏷️ Control de Deudas (Estampillas y Sesiones)</h3>
@@ -162,7 +160,6 @@
           </div>
         </div>
 
-        <!-- Formularios Modales Staff -->
         <div id="modal-lucia" class="hidden bg-cyan-50 border border-cyan-200 p-4 rounded-xl space-y-3"><p class="text-xs font-bold text-[#1d4e5f]">🔄 Datos del Reemplazante (Lucía)</p><div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs"><input type="text" placeholder="Nombre" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Apellido" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="DNI" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Dirección" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Teléfono" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Alias Bancario" class="p-2 border rounded-lg bg-white" /></div></div>
         <div id="modal-carolina" class="hidden bg-cyan-50 border border-cyan-200 p-4 rounded-xl space-y-3"><p class="text-xs font-bold text-[#1d4e5f]">🔄 Datos del Reemplazante (Carolina)</p><div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs"><input type="text" placeholder="Nombre" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Apellido" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="DNI" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Dirección" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Teléfono" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Alias Bancario" class="p-2 border rounded-lg bg-white" /></div></div>
         <div id="modal-tomas" class="hidden bg-cyan-50 border border-cyan-200 p-4 rounded-xl space-y-3"><p class="text-xs font-bold text-[#1d4e5f]">🔄 Datos del Reemplazante (Tomás)</p><div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs"><input type="text" placeholder="Nombre" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Apellido" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="DNI" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Dirección" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Teléfono" class="p-2 border rounded-lg bg-white" /><input type="text" placeholder="Alias Bancario" class="p-2 border rounded-lg bg-white" /></div></div>
@@ -178,7 +175,7 @@
         </div>
       </div>
 
-      <!-- ACCESO DE SECRETARÍA A HCD -->
+      <!-- Acceso de Secretaría a HCD -->
       <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
         <h3 class="font-bold text-[#1d4e5f] text-sm">🔍 Expediente Clínico Completo (Buscador Universal)</h3>
         <p class="text-xs text-slate-500">Buscá un paciente por nombre para verificar afección, diagnóstico médico, sesiones, deudas y estudios cargados.</p>
@@ -210,12 +207,12 @@
         </div>
       </div>
 
-      <!-- AGENDA CRUZADA -->
+      <!-- Agenda Cruzada con acceso rápido a historia clínica de pacientes agendados -->
       <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
         <div class="flex flex-wrap justify-between items-center gap-2">
           <div>
             <h2 class="text-lg font-bold text-[#1d4e5f]">Agenda Cruzada en Tiempo Real & Estados Clínicos</h2>
-            <p class="text-xs text-slate-500">Monitoreo completo de turnos, estado en sala, demoras y cancelaciones</p>
+            <p class="text-xs text-slate-500">Monitoreo completo de turnos, estado en sala y acceso rápido a HCD</p>
           </div>
           <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full">Sincronizado En Vivo</span>
         </div>
@@ -226,17 +223,20 @@
               <tr class="bg-slate-100 text-slate-600 text-xs uppercase tracking-wider">
                 <th class="p-3">Día y Horario</th>
                 <th class="p-3">Especialidad</th>
-                <th class="p-3">Paciente</th>
+                <th class="p-3">Paciente (HCD)</th>
                 <th class="p-3">Profesional</th>
                 <th class="p-3">Estado del Turno</th>
-                <th class="p-3">Observaciones / Alerta</th>
+                <th class="p-3">Observaciones</th>
               </tr>
             </thead>
-            <tbody id="tabla-agenda-cruzada" class="divide-y divide-slate-100 text-xs">
+            <tbody class="divide-y divide-slate-100 text-xs">
               <tr class="hover:bg-slate-50">
                 <td class="p-3 font-bold text-[#1d4e5f]">Lunes - 08:00 a 08:50 hs</td>
                 <td class="p-3">Kinesiología Convencional</td>
-                <td class="p-3 font-medium">Carlos Gómez</td>
+                <td class="p-3 font-medium">
+                  <span class="text-slate-900 font-bold">Carlos Gómez</span>
+                  <button onclick="verHistorialDirecto('carlos gómez')" class="ml-2 px-2 py-0.5 bg-cyan-100 text-[#1d4e5f] hover:bg-cyan-200 font-bold rounded text-[10px]">📁 Ver HCD</button>
+                </td>
                 <td class="p-3"><span class="px-2 py-1 bg-blue-100 text-[#1d4e5f] font-semibold rounded-lg">Lic. Lucía</span></td>
                 <td class="p-3">
                   <select class="p-1.5 bg-yellow-100 text-yellow-900 font-bold rounded-lg border border-yellow-300">
@@ -248,7 +248,24 @@
                     <option value="cancelo">🔴 Canceló</option>
                   </select>
                 </td>
-                <td class="p-3 text-slate-500">Seña abonada $3.000 (Sesión 8/10 ⚠️)</td>
+                <td class="p-3 text-slate-500">Seña $3.000 (Sesión 8/10 ⚠️)</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-[#1d4e5f]">Lunes - 08:00 a 08:30 hs</td>
+                <td class="p-3">Quiropraxia</td>
+                <td class="p-3 font-medium">
+                  <span class="text-slate-900 font-bold">Marcos Paz</span>
+                  <button onclick="verHistorialDirecto('marcos paz')" class="ml-2 px-2 py-0.5 bg-cyan-100 text-[#1d4e5f] hover:bg-cyan-200 font-bold rounded text-[10px]">📁 Ver HCD</button>
+                </td>
+                <td class="p-3"><span class="px-2 py-1 bg-teal-100 text-teal-900 font-semibold rounded-lg">Lic. Gabriel</span></td>
+                <td class="p-3">
+                  <select class="p-1.5 bg-yellow-100 text-yellow-900 font-bold rounded-lg border border-yellow-300">
+                    <option value="atendido">🟢 Atendido / Finalizado</option>
+                    <option value="en-atencion" selected>🔵 Siendo Atendido</option>
+                    <option value="espera">🟡 En Espera</option>
+                  </select>
+                </td>
+                <td class="p-3 text-slate-500">Debe Estampilla ⚠️</td>
               </tr>
             </tbody>
           </table>
@@ -294,10 +311,10 @@
           <button onclick="cerrarSesionProfesional()" class="px-3 py-1.5 text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 font-semibold rounded-xl">Cerrar Sesión</button>
         </div>
 
-        <!-- Turnos del profesional -->
+        <!-- Turnos del profesional con acceso directo a la HCD de cada paciente agendado -->
         <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
           <h3 class="font-bold text-[#1d4e5f] text-sm flex items-center justify-between">
-            <span>📅 Mis Turnos Asignados (Filtrados por Horario)</span>
+            <span>📅 Mis Turnos Asignados (Clic en HCD del paciente para evaluar)</span>
           </h3>
           <div id="contenedor-calendario-gabriel" class="hidden bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
             <div class="flex justify-between items-center">
@@ -316,7 +333,7 @@
               <thead>
                 <tr class="bg-slate-100 text-slate-600 text-xs uppercase tracking-wider">
                   <th class="p-3">Día y Horario</th>
-                  <th class="p-3">Paciente</th>
+                  <th class="p-3">Paciente (HCD)</th>
                   <th class="p-3">Especialidad</th>
                   <th class="p-3">Estado</th>
                 </tr>
@@ -397,6 +414,7 @@
           <div id="resultado-busqueda-paciente-prof" class="hidden bg-slate-50 border p-4 rounded-2xl space-y-2 text-xs">
             <p class="font-black text-sm text-[#1d4e5f]" id="res-nombre-prof">-</p>
             <p><strong>Patología:</strong> <span id="res-patologia-prof">-</span></p>
+            <p><strong>Afección:</strong> <span id="res-afeccion-prof">-</span></p>
             <p><strong>Sesiones:</strong> <span id="res-sesiones-prof">-</span></p>
             <p><strong>Estado Deuda:</strong> <span id="res-deuda-prof">-</span></p>
           </div>
@@ -405,14 +423,27 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- 3. TURNERO PACIENTES                      -->
+    <!-- 3. TURNERO PACIENTES (CON CANALES DE CONTACTO) -->
     <!-- ========================================== -->
     <section id="panel-paciente" class="hidden space-y-6">
       <div class="max-w-2xl mx-auto bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
-        <div class="text-center border-b pb-4">
+        
+        <!-- ENCABEZADO CON INSTAGRAM Y GOOGLE MAPS -->
+        <div class="text-center border-b border-slate-100 pb-4 space-y-2">
           <span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full">Turnero Online CLINIK</span>
-          <h2 class="text-2xl font-black text-[#1d4e5f] mt-2">Reservá tu Turno</h2>
-          <p class="text-xs text-slate-500">Seleccioná especialidad, elegí tu horario en la grilla y aboná tu seña</p>
+          <h2 class="text-2xl font-black text-[#1d4e5f]">Reservá tu Turno</h2>
+          
+          <!-- Canales de Contacto Requeridos -->
+          <div class="flex flex-wrap justify-center items-center gap-4 pt-1 text-xs font-semibold text-slate-600">
+            <a href="https://instagram.com/clinik.salud" target="_blank" class="flex items-center gap-1.5 bg-rose-50 text-[#6b1d2f] px-3 py-1.5 rounded-full border border-rose-200 hover:bg-rose-100 transition">
+              <span>📸 Instagram:</span> <span class="font-bold">@clinik.salud</span>
+            </a>
+            <a href="https://maps.google.com/?q=San+Lorenzo+2826+Santa+Fe+Capital" target="_blank" class="flex items-center gap-1.5 bg-cyan-50 text-[#1d4e5f] px-3 py-1.5 rounded-full border border-cyan-200 hover:bg-cyan-100 transition">
+              <span>📍 Ubicación:</span> <span class="font-bold">San Lorenzo 2826, Santa Fe Capital</span>
+            </a>
+          </div>
+          
+          <p class="text-xs text-slate-400 pt-1">Seleccioná especialidad, elegí tu horario en la grilla y aboná tu seña</p>
         </div>
 
         <div class="space-y-4">
@@ -454,7 +485,7 @@
   </main>
 
   <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-400 mt-auto">
-    CLINIK - Sistema de Gestión Profesional para Kinesiología
+    CLINIK - Sistema de Gestión Profesional para Kinesiología | San Lorenzo 2826, Santa Fe Capital
   </footer>
 
   <script>
@@ -501,6 +532,14 @@
         document.getElementById('btn-rol-paciente').className = "px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-700 text-white shadow transition";
         renderizarGrillaTurnos();
       }
+    }
+
+    // Acceso directo a la HCD desde la agenda o listado de turnos
+    function verHistorialDirecto(nombrePaciente) {
+      // Si el usuario es secretario, va al buscador de secretaría
+      seleccionarRol('secretaria');
+      document.getElementById('input-buscar-paciente-sec').value = nombrePaciente;
+      buscarHistorialPaciente('sec');
     }
 
     function renderizarGrillaTurnos() {
@@ -552,7 +591,23 @@
 
     function cargarTurnosProfesional() {
       const tabla = document.getElementById('tabla-turnos-profesional');
-      tabla.innerHTML = `<tr><td colspan="4" class="p-3 text-center text-slate-400">Turnos sincronizados en vivo para Lic. ${profesionalActivo}.</td></tr>`;
+      // Ejemplo de turnos asignados con botón directo a HCD
+      tabla.innerHTML = `
+        <tr class="hover:bg-slate-50">
+          <td class="p-3 font-bold text-[#1d4e5f]">Lunes - 08:00 a 08:50 hs</td>
+          <td class="p-3 font-medium">
+            Carlos Gómez 
+            <button onclick="completarBusquedaProfesional('carlos gómez')" class="ml-2 px-2 py-0.5 bg-cyan-100 text-[#1d4e5f] hover:bg-cyan-200 font-bold rounded text-[10px]">📁 Abrir HCD</button>
+          </td>
+          <td class="p-3">Kinesiología Convencional</td>
+          <td class="p-3"><span class="px-2 py-0.5 bg-cyan-100 text-[#1d4e5f] font-bold rounded">En Espera</span></td>
+        </tr>
+      `;
+    }
+
+    function completarBusquedaProfesional(nombre) {
+      document.getElementById('input-buscar-paciente-prof').value = nombre;
+      buscarHistorialPaciente('prof');
     }
 
     function buscarHistorialPaciente(tipo) {
@@ -569,7 +624,7 @@
           document.getElementById('res-deuda-prof').innerText = p.estadoDeuda;
         }
       } else {
-        alert("Paciente no encontrado.");
+        alert("Paciente no encontrado en la base de datos.");
         resContainer.classList.add('hidden');
       }
     }
