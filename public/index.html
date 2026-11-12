@@ -20,7 +20,6 @@
     }
   </script>
   <style>
-    /* Marco circular con relieve y sombra 3D para el logo oficial */
     .logo-marco-circular {
       background: linear-gradient(145deg, #ffffff, #e2e8f0);
       box-shadow: 0 10px 25px -5px rgba(29, 78, 95, 0.25), 0 4px 10px -2px rgba(107, 29, 47, 0.15), inset 0 2px 4px rgba(255, 255, 255, 0.9);
@@ -65,7 +64,6 @@
       
       <!-- ENCABEZADO DE SECRETARÍA CON LOGO CIRCULAR EN LATERAL IZQUIERDO -->
       <div class="bg-white p-5 rounded-3xl border border-slate-200/80 shadow-sm flex flex-col sm:flex-row items-center gap-5">
-        <!-- LOGO VECTORIAL OFICIAL INCRUSTADO EN MARCO CIRCULAR -->
         <div class="w-24 h-24 rounded-full logo-marco-circular flex items-center justify-center flex-shrink-0 p-1.5 relative overflow-hidden">
           <svg viewBox="0 0 220 220" class="w-full h-full">
             <defs>
@@ -75,9 +73,7 @@
               </radialGradient>
             </defs>
             <circle cx="110" cy="110" r="108" fill="url(#bgGradSec)"/>
-            <!-- Arco Magenta -->
             <path d="M172 38 Q195 105 178 165 Q172 110 165 45 Z" fill="#c2185b"/>
-            <!-- Puntos Columna -->
             <circle cx="155" cy="46" r="4.5" fill="#9ca3af"/>
             <circle cx="158" cy="60" r="5.5" fill="#9ca3af"/>
             <circle cx="160" cy="76" r="6.5" fill="#9ca3af"/>
@@ -91,9 +87,7 @@
             <circle cx="149" cy="103" r="3" fill="#9ca3af"/>
             <circle cx="147" cy="121" r="2.8" fill="#9ca3af"/>
             <circle cx="144" cy="138" r="2.5" fill="#9ca3af"/>
-            <!-- Texto CliniK -->
             <text x="20" y="122" font-family="Georgia, serif" font-weight="bold" font-size="45" fill="#0e5a73" letter-spacing="-1">CliniK</text>
-            <!-- Subtítulo -->
             <text x="110" y="146" font-family="Arial, sans-serif" font-weight="800" font-size="7.8" fill="#4b5563" text-anchor="middle" letter-spacing="0.4">CONSULTORIO DE REHABILITACIÓN</text>
             <text x="110" y="157" font-family="Arial, sans-serif" font-weight="800" font-size="7.8" fill="#4b5563" text-anchor="middle" letter-spacing="0.4">Y SALUD FUNCIONAL</text>
           </svg>
@@ -102,7 +96,67 @@
         <div class="text-center sm:text-left">
           <span class="px-2.5 py-0.5 bg-cyan-50 text-[#1d4e5f] border border-cyan-200 rounded-full text-[11px] font-bold">Administración Central</span>
           <h2 class="text-lg font-extrabold text-[#1d4e5f] mt-1">Panel de Gestión - Secretaría & Recepción</h2>
-          <p class="text-xs text-slate-500">Control de caja diaria, deudas de estampillas, fichaje del staff, agenda cruzada e historias clínicas sincronizadas.</p>
+          <p class="text-xs text-slate-500">Agendamiento manual, control de caja, estampillas, fichaje del staff e historias clínicas sincronizadas.</p>
+        </div>
+      </div>
+
+      <!-- NUEVO MÓDULO: AGENDAMIENTO MANUAL DESDE SECRETARÍA -->
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+        <div class="flex justify-between items-center border-b pb-3">
+          <div>
+            <h3 class="font-bold text-[#1d4e5f] text-sm">➕ Carga Manual de Turno en Recepción</h3>
+            <p class="text-xs text-slate-500">Agendá un paciente de forma presencial o telefónica y sincronizalo al instante con la agenda y su historia clínica</p>
+          </div>
+          <span class="px-2.5 py-1 bg-amber-100 text-amber-800 font-bold text-[10px] rounded-full">Acceso Rápido Secretaría</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Nombre y Apellido *</label>
+            <input type="text" id="manual-nombre" placeholder="Ej: Roberto Gómez" class="w-full border rounded-xl p-2.5 bg-slate-50 focus:bg-white outline-none focus:ring-2 focus:ring-[#1d4e5f]" />
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">DNI *</label>
+            <input type="text" id="manual-dni" placeholder="Ej: 26.112.443" class="w-full border rounded-xl p-2.5 bg-slate-50 focus:bg-white outline-none focus:ring-2 focus:ring-[#1d4e5f]" />
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Teléfono *</label>
+            <input type="text" id="manual-tel" placeholder="Ej: 342 455-6677" class="w-full border rounded-xl p-2.5 bg-slate-50 focus:bg-white outline-none focus:ring-2 focus:ring-[#1d4e5f]" />
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Cobertura / Obra Social *</label>
+            <input type="text" id="manual-cobertura" placeholder="Ej: IAPOS, OSDE, Particular..." class="w-full border rounded-xl p-2.5 bg-slate-50 focus:bg-white outline-none focus:ring-2 focus:ring-[#1d4e5f]" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs pt-1">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Especialidad *</label>
+            <select id="manual-especialidad" class="w-full border rounded-xl p-2.5 bg-slate-50 font-medium focus:bg-white outline-none">
+              <option value="Kinesiología Convencional">Kinesiología Convencional</option>
+              <option value="Quiropraxia">Quiropraxia</option>
+              <option value="RPG / ATM">RPG / ATM</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Día y Horario / Slot *</label>
+            <input type="text" id="manual-horario" placeholder="Ej: Martes - 09:00 hs" class="w-full border rounded-xl p-2.5 bg-slate-50 focus:bg-white outline-none focus:ring-2 focus:ring-[#1d4e5f]" />
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Profesional Asignado *</label>
+            <select id="manual-profesional" class="w-full border rounded-xl p-2.5 bg-slate-50 font-medium focus:bg-white outline-none">
+              <option value="Lic. Lucía">Lic. Lucía</option>
+              <option value="Lic. Carolina">Lic. Carolina</option>
+              <option value="Lic. Tomás">Lic. Tomás</option>
+              <option value="Lic. Gabriel">Lic. Gabriel</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex justify-end pt-2">
+          <button onclick="guardarTurnoManualSecretaria()" class="px-5 py-2.5 bg-[#1d4e5f] hover:bg-cyan-900 text-white font-bold text-xs rounded-xl shadow transition">
+            Guardar y Sincronizar Turno en Recepción ✓
+          </button>
         </div>
       </div>
 
@@ -230,10 +284,10 @@
       <!-- Acceso de Secretaría a HCD (CON DNI, TELÉFONO Y OBRA SOCIAL SINCRONIZADOS) -->
       <div id="seccion-buscador-sec" class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
         <h3 class="font-bold text-[#1d4e5f] text-sm">🔍 Expediente Clínico Completo & Datos Filiatorios (Sincronizado)</h3>
-        <p class="text-xs text-slate-500">Buscá un paciente por nombre o hacé clic en "Ver HCD" en la agenda para ver DNI, teléfono, obra social, afección y estudios.</p>
+        <p class="text-xs text-slate-500">Buscá un paciente por nombre o hacé clic en "Abrir HCD" en la agenda para ver DNI, teléfono, obra social, afección y estudios.</p>
         
         <div class="flex gap-2">
-          <input type="text" id="input-buscar-paciente-sec" placeholder="Ej: Carlos Gómez, Marcos Paz o el paciente recién agendado..." class="flex-1 text-xs border rounded-xl p-2.5 outline-none focus:ring-2 focus:ring-[#1d4e5f]" />
+          <input type="text" id="input-buscar-paciente-sec" placeholder="Ej: Carlos Gómez, Marcos Paz o el paciente cargado..." class="flex-1 text-xs border rounded-xl p-2.5 outline-none focus:ring-2 focus:ring-[#1d4e5f]" />
           <button onclick="buscarHistorialPaciente('sec')" class="px-4 py-2 bg-[#1d4e5f] hover:bg-cyan-900 text-white font-bold text-xs rounded-xl shadow transition">Buscar Expediente</button>
         </div>
 
@@ -266,12 +320,12 @@
         </div>
       </div>
 
-      <!-- Agenda Cruzada Dinámica (Se actualiza al reservar en el turnero) -->
+      <!-- Agenda Cruzada Dinámica (Se actualiza al reservar o agendar manualmente) -->
       <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
         <div class="flex flex-wrap justify-between items-center gap-2">
           <div>
             <h2 class="text-lg font-bold text-[#1d4e5f]">Agenda Cruzada en Tiempo Real & Datos del Paciente</h2>
-            <p class="text-xs text-slate-500">Todos los turnos reservados desde el portal aparecen aquí con su DNI, teléfono y cobertura</p>
+            <p class="text-xs text-slate-500">Todos los turnos de recepción y online aparecen aquí sincronizados con DNI, teléfono y cobertura</p>
           </div>
           <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full">Sincronizado En Vivo</span>
         </div>
@@ -304,7 +358,6 @@
     <section id="panel-profesional" class="hidden space-y-6">
       <div id="login-profesional" class="max-w-md mx-auto bg-white p-8 rounded-3xl border border-slate-200 shadow-md">
         
-        <!-- LOGO VECTORIAL CIRCULAR EN LOGIN PROFESIONAL -->
         <div class="text-center mb-6">
           <div class="w-24 h-24 mx-auto rounded-full logo-marco-circular flex items-center justify-center p-1.5 mb-3 overflow-hidden">
             <svg viewBox="0 0 220 220" class="w-full h-full">
@@ -330,10 +383,10 @@
           <div>
             <label class="block text-xs font-bold text-slate-600 mb-1">Profesional</label>
             <select id="select-profesional" class="w-full text-sm border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-[#1d4e5f] outline-none">
-              <option value="Lucía">Lic. Lucía (Mañana 08:00 - 12:00)</option>
-              <option value="Carolina">Lic. Carolina (Tarde 13:00 - 20:00)</option>
-              <option value="Tomás">Lic. Tomás (Tarde 13:00 - 20:00)</option>
-              <option value="Gabriel">Lic. Gabriel (Quiropraxia / RPG / ATM - Calendario)</option>
+              <option value="Lic. Lucía">Lic. Lucía (Mañana 08:00 - 12:00)</option>
+              <option value="Lic. Carolina">Lic. Carolina (Tarde 13:00 - 20:00)</option>
+              <option value="Lic. Tomás">Lic. Tomás (Tarde 13:00 - 20:00)</option>
+              <option value="Lic. Gabriel">Lic. Gabriel (Quiropraxia / RPG / ATM - Calendario)</option>
             </select>
           </div>
           <div>
@@ -346,7 +399,6 @@
 
       <div id="contenido-profesional" class="hidden space-y-6">
         
-        <!-- ENCABEZADO PROFESIONAL CON LOGO VECTORIAL CIRCULAR EN LATERAL IZQUIERDO -->
         <div class="flex flex-wrap justify-between items-center bg-white p-4 rounded-3xl border border-slate-200 shadow-sm gap-4">
           <div class="flex items-center gap-4">
             <div class="w-20 h-20 rounded-full logo-marco-circular flex items-center justify-center p-1 flex-shrink-0 overflow-hidden">
@@ -375,7 +427,7 @@
 
         <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
           <h3 class="font-bold text-[#1d4e5f] text-sm flex items-center justify-between">
-            <span>📅 Mis Turnos Asignados (Sincronizados con el Turnero)</span>
+            <span>📅 Mis Turnos Asignados (Sincronizados con Secretaría y Turnero)</span>
           </h3>
           <div class="overflow-x-auto">
             <table class="w-full text-left border-collapse text-sm">
@@ -479,22 +531,19 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- 3. TURNERO PACIENTES (VISUAL MEJORADA)     -->
+    <!-- 3. TURNERO PACIENTES                       -->
     <!-- ========================================== -->
     <section id="panel-paciente" class="hidden space-y-6">
       <div class="max-w-2xl mx-auto bg-white rounded-3xl border border-slate-200/90 shadow-xl overflow-hidden">
         
-        <!-- BANNER SUPERIOR DECORATIVO CON DEGRADADO MÉDICO -->
         <div class="bg-gradient-to-br from-[#1d4e5f] via-[#173f4d] to-[#6b1d2f] pt-8 pb-14 px-6 text-center relative">
           <span class="inline-block px-3.5 py-1 bg-white/15 backdrop-blur-sm text-white border border-white/25 text-xs font-bold rounded-full tracking-wide">
             Turnero Online Oficial
           </span>
         </div>
 
-        <!-- CONTENIDO DEL FORMULARIO CON LOGO SUPERPUESTO EN MARCO CIRCULAR -->
         <div class="px-6 md:px-10 pb-8 -mt-12 relative space-y-6">
           
-          <!-- LOGO VECTORIAL CIRCULAR CENTRADO ARRIBA DE "RESERVÁ TU TURNO" -->
           <div class="text-center space-y-3">
             <div class="w-28 h-28 mx-auto rounded-full logo-marco-circular flex items-center justify-center p-1.5 hover:scale-105 transition duration-300 overflow-hidden">
               <svg viewBox="0 0 220 220" class="w-full h-full">
@@ -527,7 +576,6 @@
 
             <h2 class="text-2xl md:text-3xl font-black text-[#1d4e5f] tracking-tight">Reservá tu Turno</h2>
 
-            <!-- CANALES DE CONTACTO (UBICACIÓN E INSTAGRAM) -->
             <div class="flex flex-col sm:flex-row justify-center items-center gap-2.5 pt-1">
               <a href="https://maps.google.com/?q=San+Lorenzo+2826+Santa+Fe+Capital" target="_blank" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-cyan-50/90 hover:bg-cyan-100 text-[#1d4e5f] px-4 py-2 rounded-xl border border-cyan-200 font-semibold text-xs transition shadow-sm">
                 <span class="text-base">📍</span>
@@ -540,7 +588,6 @@
             </div>
           </div>
 
-          <!-- FORMULARIO CON DATOS DEL PACIENTE (NOMBRE, DNI, TELÉFONO, OBRA SOCIAL / PARTICULAR) -->
           <div class="space-y-4 pt-3 border-t border-slate-100">
             
             <div class="bg-slate-50/80 p-4 rounded-2xl border border-slate-200/80 space-y-3.5">
@@ -548,13 +595,11 @@
                 <span>👤</span> Datos del Paciente (Se sincronizan con tu Historia Clínica)
               </p>
 
-              <!-- Nombre y Apellido -->
               <div>
                 <label class="block text-xs font-bold text-slate-700 mb-1">Nombre y Apellido Completo *</label>
-                <input type="text" id="input-nombre-paciente" placeholder="Ej: Juan Pérez" class="w-full text-sm bg-white border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-[#1d4e5f] focus:border-[#1d4e5f] outline-none font-medium transition" />
+                <input type="text" id="input-nombre-paciente" placeholder="Ej: Juan Pérez" class="w-full text-sm bg-white border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-[#1d4e5f] outline-none font-medium transition" />
               </div>
 
-              <!-- DNI y Teléfono en dos columnas -->
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label class="block text-xs font-bold text-slate-700 mb-1">DNI *</label>
@@ -566,7 +611,6 @@
                 </div>
               </div>
 
-              <!-- Cobertura Médica: Obra Social o Particular -->
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label class="block text-xs font-bold text-slate-700 mb-1">Modalidad de Atención *</label>
@@ -582,7 +626,6 @@
               </div>
             </div>
 
-            <!-- Especialidad -->
             <div>
               <label class="block text-xs font-bold text-slate-700 mb-1">Especialidad</label>
               <select id="select-especialidad" onchange="renderizarGrillaTurnos()" class="w-full text-sm bg-white border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-[#1d4e5f] outline-none font-semibold text-[#1d4e5f]">
@@ -592,14 +635,12 @@
               </select>
             </div>
 
-            <!-- Grilla de Horarios -->
             <div>
               <label class="block text-xs font-bold text-slate-700 mb-2">Elegí un Horario en la Grilla Disponible (Clic en la tarjeta):</label>
               <div id="grilla-turnos-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-72 overflow-y-auto p-2.5 border border-slate-200 rounded-2xl bg-slate-50"></div>
               <input type="hidden" id="turno-seleccionado-id" value="" />
             </div>
 
-            <!-- Datos de Transferencia -->
             <div class="bg-gradient-to-r from-rose-50/80 to-cyan-50/80 border border-slate-200 p-4 rounded-2xl space-y-3 text-xs">
               <div class="flex justify-between items-center border-b border-slate-200/80 pb-2">
                 <span class="font-bold text-slate-700">Monto de Seña Requerido:</span>
@@ -627,7 +668,6 @@
   </footer>
 
   <script>
-    // 1. CUPOS DISPONIBLES
     let cupos = {
       convencional: [
         { id: 'c_lun_1', horario: 'Lunes - 08:00 a 08:50 hs', profesional: 'Lic. Lucía', ocupados: 2, max: 4 },
@@ -643,7 +683,6 @@
       ]
     };
 
-    // 2. BASE DE DATOS SINCRONIZADA DE PACIENTES (HCD + DATOS FILIATORIOS)
     let basePacientes = {
       "carlos gómez": {
         nombreDisplay: "Carlos Gómez",
@@ -677,7 +716,6 @@
       }
     };
 
-    // 3. AGENDA SINCRONIZADA ENTRE TURNERO, SECRETARÍA Y PROFESIONALES
     let turnosAgendados = [
       {
         horario: "Lunes - 08:00 a 08:50 hs",
@@ -703,7 +741,6 @@
     let countEspecial = 1;
     let profesionalActivo = "";
 
-    // Inicializar tablas al cargar
     window.addEventListener('DOMContentLoaded', () => {
       renderizarAgendaCruzada();
       renderizarGrillaTurnos();
@@ -742,6 +779,59 @@
       } else {
         contenedor.classList.remove('opacity-40', 'pointer-events-none');
       }
+    }
+
+    // FUNCIÓN DE GUARDADO DE TURNO MANUAL DESDE SECRETARÍA
+    function guardarTurnoManualSecretaria() {
+      const nombre = document.getElementById('manual-nombre').value.trim();
+      const dni = document.getElementById('manual-dni').value.trim();
+      const tel = document.getElementById('manual-tel').value.trim();
+      const cobertura = document.getElementById('manual-cobertura').value.trim();
+      const especialidad = document.getElementById('manual-especialidad').value;
+      const horario = document.getElementById('manual-horario').value.trim();
+      const profesional = document.getElementById('manual-profesional').value;
+
+      if (!nombre || !dni || !tel || !cobertura || !horario) {
+        alert("Por favor completá todos los campos obligatorios para el agendamiento manual.");
+        return;
+      }
+
+      const keyPaciente = nombre.toLowerCase();
+
+      // 1. Registrar o actualizar en la Base de Datos de Pacientes (HCD)
+      basePacientes[keyPaciente] = {
+        nombreDisplay: nombre,
+        dni: dni,
+        telefono: tel,
+        cobertura: cobertura,
+        patologia: "Evaluación inicial en recepción",
+        afeccion: "Turno agendado por Secretaría",
+        sesiones: "1 / 10 (Presencial)",
+        estadoDeuda: "⚠️ Pendiente de seña/pago en recepción"
+      };
+
+      // 2. Agregar a la Agenda Cruzada
+      turnosAgendados.unshift({
+        horario: horario,
+        especialidad: especialidad,
+        pacienteKey: keyPaciente,
+        profesional: profesional,
+        estado: "espera",
+        obs: "Agendado Manualmente en Recepción 📋"
+      });
+
+      // 3. Refrescar vistas
+      renderizarAgendaCruzada();
+      if (profesionalActivo) cargarTurnosProfesional();
+
+      alert(`¡Turno manual guardado con éxito para ${nombre}!\n\nAsignado a ${profesional} (${horario}). Sincronizado con la agenda y su Historia Clínica.`);
+
+      // Limpiar campos
+      document.getElementById('manual-nombre').value = '';
+      document.getElementById('manual-dni').value = '';
+      document.getElementById('manual-tel').value = '';
+      document.getElementById('manual-cobertura').value = '';
+      document.getElementById('manual-horario').value = '';
     }
 
     function renderizarAgendaCruzada() {
@@ -843,7 +933,7 @@
       profesionalActivo = document.getElementById('select-profesional').value;
       document.getElementById('login-profesional').classList.add('hidden');
       document.getElementById('contenido-profesional').classList.remove('hidden');
-      document.getElementById('titulo-profesional-activo').innerText = "Panel Clínico - Lic. " + profesionalActivo;
+      document.getElementById('titulo-profesional-activo').innerText = "Panel Clínico - " + profesionalActivo;
       cargarTurnosProfesional();
     }
 
@@ -852,6 +942,7 @@
       tabla.innerHTML = '';
 
       turnosAgendados.forEach(turno => {
+        // Filtrar opcionalmente si coincide el profesional (o mostrar todos los sincronizados)
         const pac = basePacientes[turno.pacienteKey] || { nombreDisplay: turno.pacienteKey, dni: '-', telefono: '-', cobertura: '-' };
         const tr = document.createElement('tr');
         tr.className = "hover:bg-slate-50";
@@ -863,7 +954,7 @@
           </td>
           <td class="p-3 text-slate-600">DNI: ${pac.dni} | 📱 ${pac.telefono}</td>
           <td class="p-3"><span class="px-2 py-0.5 bg-rose-50 text-[#6b1d2f] border border-rose-200 font-bold rounded text-[11px]">${pac.cobertura}</span></td>
-          <td class="p-3">${turno.especialidad}</td>
+          <td class="p-3">${turno.especialidad} (${turno.profesional})</td>
         `;
         tabla.appendChild(tr);
       });
@@ -929,7 +1020,6 @@
       document.getElementById('contenido-profesional').classList.add('hidden');
     }
 
-    // 4. RESERVA CON SINCRONIZACIÓN TOTAL A AGENDA, HCD Y CAJA
     function confirmarReservaConSeña() {
       const nombre = document.getElementById('input-nombre-paciente').value.trim();
       const dni = document.getElementById('input-dni-paciente').value.trim();
@@ -941,7 +1031,7 @@
       const archivo = document.getElementById('input-comprobante').files[0];
 
       if (!nombre || !dni || !telefono || !idTurno || !archivo) {
-        alert("Por favor completá Nombre y Apellido, DNI, Teléfono, seleccioná un horario y adjuntá el comprobante.");
+        alert("Por favor completá tu nombre, DNI, teléfono, seleccioná un horario y adjuntá el comprobante.");
         return;
       }
 
@@ -953,7 +1043,6 @@
       const coberturaFinal = tipoCobertura === 'Particular' ? 'Particular' : `Obra Social: ${nombreOS}`;
       const keyPaciente = nombre.toLowerCase();
 
-      // Buscar slot seleccionado y descontar cupo
       let slotElegido = null;
       cupos[especialidad].forEach(slot => {
         if (slot.id === idTurno) {
@@ -965,7 +1054,6 @@
       const montoSeña = especialidad === 'convencional' ? 3000 : 20000;
       const nombreEsp = especialidad === 'convencional' ? 'Kinesiología Convencional' : (especialidad === 'quiropraxia' ? 'Quiropraxia' : 'RPG / ATM');
 
-      // Crear o actualizar paciente en la base sincronizada (HCD)
       basePacientes[keyPaciente] = {
         nombreDisplay: nombre,
         dni: dni,
@@ -977,7 +1065,6 @@
         estadoDeuda: `✓ Seña abonada ($${montoSeña.toLocaleString('es-AR')})`
       };
 
-      // Agregar turno a la agenda cruzada de Secretaría y Profesionales
       turnosAgendados.unshift({
         horario: slotElegido ? slotElegido.horario : "Horario Confirmado",
         especialidad: nombreEsp,
@@ -987,7 +1074,6 @@
         obs: `Nuevo Turno Web - Seña $${montoSeña.toLocaleString('es-AR')} ✓`
       });
 
-      // Actualizar Caja Diaria en Secretaría
       if (especialidad === 'convencional') {
         totalConvencional += 3000;
         countConvencional += 1;
@@ -999,13 +1085,11 @@
       }
       document.getElementById('caja-total-monto').innerText = `$${(totalConvencional + totalEspecial).toLocaleString('es-AR')}`;
 
-      // Refrescar grillas
       renderizarGrillaTurnos();
       renderizarAgendaCruzada();
 
-      alert(`¡Turno confirmado para ${nombre}!\n\nTus datos (DNI: ${dni}, Tel: ${telefono}, ${coberturaFinal}) ya quedaron sincronizados con Secretaría, el Profesional y tu Historia Clínica.`);
+      alert(`¡Turno confirmado para ${nombre}!\n\nTus datos ya quedaron sincronizados con Secretaría, el Profesional y tu Historia Clínica.`);
       
-      // Limpiar formulario
       document.getElementById('input-nombre-paciente').value = '';
       document.getElementById('input-dni-paciente').value = '';
       document.getElementById('input-tel-paciente').value = '';
