@@ -100,7 +100,7 @@
         </div>
       </div>
 
-      <!-- NUEVO MÓDULO: AGENDAMIENTO MANUAL DESDE SECRETARÍA -->
+      <!-- MÓDULO: AGENDAMIENTO MANUAL DESDE SECRETARÍA -->
       <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
         <div class="flex justify-between items-center border-b pb-3">
           <div>
@@ -281,7 +281,7 @@
         </div>
       </div>
 
-      <!-- Acceso de Secretaría a HCD (CON DNI, TELÉFONO Y OBRA SOCIAL SINCRONIZADOS) -->
+      <!-- Acceso de Secretaría a HCD -->
       <div id="seccion-buscador-sec" class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
         <h3 class="font-bold text-[#1d4e5f] text-sm">🔍 Expediente Clínico Completo & Datos Filiatorios (Sincronizado)</h3>
         <p class="text-xs text-slate-500">Buscá un paciente por nombre o hacé clic en "Abrir HCD" en la agenda para ver DNI, teléfono, obra social, afección y estudios.</p>
@@ -320,12 +320,12 @@
         </div>
       </div>
 
-      <!-- Agenda Cruzada Dinámica (Se actualiza al reservar o agendar manualmente) -->
+      <!-- Agenda Cruzada Dinámica (Con Contador de Sesiones y Enlace de WhatsApp) -->
       <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
         <div class="flex flex-wrap justify-between items-center gap-2">
           <div>
-            <h2 class="text-lg font-bold text-[#1d4e5f]">Agenda Cruzada en Tiempo Real & Datos del Paciente</h2>
-            <p class="text-xs text-slate-500">Todos los turnos de recepción y online aparecen aquí sincronizados con DNI, teléfono y cobertura</p>
+            <h2 class="text-lg font-bold text-[#1d4e5f]">Agenda Cruzada en Tiempo Real & Recordatorios</h2>
+            <p class="text-xs text-slate-500">Visualizá el avance de sesiones y envíale un recordatorio por WhatsApp al paciente con un solo clic</p>
           </div>
           <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full">Sincronizado En Vivo</span>
         </div>
@@ -337,10 +337,10 @@
                 <th class="p-3">Día y Horario</th>
                 <th class="p-3">Especialidad</th>
                 <th class="p-3">Paciente (Datos & HCD)</th>
-                <th class="p-3">Cobertura / Obra Social</th>
-                <th class="p-3">Profesional</th>
+                <th class="p-3">Sesiones Realizadas</th>
+                <th class="p-3">Profesional / Cobertura</th>
+                <th class="p-3">Recordatorio WhatsApp</th>
                 <th class="p-3">Estado del Turno</th>
-                <th class="p-3">Observaciones</th>
               </tr>
             </thead>
             <tbody id="tabla-agenda-cruzada" class="divide-y divide-slate-100 text-xs">
@@ -687,7 +687,7 @@
       "carlos gómez": {
         nombreDisplay: "Carlos Gómez",
         dni: "28.450.112",
-        telefono: "342 411-2233",
+        telefono: "3424112233", // Sin espacios ni guiones para facilitar el link de WA
         cobertura: "OSDE 210",
         patologia: "Tendinitis rotuliana crónica D",
         afeccion: "Dolor en rodilla al subir escaleras",
@@ -697,7 +697,7 @@
       "marcos paz": {
         nombreDisplay: "Marcos Paz",
         dni: "31.908.445",
-        telefono: "342 599-8877",
+        telefono: "3425998877",
         cobertura: "IAPOS",
         patologia: "Hernia Discal L5-S1",
         afeccion: "Lumbalgia irradiada",
@@ -707,7 +707,7 @@
       "maría páez": {
         nombreDisplay: "María Páez",
         dni: "35.120.789",
-        telefono: "342 612-0099",
+        telefono: "3426120099",
         cobertura: "Particular",
         patologia: "Cervicobraquialgia",
         afeccion: "Parestesia en miembro superior",
@@ -723,7 +723,7 @@
         pacienteKey: "carlos gómez",
         profesional: "Lic. Lucía",
         estado: "espera",
-        obs: "Seña $3.000 (Sesión 8/10 ⚠️)"
+        obs: "Seña $3.000"
       },
       {
         horario: "Lunes - 08:00 a 08:30 hs",
@@ -781,7 +781,7 @@
       }
     }
 
-    // FUNCIÓN DE GUARDADO DE TURNO MANUAL DESDE SECRETARÍA
+    // GUARDAR TURNO MANUAL DESDE SECRETARÍA
     function guardarTurnoManualSecretaria() {
       const nombre = document.getElementById('manual-nombre').value.trim();
       const dni = document.getElementById('manual-dni').value.trim();
@@ -797,36 +797,33 @@
       }
 
       const keyPaciente = nombre.toLowerCase();
+      const telClean = tel.replace(/\D/g,''); // Limpiar caracteres para WhatsApp
 
-      // 1. Registrar o actualizar en la Base de Datos de Pacientes (HCD)
       basePacientes[keyPaciente] = {
         nombreDisplay: nombre,
         dni: dni,
-        telefono: tel,
+        telefono: telClean,
         cobertura: cobertura,
         patologia: "Evaluación inicial en recepción",
         afeccion: "Turno agendado por Secretaría",
-        sesiones: "1 / 10 (Presencial)",
+        sesiones: "1 / 10 sesiones",
         estadoDeuda: "⚠️ Pendiente de seña/pago en recepción"
       };
 
-      // 2. Agregar a la Agenda Cruzada
       turnosAgendados.unshift({
         horario: horario,
         especialidad: especialidad,
         pacienteKey: keyPaciente,
         profesional: profesional,
         estado: "espera",
-        obs: "Agendado Manualmente en Recepción 📋"
+        obs: "Agendado en Recepción 📋"
       });
 
-      // 3. Refrescar vistas
       renderizarAgendaCruzada();
       if (profesionalActivo) cargarTurnosProfesional();
 
       alert(`¡Turno manual guardado con éxito para ${nombre}!\n\nAsignado a ${profesional} (${horario}). Sincronizado con la agenda y su Historia Clínica.`);
 
-      // Limpiar campos
       document.getElementById('manual-nombre').value = '';
       document.getElementById('manual-dni').value = '';
       document.getElementById('manual-tel').value = '';
@@ -834,12 +831,19 @@
       document.getElementById('manual-horario').value = '';
     }
 
+    // RENDERIZAR AGENDA CRUZADA CON CONTADOR DE SESIONES Y BOTÓN DE WHATSAPP
     function renderizarAgendaCruzada() {
       const tbody = document.getElementById('tabla-agenda-cruzada');
       tbody.innerHTML = '';
 
       turnosAgendados.forEach(turno => {
-        const pac = basePacientes[turno.pacienteKey] || { nombreDisplay: turno.pacienteKey, dni: '-', telefono: '-', cobertura: '-' };
+        const pac = basePacientes[turno.pacienteKey] || { nombreDisplay: turno.pacienteKey, dni: '-', telefono: '3420000000', cobertura: '-', sesiones: '1 / 10 sesiones' };
+        
+        // Link directo a WhatsApp con mensaje preconfigurado
+        const telWa = pac.telefono ? pac.telefono.replace(/\D/g,'') : '3420000000';
+        const mensajeWa = encodeURIComponent(`Hola ${pac.nombreDisplay}! Te escribimos de CliniK (San Lorenzo 2826) para recordarte tu turno de ${turno.especialidad} (${turno.horario}) con ${turno.profesional}. Te esperamos!`);
+        const urlWa = `https://wa.me/${telWa}?text=${mensajeWa}`;
+
         const tr = document.createElement('tr');
         tr.className = "hover:bg-slate-50 transition";
         tr.innerHTML = `
@@ -851,11 +855,21 @@
             <button onclick="verHistorialDirecto('${turno.pacienteKey}')" class="mt-1 px-2 py-0.5 bg-cyan-100 text-[#1d4e5f] hover:bg-cyan-200 font-bold rounded text-[10px] transition">📁 Abrir HCD</button>
           </td>
           <td class="p-3">
-            <span class="px-2 py-1 bg-rose-50 text-[#6b1d2f] border border-rose-200 font-bold rounded-lg text-[11px]">${pac.cobertura}</span>
+            <span class="px-2.5 py-1 bg-indigo-50 text-indigo-700 border border-indigo-200 font-extrabold rounded-lg text-xs">
+              📊 ${pac.sesiones}
+            </span>
           </td>
-          <td class="p-3"><span class="px-2 py-1 bg-blue-100 text-[#1d4e5f] font-semibold rounded-lg">${turno.profesional}</span></td>
           <td class="p-3">
-            <select class="p-1.5 bg-yellow-100 text-yellow-900 font-bold rounded-lg border border-yellow-300">
+            <div class="font-semibold text-[#1d4e5f]">${turno.profesional}</div>
+            <div class="text-[11px] text-slate-500">${pac.cobertura}</div>
+          </td>
+          <td class="p-3">
+            <a href="${urlWa}" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-sm text-xs transition">
+              <span>💬</span> Enviar Recordatorio
+            </a>
+          </td>
+          <td class="p-3">
+            <select class="p-1.5 bg-yellow-100 text-yellow-900 font-bold rounded-lg border border-yellow-300 text-xs">
               <option value="espera" ${turno.estado === 'espera' ? 'selected' : ''}>🟡 En Espera</option>
               <option value="en-atencion" ${turno.estado === 'en-atencion' ? 'selected' : ''}>🔵 Siendo Atendido</option>
               <option value="atendido" ${turno.estado === 'atendido' ? 'selected' : ''}>🟢 Atendido</option>
@@ -863,7 +877,6 @@
               <option value="cancelo">🔴 Canceló</option>
             </select>
           </td>
-          <td class="p-3 text-slate-500">${turno.obs}</td>
         `;
         tbody.appendChild(tr);
       });
@@ -942,7 +955,6 @@
       tabla.innerHTML = '';
 
       turnosAgendados.forEach(turno => {
-        // Filtrar opcionalmente si coincide el profesional (o mostrar todos los sincronizados)
         const pac = basePacientes[turno.pacienteKey] || { nombreDisplay: turno.pacienteKey, dni: '-', telefono: '-', cobertura: '-' };
         const tr = document.createElement('tr');
         tr.className = "hover:bg-slate-50";
@@ -1042,6 +1054,7 @@
 
       const coberturaFinal = tipoCobertura === 'Particular' ? 'Particular' : `Obra Social: ${nombreOS}`;
       const keyPaciente = nombre.toLowerCase();
+      const telClean = telefono.replace(/\D/g,'');
 
       let slotElegido = null;
       cupos[especialidad].forEach(slot => {
@@ -1057,11 +1070,11 @@
       basePacientes[keyPaciente] = {
         nombreDisplay: nombre,
         dni: dni,
-        telefono: telefono,
+        telefono: telClean,
         cobertura: coberturaFinal,
         patologia: "Primera consulta / Evaluación kinésica",
         afeccion: "Reservado vía Turnero Web",
-        sesiones: "1 / 10 (Turno Confirmado)",
+        sesiones: "1 / 10 sesiones",
         estadoDeuda: `✓ Seña abonada ($${montoSeña.toLocaleString('es-AR')})`
       };
 
@@ -1071,7 +1084,7 @@
         pacienteKey: keyPaciente,
         profesional: slotElegido ? slotElegido.profesional : "Staff CliniK",
         estado: "espera",
-        obs: `Nuevo Turno Web - Seña $${montoSeña.toLocaleString('es-AR')} ✓`
+        obs: `Turno Web - Seña $${montoSeña.toLocaleString('es-AR')} ✓`
       });
 
       if (especialidad === 'convencional') {
